@@ -1,13 +1,21 @@
 {
+  "cuda_available": false,
   "packages": {
-    "h5py": null,
+    "einops": "0.8.0",
+    "h5py": "3.16.0",
+    "matplotlib": "3.10.8",
     "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "rotary-embedding-torch": "0.8.4",
     "scipy": "1.17.0",
-    "setuptools": "84.0.0",
-    "torch": null
+    "setuptools": "78.1.0",
+    "spikingjelly": "0.0.0.0.14",
+    "torch": "2.11.0+cpu",
+    "torchvision": "0.26.0+cpu",
+    "tqdm": "4.70.1"
   },
   "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
   "python": "3.12.14",
-  "scope": "Current local analysis check; not the original inference environment.",
+  "scope": "Current local analysis and real-model CPU checks; not the original CUDA environment.",
   "status": "OBSERVED"
 }

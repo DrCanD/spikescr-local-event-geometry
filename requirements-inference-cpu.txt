@@ -1,0 +1,13 @@
+# Tested CPU diagnostic dependencies. Install the two CPU torch wheels from
+# https://download.pytorch.org/whl/cpu first; see docs/REPRODUCIBILITY.md.
+# This is not the original CUDA environment or a full-panel equivalence claim.
+-r requirements-analysis.txt
+torch==2.11.0+cpu
+torchvision==0.26.0+cpu
+spikingjelly==0.0.0.0.14
+rotary-embedding-torch==0.8.4
+einops==0.8.0
+h5py==3.16.0
+tqdm==4.70.1
+matplotlib==3.10.8
+pillow==12.3.0

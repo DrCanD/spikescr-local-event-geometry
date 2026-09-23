@@ -6,7 +6,7 @@ This package contains the actual frozen checkpoint, the transformed inputs for t
 
 The replication target is the **technical experiment with the frozen checkpoint**: input transformation, finite-neighborhood enumeration, predictions, internal activation measurements, activation replacement and statistical analysis. Independent retraining and manuscript presentation assets are outside this scope.
 
-File-integrity checks and statistical regeneration have passed. A complete neural-network replay report is not included; the inference commands below perform that comparison. See [the validation records](validation/README.md) for the scope of the checks actually executed.
+File-integrity checks, statistical regeneration and the four-probe real-model CPU preflight have passed. A broader CPU diagnostic found a clean-score mismatch at source 4959, so CPU execution is not validated for full replication. A complete replay in the recorded CUDA environment is still required. See [the validation records](validation/README.md) for the executed checks and their limits.
 
 ## Start with the recorded results
 
@@ -63,13 +63,17 @@ The internal archive contains **activation-change metrics**, not every raw hidde
 | Quantity | Recorded value |
 | --- | --- |
 | Training seed and selected epoch | 312 and 282 |
-| Trainable parameters | 3,302,416 |
+| Total parameters | 3,302,416 |
+| Trainable parameters | 3,302,400 |
+| Fixed rotary-frequency parameters | 16 |
 | Validation benchmark | 8,617 / 9,981 |
 | Test benchmark | 17,247 / 20,382 |
 | Unique neighboring inputs | 725,070 |
 | Preserved / adverse / corrective / lateral | 699,250 / 5,157 / 9,031 / 11,632 |
 | Event-weighted total | 1,659,158 |
 | Initially correct sources / adverse-sensitive sources | 84 / 13 |
+
+The originally reported 3,302,416 count includes 16 fixed rotary-frequency parameters. The trainable count is 3,302,400. This bookkeeping correction changes neither the checkpoint nor the model computation.
 
 The benchmark uses batch size 256. The local audit uses batch size one. These execution paths must not be substituted for one another, because the original batched candidate path did not satisfy singleton parity. The reproduced upstream forward pass is kept unchanged, including its tensor reshapes.
 
@@ -90,7 +94,9 @@ The preflight covers four fixed probes, one for each transition type. It is not 
 
 For an interrupted full run, use the same arguments and add `--resume`. Completed source archives are verified before reuse; an incomplete source is recomputed. A new environment, execution-code digest or configuration cannot be silently combined with an older run.
 
-A CPU diagnostic must explicitly request `--device cpu --allow-nonreference-environment`. A passing small CPU diagnostic is not full GPU certification. The complete original environment was not recorded beyond the settings retained in `configs/inference_environment.json`; the package does not invent the missing versions.
+A CPU diagnostic must explicitly request `--device cpu --allow-nonreference-environment`. The tested CPU setup and known portability failure are documented in [the reproduction protocol](docs/REPRODUCIBILITY.md). The complete original environment was not recorded beyond the settings retained in `configs/inference_environment.json`; the package does not invent the missing versions.
+
+GitHub Actions runs both recorded-result checks and a real-model CPU job. The latter loads the actual checkpoint, verifies the parameter inventory and all seven boundaries, executes the fixed four-probe preflight and checks resume. It is a regression test, not certification of the full 725,070-candidate experiment.
 
 ## Integrity and numerical comparison
 

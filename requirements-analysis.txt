@@ -1,4 +1,5 @@
 # Tested analysis environment. This is NOT the original inference environment.
 numpy==2.3.5
 scipy==1.17.0
-setuptools==82.0.1
+# PyTorch 2.11 requires setuptools<82; keep analysis and inference installable together.
+setuptools==78.1.0

@@ -10,10 +10,13 @@ from .io import read_json, write_json, load_npz, sha256_file
 
 def execution_digest(root: Path) -> str:
     h=hashlib.sha256()
-    for directory in ('src','configs'):
+    for directory in ('src','configs','scripts'):
         for p in sorted((root/directory).rglob('*')):
-            if p.is_file() and '__pycache__' not in p.parts:
+            if (p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc'
+                    and not any(part.endswith('.egg-info') for part in p.parts)):
                 h.update(p.relative_to(root).as_posix().encode());h.update(p.read_bytes())
+    for p in sorted([root/'pyproject.toml', *root.glob('requirements-*.txt')]):
+        h.update(p.relative_to(root).as_posix().encode());h.update(p.read_bytes())
     return h.hexdigest()
 
 
@@ -22,6 +25,7 @@ def compare_point(scores, traces, patch_scores, source, global_index, b, patch_l
     g=b['geometry']; ref=b['internal'];cfg=b['config'];i=global_index;errors=[]
     tol=cfg['source_score_atol']; ttol=cfg['replay_trace_atol']
     if not np.isfinite(scores).all() or scores.shape!=(35,):raise ValueError('Invalid observed score vector')
+    if traces.shape!=(7,6) or not np.isfinite(traces).all():raise ValueError('Invalid observed trace metrics')
     pred=int(scores.argmax());label=int(g['label'][i]);clean_pred=int(g['clean_prediction'][i])
     if pred!=int(g['candidate_prediction'][i]):errors.append('candidate_prediction')
     differences={}
@@ -43,9 +47,11 @@ def compare_point(scores, traces, patch_scores, source, global_index, b, patch_l
         if diff>tol:errors.append(name)
     td=np.abs(traces-ref['trace_metrics'][i]);differences['max_trace_absolute_difference']=float(td.max())
     if not np.isfinite(td).all() or float(td.max())>ttol:errors.append('trace_metrics')
+    pi=patch_lookup.get((source,int(g['candidate_index'][i])))
+    if pi is not None and patch_scores is None:
+        errors.append('missing_patch_scores')
     if patch_scores is not None:
         if not np.isfinite(patch_scores).all() or patch_scores.shape!=(7,35):raise ValueError('Invalid patch scores')
-        pi=patch_lookup.get((source,int(g['candidate_index'][i])))
         if pi is not None:
             pd=np.abs(patch_scores-ref['patch_scores'][pi]);differences['max_patch_score_absolute_difference']=float(pd.max())
             if float(pd.max())>tol:errors.append('patch_scores')
@@ -54,6 +60,31 @@ def compare_point(scores, traces, patch_scores, source, global_index, b, patch_l
         differences['positive_control_max_absolute_difference']=float(control.max())
         if float(control.max())>tol:errors.append('positive_controls')
     return {'status':'PASS' if not errors else 'FAIL','errors':errors,**differences}
+
+
+def validate_cached_source(cached, summary, source, candidate_ids, patch_ids, clean_reference, tolerance):
+    """Require complete stored outputs before any source is counted as resumed."""
+    if int(cached['source_index']) != source or summary.get('source_index') != source:
+        raise ValueError('Cached source identity mismatch')
+    if cached['candidate_index'].tolist() != candidate_ids:
+        raise ValueError('Resume candidate coverage mismatch')
+    if cached['patch_candidate_index'].tolist() != patch_ids:
+        raise ValueError('Resume replacement coverage mismatch')
+    if summary.get('candidates') != len(candidate_ids) or summary.get('patched_candidates') != len(patch_ids):
+        raise ValueError('Resume summary coverage mismatch')
+    expected_shapes = {
+        'scores': (len(candidate_ids),35),
+        'trace_metrics': (len(candidate_ids),7,6),
+        'patch_scores': (len(patch_ids),7,35),
+        'clean_scores': (35,),
+    }
+    for name, shape in expected_shapes.items():
+        if cached[name].shape != shape or not np.isfinite(cached[name]).all():
+            raise ValueError('Invalid cached output: '+name)
+    if (float(np.abs(cached['clean_scores']-clean_reference).max()) > tolerance
+            or int(cached['clean_scores'].argmax()) != int(clean_reference.argmax())):
+        raise ValueError('Cached clean score parity failed')
+    return {int(ci):value for ci,value in zip(cached['patch_candidate_index'],cached['patch_scores'])}
 
 
 def run_audit(root: Path, source_path: Path, out: Path, mode: str='preflight',
@@ -102,9 +133,8 @@ def run_audit(root: Path, source_path: Path, out: Path, mode: str='preflight',
             if not archive_path.is_file() or sha256_file(archive_path)!=previous.get('archive_sha256'):
                 raise ValueError('Resume archive checksum mismatch')
             cached=load_npz(archive_path)
-            if cached['candidate_index'].tolist()!=candidate_ids:raise ValueError('Resume candidate coverage mismatch')
-            if int(cached['source_index'])!=sid:raise ValueError('Cached source identity mismatch')
-            cached_patch={int(c):v for c,v in zip(cached['patch_candidate_index'],cached['patch_scores'])}
+            patch_ids=[ci for ci in candidate_ids if mode=='preflight' or g['transition_code'][indices[ci]]!=0]
+            cached_patch=validate_cached_source(cached,previous,sid,candidate_ids,patch_ids,b['clean_scores'][sid],cfg['source_score_atol'])
             for j,ci in enumerate(candidate_ids):
                 check=compare_point(cached['scores'][j],cached['trace_metrics'][j],cached_patch.get(ci),sid,int(indices[ci]),b,lookup)
                 if check['status']!='PASS':raise ValueError('Cached outputs fail canonical comparison')
@@ -113,7 +143,10 @@ def run_audit(root: Path, source_path: Path, out: Path, mode: str='preflight',
         clean_scores,clean_traces=fk.captured_model_forward(model,batch,device,stages);new_forwards+=1
         clean_diff=float(np.abs(clean_scores[0]-b['clean_scores'][sid]).max())
         if clean_diff>cfg['source_score_atol'] or int(clean_scores.argmax())!=int(b['clean_scores'][sid].argmax()):
-            write_json(out/'FAILED.json',{'status':'FAIL','source_index':sid,'reason':'clean_score_parity','max_absolute_difference':clean_diff})
+            write_json(out/'FAILED.json',{'status':'FAIL','source_index':sid,'reason':'clean_score_parity',
+                'max_absolute_difference':clean_diff,'score_atol':cfg['source_score_atol'],
+                'observed_prediction':int(clean_scores[0].argmax()),
+                'reference_prediction':int(b['clean_scores'][sid].argmax())})
             raise ValueError('Clean score parity failed; candidate evaluation stopped')
         axes=fk.infer_trace_batch_axes(clean_traces,1)
         if mode=='preflight':

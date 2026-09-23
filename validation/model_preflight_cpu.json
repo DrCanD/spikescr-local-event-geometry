@@ -1,0 +1,148 @@
+{
+  "candidates": 4,
+  "command": "python scripts/run_singleton_audit.py --mode preflight --device cpu --allow-nonreference-environment --out outputs/cpu_preflight_01",
+  "complete_canonical_panel": false,
+  "environment": {
+    "checkpoint": {
+      "file_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+      "model_forward_executed": false,
+      "selected_epoch_one_based": 282,
+      "state_dict_sha256": "b1651d836fbd76070ad6bcac863cd870904c8e65e1a8e5e18a2f0c30e25ec68c",
+      "status": "PASS",
+      "stored_epoch_zero_based": 281,
+      "tensors": 168,
+      "unsafe_pickle_enabled": false
+    },
+    "device_name": "CPU",
+    "device_type": "cpu",
+    "full_original_environment_known": false,
+    "numpy": "2.3.5",
+    "packages": {
+      "einops": "0.8.0",
+      "rotary-embedding-torch": "0.8.4",
+      "spikingjelly": "0.0.0.0.14"
+    },
+    "parameter_counts": {
+      "nontrainable_parameters": 16,
+      "total_parameters": 3302416,
+      "trainable_parameters": 3302400
+    },
+    "python": "3.12.14",
+    "recorded_torch_and_cuda_mode_matched": false,
+    "runtime": {
+      "cublas_workspace_config": ":4096:8",
+      "cuda_build": null,
+      "cudnn": null,
+      "deterministic_algorithms": true,
+      "mkldnn_enabled": true,
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python_full": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "torch_interop_threads": 9,
+      "torch_threads": 2,
+      "torchvision": "0.26.0+cpu"
+    },
+    "torch": "2.11.0+cpu",
+    "upstream": {
+      "commit": "095f418f53b3b24c21caf558225c65ad674d44b1",
+      "status": "PASS",
+      "verified_blob_count": 8
+    }
+  },
+  "execution_digest": "0b21e4b8f096b3c2f37601aa8d0d962a014376f47c05ca99d1db2d04e493bd99",
+  "new_forward_passes": 64,
+  "note": "Evidence summary from new model inference. The final repository checksum manifest also covers these subsequently written records.",
+  "patched_candidates": 4,
+  "probes": [
+    {
+      "candidates": 1,
+      "clean_score_max_absolute_difference": 3.814697265625e-06,
+      "maxima": {
+        "candidate_clean_class_margin": 9.5367431640625e-07,
+        "candidate_top1_margin": 9.5367431640625e-07,
+        "candidate_true_class_margin": 9.5367431640625e-07,
+        "delta_clean_class_score": 9.5367431640625e-07,
+        "delta_true_class_score": 9.5367431640625e-07,
+        "max_patch_score_absolute_difference": 3.814697265625e-06,
+        "max_trace_absolute_difference": 5.960464477539063e-08,
+        "positive_control_max_absolute_difference": 3.814697265625e-06,
+        "score_cosine_distance": 0.0,
+        "score_l2_change": 0.0,
+        "score_linf_change": 9.5367431640625e-07
+      },
+      "patched_candidates": 1,
+      "source_index": 4284,
+      "status": "PASS"
+    },
+    {
+      "candidates": 1,
+      "clean_score_max_absolute_difference": 1.9073486328125e-06,
+      "maxima": {
+        "candidate_clean_class_margin": 0.0,
+        "candidate_top1_margin": 0.0,
+        "candidate_true_class_margin": 0.0,
+        "delta_clean_class_score": 0.0,
+        "delta_true_class_score": 0.0,
+        "max_trace_absolute_difference": 5.960464477539063e-08,
+        "positive_control_max_absolute_difference": 1.9073486328125e-06,
+        "score_cosine_distance": 0.0,
+        "score_l2_change": 2.384185791015625e-07,
+        "score_linf_change": 0.0
+      },
+      "patched_candidates": 1,
+      "source_index": 7043,
+      "status": "PASS"
+    },
+    {
+      "candidates": 1,
+      "clean_score_max_absolute_difference": 1.9073486328125e-06,
+      "maxima": {
+        "candidate_clean_class_margin": 0.0,
+        "candidate_top1_margin": 0.0,
+        "candidate_true_class_margin": 0.0,
+        "delta_clean_class_score": 9.5367431640625e-07,
+        "delta_true_class_score": 9.5367431640625e-07,
+        "max_patch_score_absolute_difference": 1.9073486328125e-06,
+        "max_trace_absolute_difference": 5.960464477539063e-08,
+        "positive_control_max_absolute_difference": 1.9073486328125e-06,
+        "score_cosine_distance": 1.1920928955078125e-07,
+        "score_l2_change": 7.152557373046875e-07,
+        "score_linf_change": 9.5367431640625e-07
+      },
+      "patched_candidates": 1,
+      "source_index": 8189,
+      "status": "PASS"
+    },
+    {
+      "candidates": 1,
+      "clean_score_max_absolute_difference": 9.5367431640625e-07,
+      "maxima": {
+        "candidate_clean_class_margin": 0.0,
+        "candidate_top1_margin": 0.0,
+        "candidate_true_class_margin": 0.0,
+        "delta_clean_class_score": 0.0,
+        "delta_true_class_score": 0.0,
+        "max_patch_score_absolute_difference": 1.9073486328125e-06,
+        "max_trace_absolute_difference": 5.960464477539063e-08,
+        "positive_control_max_absolute_difference": 9.5367431640625e-07,
+        "score_cosine_distance": 5.960464477539063e-08,
+        "score_l2_change": 2.384185791015625e-07,
+        "score_linf_change": 0.0
+      },
+      "patched_candidates": 1,
+      "source_index": 8998,
+      "status": "PASS"
+    }
+  ],
+  "resume": {
+    "candidates": 4,
+    "new_candidates_this_invocation": 0,
+    "new_forward_passes_this_invocation": 0,
+    "patched_candidates": 4,
+    "sources": 4,
+    "status": "PASS"
+  },
+  "schema_version": 1,
+  "scope": "Four fixed probes, not a full-panel or CUDA conformance certificate.",
+  "sources": 4,
+  "status": "PASS"
+}

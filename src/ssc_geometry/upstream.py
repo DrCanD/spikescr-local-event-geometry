@@ -4,6 +4,7 @@ import hashlib
 import importlib
 import importlib.metadata
 import os
+import platform
 import random
 import sys
 import urllib.request
@@ -112,7 +113,14 @@ def load_model(root: Path, source: Path, device_name: str, allow_nonreference: b
     model=importlib.import_module('models.spikescr').SpikeDrivenTransformer(config).to(device)
     blob=torch.load(root/'data/model/frozen_checkpoint.pt',weights_only=True,map_location='cpu')
     model.load_state_dict(blob['model_state_dict'],strict=True);model.eval();functional.reset_net(model)
-    if sum(p.numel() for p in model.parameters() if p.requires_grad)!=cfg['trainable_parameters']:raise ValueError('Model parameter count mismatch')
+    parameter_counts = {
+        'total_parameters': sum(p.numel() for p in model.parameters()),
+        'trainable_parameters': sum(p.numel() for p in model.parameters() if p.requires_grad),
+        'nontrainable_parameters': sum(p.numel() for p in model.parameters() if not p.requires_grad),
+    }
+    for name, observed in parameter_counts.items():
+        if observed != cfg[name]:
+            raise ValueError(f'Model {name} mismatch: expected {cfg[name]}, observed {observed}')
     named=dict(model.named_modules());stages=[]
     for name,path,cls in zip(cfg['stage_names'],cfg['stage_paths'],cfg['stage_classes']):
         module=named.get(path)
@@ -121,5 +129,12 @@ def load_model(root: Path, source: Path, device_name: str, allow_nonreference: b
     environment={'torch':str(torch.__version__),'numpy':np.__version__,'python':sys.version.split()[0],
         'device_type':device.type,'device_name':torch.cuda.get_device_name(device) if device.type=='cuda' else 'CPU',
         'recorded_torch_and_cuda_mode_matched':reference_runtime,'packages':versions,'upstream':source_report,
-        'checkpoint':checkpoint_report,'full_original_environment_known':False}
+        'checkpoint':checkpoint_report,'parameter_counts':parameter_counts,'full_original_environment_known':False,
+        'runtime':{'platform':platform.platform(),'python_full':sys.version,
+            'cuda_build':torch.version.cuda,'cudnn':torch.backends.cudnn.version(),
+            'torchvision':importlib.metadata.version('torchvision'),
+            'torch_threads':torch.get_num_threads(),'torch_interop_threads':torch.get_num_interop_threads(),
+            'mkldnn_enabled':torch.backends.mkldnn.enabled,
+            'deterministic_algorithms':torch.are_deterministic_algorithms_enabled(),
+            'cublas_workspace_config':os.environ['CUBLAS_WORKSPACE_CONFIG']}}
     return model,device,stages,environment

@@ -1,5 +1,5 @@
 {
-  "baseline_commit": "9f964bb5cedfbb0e5bda03a2ab15ccf31d2f5221",
+  "baseline_commit": "b62ff3174713ab79198d706f91e503446d26aa56",
   "code_and_config_digest_method": "SHA-256 over sorted UTF-8 relative path + NUL + file bytes + NUL for each listed file.",
   "code_and_config_files": [
     "configs/experiment.json",
@@ -8,6 +8,7 @@
     "configs/verified_wheels.json",
     "pyproject.toml",
     "requirements-analysis.txt",
+    "requirements-inference-cpu.txt",
     "requirements-inference.txt",
     "requirements-pinned-wheels.txt",
     "scripts/prepare_upstream.py",
@@ -30,29 +31,41 @@
     "tests/test_entrypoints.py",
     "tests/test_forward.py",
     "tests/test_inference_comparison.py",
+    "tests/test_model_loading.py",
     "tests/test_release.py"
   ],
-  "code_and_config_sha256": "ac8fbe1c1632a79ff5a5beb8adbc18bdc90996feac4d5428f8dcf6f813cc2636",
-  "current_run_model_inference_performed": false,
+  "code_and_config_sha256": "708ef307d5cea9d26e96adac52c7947f549f751f3567647fe67a3e57a9809bf4",
+  "current_run_model_inference_performed": true,
   "current_run_raw_h5_opened": false,
-  "data_and_experiment_config_files_unchanged": 17,
+  "data_files_unchanged": 13,
   "executed_checks": {
+    "checkpoint_file_and_tensor_hashes": "PASS",
+    "cpu_four_probe_preflight": "PASS",
+    "cpu_preflight_resume": "PASS",
+    "dependency_install_and_pip_check": "PASS",
     "file_integrity": "PASS",
-    "pinned_upstream_source_hashes": "PASS",
+    "real_model_loading": "PASS",
     "scientific_output_comparison_to_baseline": "PASS",
-    "statistical_regeneration": "PASS"
+    "statistical_regeneration": "PASS",
+    "targeted_cpu_source_4959": "FAIL"
   },
-  "full_model_replay_report_included": false,
+  "full_cpu_replication_validated": false,
+  "full_reference_cuda_replay_validated": false,
+  "known_portability_limit": "See validation/cpu_portability_probe.json. The CPU clean scores at source 4959 do not meet the unchanged reference tolerance.",
   "local_tests": {
     "errors": 0,
     "failures": 0,
-    "passed": 35,
-    "run": 42,
-    "skip_reason": "PyTorch is not installed in the current analysis environment.",
-    "skipped": 7
+    "passed": 51,
+    "run": 51,
+    "skipped": 0
   },
-  "replication_target": "Frozen-checkpoint technical experiment",
-  "retained_preparation_evidence": "See validation/README.md; historical checkpoint and raw-input checks are distinguished from the current run.",
+  "parameter_counts": {
+    "nontrainable_parameters": 16,
+    "total_parameters": 3302416,
+    "trainable_parameters": 3302400
+  },
+  "replication_target": "Frozen-checkpoint technical experiment in the recorded CUDA environment",
+  "retained_preparation_evidence": "See validation/README.md; historical raw-input checks are distinguished from current analysis/model checks.",
   "schema_version": 2,
   "scientific_output_comparison": {
     "byte_identical": true,
@@ -103,6 +116,6 @@
       }
     ]
   },
-  "status": "ANALYSIS_VALIDATED",
+  "status": "ANALYSIS_AND_CPU_PREFLIGHT_VALIDATED",
   "validation_date": "2026-09-23"
 }
