@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "This is a local release candidate. Cite the associated manuscript and identify the actual repository commit after publication."
+type: software
+title: "Local event geometry in a frozen spiking speech classifier"
+version: 0.1.0rc1
+authors:
+  - family-names: Dikmen
+    given-names: İsmail Can
+    orcid: "https://orcid.org/0000-0002-7747-7777"
+abstract: "Fixed-checkpoint finite-neighborhood analysis of SpikeSCR on Spiking Speech Commands. Includes recorded artifacts, statistical regeneration, and separately gated model replay."

@@ -1,0 +1,4 @@
+# Tested analysis environment. This is NOT the original inference environment.
+numpy==2.3.5
+scipy==1.17.0
+setuptools==82.0.1

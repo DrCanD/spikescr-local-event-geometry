@@ -1,0 +1,6 @@
+# Install the correct PyTorch CUDA build separately, as described in docs/REPRODUCIBILITY.md.
+# The recorded build is torch 2.11.0+cu128. Full original transitive versions were not recorded.
+spikingjelly==0.0.0.0.14
+rotary-embedding-torch==0.8.4
+einops==0.8.0
+h5py

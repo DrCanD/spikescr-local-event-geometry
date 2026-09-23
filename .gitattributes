@@ -1,0 +1,4 @@
+# Preserve hash-checked source and data bytes across Windows and Unix clones.
+* -text
+*.pt binary
+*.npz binary

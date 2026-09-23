@@ -1,0 +1,43 @@
+{
+  "adverse_source_concentration": {
+    "effective_number_of_sources": 3.786276229687559,
+    "gini": 0.9557120695864152,
+    "herfindahl": 0.26411173916978564
+  },
+  "directional_asymmetry_previous_minus_next": {
+    "fdr_bh_q_across_geometry_contrasts": 0.06164383561643835,
+    "mean_contrast": 0.0005663487606532968,
+    "n_sources": 100,
+    "repetitions": 10000,
+    "seed": 17062027,
+    "source_bootstrap95": [
+      5.6620479374187965e-05,
+      0.001197901275896547
+    ],
+    "two_sided_signflip_p": 0.0380961903809619
+  },
+  "feature_gradient_high_minus_low_quartile": {
+    "fdr_bh_q_across_geometry_contrasts": 0.06164383561643835,
+    "mean_contrast": -0.005536247060454579,
+    "n_sources": 100,
+    "repetitions": 10000,
+    "seed": 17062047,
+    "source_bootstrap95": [
+      -0.011263554254754627,
+      -0.0007826068496193879
+    ],
+    "two_sided_signflip_p": 0.0410958904109589
+  },
+  "temporal_gradient_late_minus_early_tertile": {
+    "fdr_bh_q_across_geometry_contrasts": 0.7979202079792019,
+    "mean_contrast": -0.0005072892988213531,
+    "n_sources": 100,
+    "repetitions": 10000,
+    "seed": 17062037,
+    "source_bootstrap95": [
+      -0.004285265850991402,
+      0.0032336497648896016
+    ],
+    "two_sided_signflip_p": 0.797920207979202
+  }
+}

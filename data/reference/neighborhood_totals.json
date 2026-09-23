@@ -1,0 +1,14 @@
+{
+  "adverse_event_weighted": 10424,
+  "adverse_unique": 5157,
+  "class_changed_event_weighted": 57970,
+  "class_changed_unique": 25820,
+  "class_preserved_event_weighted": 1601188,
+  "class_preserved_unique": 699250,
+  "corrective_event_weighted": 20106,
+  "corrective_unique": 9031,
+  "event_weighted_candidates": 1659158,
+  "lateral_event_weighted": 27440,
+  "lateral_unique": 11632,
+  "unique_candidates": 725070
+}
