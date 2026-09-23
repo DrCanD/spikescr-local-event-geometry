@@ -4,7 +4,9 @@ Reproduction package for **Stable predictions can hide substantial temporal chan
 
 This package contains the actual frozen checkpoint, the transformed inputs for the fixed validation panel, the canonical candidate records, and the complete recorded activation metrics and replacement outputs. Its purpose is to let a reader check the reported results without reconstructing the development history.
 
-**Current status is a local release candidate.** Statistical regeneration and file-integrity checks have been executed. The full neural-network replay has not been executed in the packaging environment, which has no CUDA device. The supplied inference programs must pass their conformance gates before this package is described as an end-to-end validated release. No GitHub repository or archival DOI has been created by the local packaging step.
+The replication target is the **technical experiment with the frozen checkpoint**: input transformation, finite-neighborhood enumeration, predictions, internal activation measurements, activation replacement and statistical analysis. Independent retraining and manuscript presentation assets are outside this scope.
+
+File-integrity checks and statistical regeneration have passed. A complete neural-network replay report is not included; the inference commands below perform that comparison. See [the validation records](validation/README.md) for the scope of the checks actually executed.
 
 ## Start with the recorded results
 
@@ -37,13 +39,7 @@ An existing output directory is never overwritten. Use a new directory name for 
 
 The `reproduce` command recalculates benchmark classification metrics, the four outcome categories, source summaries, the margin association, bootstrap intervals, internal contrasts, replacement rates, and false-discovery-rate adjustments. Reference JSON files are used only after calculation, for comparison. They are not copied into the computed outputs.
 
-The command also regenerates the CSV inputs accepted by the MATLAB program. In MATLAB, change to `outputs/analysis_01/matlab` and run:
-
-```matlab
-make_ssc_manuscript_figures
-```
-
-MATLAB rendering was not executed in the packaging environment. `figures/workflow.pptx` is the editable, separately prepared workflow figure; `figures/workflow.pdf` is its supplied vector export. The MATLAB workflow schematic and this editorial drawing express the same protocol, but need not be pixel-identical.
+Computed JSON results are written to `outputs/analysis_01/statistics` and full-precision CSV tables to `outputs/analysis_01/tables`. Numerical comparison details and the validation summary are saved alongside them.
 
 ## What is included
 
@@ -57,9 +53,8 @@ MATLAB rendering was not executed in the packaging environment. `figures/workflo
 | `data/internal/activation_metrics_and_replacements.npz` | Six metrics at seven boundaries for every candidate, plus all 180,740 recorded patched score vectors. |
 | `data/benchmark` | Previously committed validation and test predictions. No raw test events are included. |
 | `data/reference` | Recorded summaries used as independent comparison targets. |
-| `matlab` | Figure code and publication data. |
 | `checksums` | File-integrity manifest and SHA-256 listing. |
-| `validation` | Recorded local preparation and testing evidence. |
+| `validation` | Validation results and the provenance of retained preparation checks. |
 
 The internal archive contains **activation-change metrics**, not every raw hidden-state tensor. The candidate archive contains predictions and scalar score descriptors, not every full 35-class unpatched score vector. Full patched score vectors are included. These distinctions matter when deciding what can be checked without running the model again.
 
@@ -111,14 +106,4 @@ The local operator transfers one integrated count unit to the previous or next 5
 
 [Data provenance and third-party terms](docs/THIRD_PARTY_NOTICES.md) identify the public dataset and upstream implementation. The raw SSC train, validation and test event files are not redistributed. The optional raw-validation checker verifies the original HDF5 against the included panel.
 
-This package does not supply a validated fresh-training implementation or claim that independent retraining will recover the same checkpoint. The frozen-checkpoint analysis is the replication target. [The recorded training setup](docs/TRAINING.md) is included to explain that operating point.
-
-## Publication
-
-The initial publication helper creates a **private** repository under `DrCanD`. It checks the authenticated account, refuses an existing repository, runs the local validation commands, and does not request or store a token in this project.
-
-```bash
-python scripts/publish_repository.py --create
-```
-
-Git and the GitHub CLI must already be installed and authenticated with `gh auth login`. Use the source ZIP for this helper. If the repository was cloned from the supplied local Git bundle, the clone has a local-file `origin`; inspect it and remove that local remote before running the helper. The helper refuses to change an existing remote. This helper has not been executed against GitHub in the packaging session because the connected GitHub tools have no write operation. Public release and archival DOI creation are separate author actions. The helper does not manufacture a release tag, a DOI, or a completed-inference certificate.
+The frozen-checkpoint analysis is the replication target. [The recorded training setup](docs/TRAINING.md) explains how that operating point was obtained; repeating training is not a prerequisite for this audit, and independent retraining is not evaluated by this package.

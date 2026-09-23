@@ -1,9 +1,6 @@
 {
-  "schema_version": 1,
-  "status": "LOCAL_RELEASE_CANDIDATE",
-  "reviewer_public_release_ready": false,
-  "validation_date": "2026-09-23",
-  "code_and_config_sha256": "12b2724567171f8aa28747cbeb8a74f4fb157b551c9075e404635272d812df1c",
+  "baseline_commit": "9f964bb5cedfbb0e5bda03a2ab15ccf31d2f5221",
+  "code_and_config_digest_method": "SHA-256 over sorted UTF-8 relative path + NUL + file bytes + NUL for each listed file.",
   "code_and_config_files": [
     "configs/experiment.json",
     "configs/inference_environment.json",
@@ -14,7 +11,6 @@
     "requirements-inference.txt",
     "requirements-pinned-wheels.txt",
     "scripts/prepare_upstream.py",
-    "scripts/publish_repository.py",
     "scripts/replay_benchmark.py",
     "scripts/run_singleton_audit.py",
     "src/ssc_geometry/__init__.py",
@@ -36,49 +32,77 @@
     "tests/test_inference_comparison.py",
     "tests/test_release.py"
   ],
+  "code_and_config_sha256": "ac8fbe1c1632a79ff5a5beb8adbc18bdc90996feac4d5428f8dcf6f813cc2636",
+  "current_run_model_inference_performed": false,
+  "current_run_raw_h5_opened": false,
+  "data_and_experiment_config_files_unchanged": 17,
+  "executed_checks": {
+    "file_integrity": "PASS",
+    "pinned_upstream_source_hashes": "PASS",
+    "scientific_output_comparison_to_baseline": "PASS",
+    "statistical_regeneration": "PASS"
+  },
+  "full_model_replay_report_included": false,
   "local_tests": {
-    "primary": {
-      "run": 43,
-      "passed": 43,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0
-    },
-    "relocated_editable_install": {
-      "run": 43,
-      "passed": 43,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0
-    }
+    "errors": 0,
+    "failures": 0,
+    "passed": 35,
+    "run": 42,
+    "skip_reason": "PyTorch is not installed in the current analysis environment.",
+    "skipped": 7
   },
-  "actual_data_checks": {
-    "frozen_checkpoint_file_and_tensor_hashes": true,
-    "all_100_inputs_regenerated_from_raw_validation_with_two_transforms": true,
-    "all_725070_move_specifications_checked": true,
-    "all_725070_transition_labels_recomputed_two_routes": true,
-    "all_180740_recorded_patch_vectors_checked": true,
-    "all_30452940_trace_metric_values_validated": true,
-    "all_statistics_regenerated_and_compared": true,
-    "all_four_matlab_data_files_matched": true
+  "replication_target": "Frozen-checkpoint technical experiment",
+  "retained_preparation_evidence": "See validation/README.md; historical checkpoint and raw-input checks are distinguished from the current run.",
+  "schema_version": 2,
+  "scientific_output_comparison": {
+    "byte_identical": true,
+    "files": [
+      {
+        "path": "statistics/benchmark.json",
+        "sha256": "b077c9429800e65834d96b8749961ab45542e14f9e14cc5f0a99d6739bb5cfb1"
+      },
+      {
+        "path": "statistics/geometry.json",
+        "sha256": "944d2ef06899cc4d3febb61a856dbce3c489ebb3561a178a8b18b98517f83ffe"
+      },
+      {
+        "path": "statistics/internal.json",
+        "sha256": "f0aba3b84127a056d95893838c11d29e4f1aee8b767b1ad31ab99b266a0c5597"
+      },
+      {
+        "path": "statistics/outcomes.json",
+        "sha256": "fd69641ec2ab3b5a7cb4c18de0732c1f2c4c4f7ddb42bd3697d253dadc8c55f3"
+      },
+      {
+        "path": "statistics/panel.json",
+        "sha256": "94197951d8b78fe46fd135502d5dc0b5fe069bcbcdd4bac8c9d3bdf862f9b068"
+      },
+      {
+        "path": "tables/adverse_concentration.csv",
+        "sha256": "51be203b8e08bce9bacd5f88a4e7184c776f0eeafaa1e24b752431dea146a097"
+      },
+      {
+        "path": "tables/adverse_patching.csv",
+        "sha256": "e9042f2f4e34c27d31dc4641574f6ae8611b10d83cf8dcea17053d16fdb68809"
+      },
+      {
+        "path": "tables/benchmark.csv",
+        "sha256": "96e293d67e41b90ad02ba8e2da8da1ebd0a0f3fb145cb458223ab18a20a4894a"
+      },
+      {
+        "path": "tables/outcome_partition.csv",
+        "sha256": "8c98159fc1417c9991be8a91512de641a14a78d0ae5d2af6ecf3048f545a7e23"
+      },
+      {
+        "path": "tables/source_geometry.csv",
+        "sha256": "05db30922395f085ae1e464705ccaca6edefe7db61eb2f051f9caba2aa2dd44f"
+      },
+      {
+        "path": "tables/trace_contrasts.csv",
+        "sha256": "6902328d261e9701d02e81e5ea472efbcbbe28eb16cfa8e5749dab359003857d"
+      }
+    ]
   },
-  "numerical_portability": {
-    "max_float32_derived_mean_absolute_difference": 1.1920928955078125e-07,
-    "new_and_recorded_values_retained_separately": true
-  },
-  "not_executed": [
-    "Complete real SpikeSCR neural-network replay",
-    "New model training",
-    "MATLAB rendering in this environment",
-    "A successful upstream-source download from the prepared script",
-    "GitHub create or push",
-    "Hosted GitHub Actions workflow",
-    "Archival DOI creation"
-  ],
-  "publication_decisions_pending": [
-    "Author choice of a repository license",
-    "Complete real-model conformance run before claiming end-to-end validation"
-  ],
-  "raw_official_test_opened": false,
-  "note": "Stored test predictions were read and classification metrics were recomputed. Raw test events were not opened. Test-double forward tests are not a real SpikeSCR replay."
+  "status": "ANALYSIS_VALIDATED",
+  "validation_date": "2026-09-23"
 }

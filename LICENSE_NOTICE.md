@@ -1,5 +1,5 @@
-# License decision before public release
+# License notice
 
-No new blanket license is assigned by this packaging step. Existing dataset and upstream-code terms remain in force. See docs/THIRD_PARTY_NOTICES.md for attribution and scope.
+No blanket license has been assigned to the project-specific code, checkpoint or study results. Existing dataset and upstream-code terms remain in force. See docs/THIRD_PARTY_NOTICES.md for attribution and scope.
 
-The author must confirm the intended public license for the project-specific code, checkpoint and study results before public release. The publication helper creates a private repository; it does not silently add an open-source license or relicense third-party material.
+Public repository access does not change these licensing terms.

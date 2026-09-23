@@ -24,4 +24,4 @@ The model source is not bundled here. A separate program retrieves the required 
 
 The checkpoint was trained for the reported reproduction. Its bytes and tensor-state digest are retained. The study's recorded numerical outputs are renamed without changing their contents, except for documented descriptive metadata and the boolean representation in a CSV.
 
-The package intentionally does not select a new public license on the author's behalf. A project-code and checkpoint distribution license must be confirmed before public release. The provided publication helper creates a private repository and does not apply a license template automatically.
+No blanket license has been assigned to the project-specific code, checkpoint or study results. See `LICENSE_NOTICE.md`. Dataset and upstream-code terms remain separate.

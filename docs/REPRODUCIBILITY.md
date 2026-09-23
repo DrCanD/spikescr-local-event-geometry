@@ -4,13 +4,13 @@
 
 `verify` reads file bytes and checks hashes. `reproduce` recalculates statistics from released arrays. `run_singleton_audit.py` runs the neural network. They answer different questions. Successful checksums alone do not validate a model or a statistical claim.
 
-The local packaging tests exercise the recorded arrays and the orchestration helpers. They do not execute the full SpikeSCR model. Forward-kernel unit tests use an explicitly labelled small test double, while the real checkpoint is separately loaded with `weights_only=True` and its tensor-state digest is checked.
+The tests exercise the recorded arrays and the orchestration helpers. They do not execute the full SpikeSCR model. When PyTorch is installed, forward-kernel tests use an explicitly labelled small test double and a separate test loads the real checkpoint with `weights_only=True` to check its tensor-state digest. Those tests are reported as skipped when PyTorch is absent.
 
 ## Statistical regeneration
 
-The tested analysis environment uses Python 3.13.5, NumPy 2.3.5 and SciPy 1.17.0. Its observed package versions are in `validation/analysis_environment.json`. This file is an observation, not a complete original-training lockfile.
+The analysis dependencies are pinned in `requirements-analysis.txt`. Python 3.13 was used for initial packaging; the latest locally observed analysis environment is recorded in `validation/analysis_environment.json`. This file describes the analysis check, not the original training or inference environment.
 
-The regenerated results are in `outputs/analysis_01/statistics` and `outputs/analysis_01/tables`. Publication-rounded Figure 4 CSVs are compared against the supplied figure data by the integration test. Full-precision tables remain available beside them. All figure data are derived from the arrays before comparison with the references.
+The regenerated JSON results are in `outputs/analysis_01/statistics` and the full-precision CSV tables are in `outputs/analysis_01/tables`. They cover benchmark metrics, outcome counts, source geometry, adverse concentration, internal contrasts and activation-replacement rates. These numerical outputs are derived from the released arrays and compared with the recorded references.
 
 A source utterance is the statistical sampling unit. The 725,070 candidate moves are not treated as independent utterances. The source-level bootstrap and permutation streams retain their recorded seeds, ordering and repetition counts. Trace means retain the original float32 reduction, while rates and resampling calculations use the recorded float64 operations. Slight reduction differences are listed in `numerical_agreement.json`; no reference value is substituted to force equality.
 
@@ -75,6 +75,8 @@ python scripts/replay_benchmark.py --split test --h5 /path/to/ssc_test.h5 --allo
 
 This is a replication of a previously committed benchmark, not a new model-selection stage. The program never changes checkpoints or analysis settings. No raw test file was opened during repository preparation.
 
-## What remains unverified
+## Validation scope
 
-The packaging machine has no CUDA device and no MATLAB. It did not run the complete model replay, independent training, or MATLAB export. The upstream-download and GitHub-publication commands were not executed successfully in that environment. These are not converted into success claims by the unit tests. Keep the repository as a release candidate until its actual full-inference conformance report and author publication decisions are available.
+The replication target is the experiment at the supplied frozen checkpoint. Training a new model and preparing manuscript presentation assets are outside this target.
+
+File-integrity checks, statistical regeneration and upstream-source hash verification have been executed. The latest local check and the provenance of earlier preparation records are described in `validation/README.md`. A complete real-model replay report is not included. Run the full singleton audit in the inference environment to establish its numerical conformance; passing analysis tests does not establish that result.

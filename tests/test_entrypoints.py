@@ -12,17 +12,13 @@ ROOT=repository_root()
 
 class EntrypointTests(unittest.TestCase):
     def test_all_help_commands(self):
-        for name in ('prepare_upstream.py','run_singleton_audit.py','replay_benchmark.py','publish_repository.py'):
+        for name in ('prepare_upstream.py','run_singleton_audit.py','replay_benchmark.py'):
             result=subprocess.run([sys.executable,str(ROOT/'scripts'/name),'--help'],text=True,capture_output=True)
             self.assertEqual(result.returncode,0,(name,result.stderr))
     def test_official_test_requires_explicit_authorization(self):
         result=subprocess.run([sys.executable,str(ROOT/'scripts/replay_benchmark.py'),'--split','test','--h5','/sentinel/DO_NOT_OPEN.h5','--out','/sentinel/DO_NOT_WRITE'],text=True,capture_output=True)
         self.assertNotEqual(result.returncode,0)
         self.assertIn('Official test replay requires',result.stderr)
-    def test_publication_dry_run_does_not_need_credentials(self):
-        result=subprocess.run([sys.executable,str(ROOT/'scripts/publish_repository.py')],text=True,capture_output=True)
-        self.assertEqual(result.returncode,0,result.stderr)
-        self.assertIn('No remote changes made',result.stdout)
     def test_git_blob_sha(self):
         self.assertEqual(git_blob_sha1(b'hello\n'),'ce013625030ba8dba906f756967f9e9ca394464a')
     def test_unverified_upstream_cannot_be_imported(self):

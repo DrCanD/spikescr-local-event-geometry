@@ -205,27 +205,11 @@ def export_tables(out: Path, bundle: dict, benchmarks: dict, totals: dict, panel
         p=inf['patch_restoration']['adverse'][stage]
         patches.append(dict(boundary=stage,candidate_pooled_percent=100*internal_stats['clean_activation_patch']['adverse'][stage]['restored_clean_prediction_rate_unique'],equal_source_mean_percent=100*p['mean_restored_clean_prediction_rate'],ci95_low_percent=100*p['source_bootstrap95_restored_clean_prediction_rate'][0],ci95_high_percent=100*p['source_bootstrap95_restored_clean_prediction_rate'][1]))
     write_csv(out/'tables/trace_contrasts.csv',traces);write_csv(out/'tables/adverse_patching.csv',patches)
-    # Keep publication rounding explicit and generate files accepted by the supplied MATLAB code.
-    label_map={'class_preserved':'Class-preserved','adverse':'Adverse','corrective':'Corrective','lateral':'Lateral'}
-    fig2=[dict(outcome=label_map[name],unique_n=totals[name+'_unique'],event_weighted_n=totals[name+'_event_weighted']) for name in GROUPS]
-    write_csv(out/'matlab/fig2_outcome_partition.csv',fig2)
-    write_csv(out/'matlab/fig3_source_geometry.csv',[{**row,'clean_correct':int(row['clean_correct'])} for row in bundle['source_rows']])
-    names={'stem':'Stem','attention_1':'Attention 1','local_1':'Local 1','block_1':'Block 1','attention_2':'Attention 2','local_2':'Local 2','block_2':'Block 2'}
-    wide=[]
-    for stage in bundle['config']['stage_names']:
-        row={'boundary':names[stage]}
-        for group in GROUPS[1:]:
-            q=inf['transition_vs_preserved'][group][stage];row[group+'_contrast']=round(q['mean_contrast'],4);row[group+'_q']=round(q['fdr_bh_q_within_transition_vs_preserved_family'],4)
-        wide.append(row)
-    write_csv(out/'matlab/fig4_trace_contrasts.csv',wide)
-    write_csv(out/'matlab/fig4_adverse_patching.csv',[{'boundary':names[p['boundary']],**{k:round(v,2) for k,v in p.items() if k!='boundary'}} for p in patches if p['boundary'].startswith(('attention','local'))])
-    import shutil
-    shutil.copyfile(bundle['root']/'matlab/make_ssc_manuscript_figures.m',out/'matlab/make_ssc_manuscript_figures.m')
 
 
 def reproduce(root: Path, out: Path) -> dict:
     print('Checking every panel input, candidate record and intervention output...',flush=True)
-    b=load_and_validate(root);b['root']=root
+    b=load_and_validate(root)
     benchmark_ref=read_json(root/'data/reference/benchmark_metrics.json'); benchmarks={}
     for name in ('validation','test'):
         a=load_npz(root/f'data/benchmark/{name}_predictions.npz')
@@ -268,7 +252,7 @@ def reproduce(root: Path, out: Path) -> dict:
         'max_internal_summary_absolute_difference':agreement['max_absolute_difference'],
         'independent_checks':second,'preserved_with_changed_final_activation':changed_internal,
         'new_model_inference_performed':False,'new_training_performed':False,'raw_official_test_opened':False,
-        'matlab_rendered':False,'loss_recomputed':False,
+        'loss_recomputed':False,
         'benchmark_note':'All classification metrics were recomputed. Cross-entropy loss is outside the manuscript tables and is not included in this CPU-only summary regeneration.'}
     write_json(out/'validation.json',report)
     return report

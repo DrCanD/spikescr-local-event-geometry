@@ -86,7 +86,7 @@ def write_csv(path: str | Path, rows: list[dict]) -> None:
 def assert_output_safe(root: Path, path: str | Path) -> Path:
     """Reject any output that could overwrite immutable repository contents."""
     root=root.resolve();result=Path(path).expanduser().resolve()
-    protected=('data','configs','src','tests','checksums','docs','matlab','validation','scripts','figures','.git','.github')
+    protected=('data','configs','src','tests','checksums','docs','validation','scripts','.git','.github')
     if result==root or result in root.parents:
         raise ValueError('Output cannot be the repository or its parent')
     for part in protected:

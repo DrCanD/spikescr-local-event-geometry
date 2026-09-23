@@ -32,7 +32,7 @@ def verify_integrity(root: Path) -> dict:
         elif sha256_file(path)!=expected:modified.append(relative)
     # Untracked files in executable/config/reference directories must not be imported unnoticed.
     unexpected=[]
-    for directory in ('src','scripts','configs','data','matlab','tests','.github'):
+    for directory in ('src','scripts','configs','data','tests','.github'):
         for path in (root/directory).rglob('*'):
             if not path.is_file() or '__pycache__' in path.parts or path.suffix=='.pyc' or any(part.endswith('.egg-info') for part in path.parts):continue
             relative=path.relative_to(root).as_posix()

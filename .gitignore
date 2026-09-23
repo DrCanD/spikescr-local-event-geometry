@@ -10,8 +10,6 @@ dist/
 .pytest_cache/
 *.h5
 *.h5.gz
-matlab/figs/
-matlab/figures/
 Thumbs.db
 .DS_Store
 .env
