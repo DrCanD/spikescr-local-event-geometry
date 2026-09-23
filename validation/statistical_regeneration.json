@@ -1,0 +1,43 @@
+{
+  "benchmark_note": "All classification metrics were recomputed. Cross-entropy loss is outside the manuscript tables and is not included in this CPU-only summary regeneration.",
+  "candidates_checked": 725070,
+  "independent_checks": {
+    "fdr_families_checked": [
+      21,
+      8,
+      6
+    ],
+    "scalar_candidate_count": 725070,
+    "scipy_spearman_rho": -0.568844981609683,
+    "status": "PASS",
+    "unique_partition": {
+      "adverse": 5157,
+      "class_preserved": 699250,
+      "corrective": 9031,
+      "lateral": 11632
+    },
+    "weighted_partition": {
+      "adverse": 10424,
+      "class_preserved": 1601188,
+      "corrective": 20106,
+      "lateral": 27440
+    }
+  },
+  "loss_recomputed": false,
+  "matlab_rendered": false,
+  "max_internal_summary_absolute_difference": 1.1920928955078125e-07,
+  "new_model_inference_performed": false,
+  "new_training_performed": false,
+  "patched_forward_outputs_checked": 180740,
+  "preserved_with_changed_final_activation": 617941,
+  "raw_official_test_opened": false,
+  "reference_tolerances": {
+    "counts_and_predictions": "exact",
+    "float32_derived_means_and_intervals": 1e-06,
+    "p_values_q_values_rates_float64": 1e-12
+  },
+  "scope": "Statistics regenerated from released arrays, not new neural-network inference.",
+  "source_records_checked": 100,
+  "status": "PASS",
+  "trace_metric_values_checked": 30452940
+}

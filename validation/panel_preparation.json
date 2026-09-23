@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sources_checked": 100,
+  "raw_validation_h5_sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210",
+  "independent_transform_equality": true,
+  "candidate_specifications_compared": 725070,
+  "test_hdf5_opened": false
+}

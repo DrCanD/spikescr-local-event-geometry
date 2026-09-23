@@ -1,0 +1,51 @@
+test_boolean_csv (test_core.IOTests.test_boolean_csv) ... ok
+test_float_tolerance_does_not_relax_pvalues (test_core.IOTests.test_float_tolerance_does_not_relax_pvalues) ... ok
+test_float_tolerance_reports_rounding (test_core.IOTests.test_float_tolerance_reports_rounding) ... ok
+test_invalid_boolean_csv (test_core.IOTests.test_invalid_boolean_csv) ... ok
+test_manifest_path_protection (test_core.IOTests.test_manifest_path_protection) ... ok
+test_output_protection (test_core.IOTests.test_output_protection) ... ok
+test_symlink_rejected (test_core.IOTests.test_symlink_rejected) ... ok
+test_candidate_order_and_multiplicity (test_core.OperatorTests.test_candidate_order_and_multiplicity) ... ok
+test_collision_allowed_and_source_unchanged (test_core.OperatorTests.test_collision_allowed_and_source_unchanged) ... ok
+test_distinct_candidate_tensors (test_core.OperatorTests.test_distinct_candidate_tensors) ... ok
+test_empty_events (test_core.OperatorTests.test_empty_events) ... ok
+test_invalid_class_ids (test_core.OperatorTests.test_invalid_class_ids) ... ok
+test_invalid_count_tensor (test_core.OperatorTests.test_invalid_count_tensor) ... ok
+test_invalid_events (test_core.OperatorTests.test_invalid_events) ... ok
+test_invalid_moves (test_core.OperatorTests.test_invalid_moves) ... ok
+test_literal_transform (test_core.OperatorTests.test_literal_transform) ... ok
+test_overflow (test_core.OperatorTests.test_overflow) ... ok
+test_random_seed_repeatability (test_core.OperatorTests.test_random_seed_repeatability) ... ok
+test_spatial_integration (test_core.OperatorTests.test_spatial_integration) ... ok
+test_terminal_boundary_rule (test_core.OperatorTests.test_terminal_boundary_rule) ... ok
+test_ties_and_fdr (test_core.OperatorTests.test_ties_and_fdr) ... ok
+test_transitions_all_four_types (test_core.OperatorTests.test_transitions_all_four_types) ... ok
+test_all_help_commands (test_entrypoints.EntrypointTests.test_all_help_commands) ... ok
+test_git_blob_sha (test_entrypoints.EntrypointTests.test_git_blob_sha) ... ok
+test_official_test_requires_explicit_authorization (test_entrypoints.EntrypointTests.test_official_test_requires_explicit_authorization) ... ok
+test_publication_dry_run_does_not_need_credentials (test_entrypoints.EntrypointTests.test_publication_dry_run_does_not_need_credentials) ... ok
+test_unverified_upstream_cannot_be_imported (test_entrypoints.EntrypointTests.test_unverified_upstream_cannot_be_imported) ... ok
+test_ambiguous_batch_axis_rejected (test_forward.ForwardKernelTests.test_ambiguous_batch_axis_rejected) ... ok
+test_hooks_cleaned_after_failure (test_forward.ForwardKernelTests.test_hooks_cleaned_after_failure) ... ok
+test_real_checkpoint_safely_loads (test_forward.ForwardKernelTests.test_real_checkpoint_safely_loads) ... ok
+test_score_definition (test_forward.ForwardKernelTests.test_score_definition) ... ok
+test_shape_mismatch (test_forward.ForwardKernelTests.test_shape_mismatch) ... ok
+test_trace_and_replacement (test_forward.ForwardKernelTests.test_trace_and_replacement) ... ok
+test_trace_metrics (test_forward.ForwardKernelTests.test_trace_metrics) ... ok
+test_valid_record (test_inference_comparison.ComparisonTests.test_valid_record) ... ok
+test_wrong_patch_rejected (test_inference_comparison.ComparisonTests.test_wrong_patch_rejected) ... ok
+test_wrong_prediction_rejected (test_inference_comparison.ComparisonTests.test_wrong_prediction_rejected) ... ok
+test_wrong_trace_rejected (test_inference_comparison.ComparisonTests.test_wrong_trace_rejected) ... ok
+test_complete_result_reproduction_and_figure_data (test_release.ReleaseTests.test_complete_result_reproduction_and_figure_data) ... Checking every panel input, candidate record and intervention output...
+Recomputing source bootstraps, permutations and internal contrasts...
+Running independent scalar counts, Spearman and FDR checks...
+ok
+test_missing_file_rejected (test_release.ReleaseTests.test_missing_file_rejected) ... ok
+test_release_integrity (test_release.ReleaseTests.test_release_integrity) ... ok
+test_tampered_file_is_rejected (test_release.ReleaseTests.test_tampered_file_is_rejected) ... ok
+test_untracked_executable_rejected (test_release.ReleaseTests.test_untracked_executable_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 9.061s
+
+OK

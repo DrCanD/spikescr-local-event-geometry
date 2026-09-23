@@ -1,0 +1,13 @@
+{
+  "recorded_torch": "2.11.0+cu128",
+  "recorded_wheel_versions": {
+    "spikingjelly": "0.0.0.0.14",
+    "rotary-embedding-torch": "0.8.4",
+    "einops": "0.8.0"
+  },
+  "source": "Frozen experiment contract dependency probe",
+  "full_transitive_lock_available": false,
+  "original_python_version_recorded": false,
+  "original_device_identity_independently_recovered": false,
+  "warning": "Version checks alone are not a substitute for output conformance."
+}

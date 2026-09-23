@@ -1,0 +1,17 @@
+{
+  "spikingjelly": {
+    "version": "0.0.0.0.14",
+    "filename": "spikingjelly-0.0.0.0.14-py3-none-any.whl",
+    "sha256": "9f43c8f3164909e8503d6b5488a16c07b4e5338c6a70529fca408593c4baf151"
+  },
+  "rotary-embedding-torch": {
+    "version": "0.8.4",
+    "filename": "rotary_embedding_torch-0.8.4-py3-none-any.whl",
+    "sha256": "8cf9e709fc0768b8da89f86314cdbe57a816d018a02bf29f2ea8e26bf1a54a34"
+  },
+  "einops": {
+    "version": "0.8.0",
+    "filename": "einops-0.8.0-py3-none-any.whl",
+    "sha256": "9572fb63046264a862693b0a87088af3bdc8c068fde03de63453cbbde245465f"
+  }
+}

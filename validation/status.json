@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "status": "LOCAL_RELEASE_CANDIDATE",
+  "reviewer_public_release_ready": false,
+  "validation_date": "2026-09-23",
+  "code_and_config_sha256": "12b2724567171f8aa28747cbeb8a74f4fb157b551c9075e404635272d812df1c",
+  "code_and_config_files": [
+    "configs/experiment.json",
+    "configs/inference_environment.json",
+    "configs/upstream_blobs.json",
+    "configs/verified_wheels.json",
+    "pyproject.toml",
+    "requirements-analysis.txt",
+    "requirements-inference.txt",
+    "requirements-pinned-wheels.txt",
+    "scripts/prepare_upstream.py",
+    "scripts/publish_repository.py",
+    "scripts/replay_benchmark.py",
+    "scripts/run_singleton_audit.py",
+    "src/ssc_geometry/__init__.py",
+    "src/ssc_geometry/__main__.py",
+    "src/ssc_geometry/_forward_kernel.py",
+    "src/ssc_geometry/_geometry_statistics.py",
+    "src/ssc_geometry/_internal_statistics.py",
+    "src/ssc_geometry/_kernel.py",
+    "src/ssc_geometry/_source_geometry.py",
+    "src/ssc_geometry/analysis.py",
+    "src/ssc_geometry/core.py",
+    "src/ssc_geometry/inference.py",
+    "src/ssc_geometry/integrity.py",
+    "src/ssc_geometry/io.py",
+    "src/ssc_geometry/upstream.py",
+    "tests/test_core.py",
+    "tests/test_entrypoints.py",
+    "tests/test_forward.py",
+    "tests/test_inference_comparison.py",
+    "tests/test_release.py"
+  ],
+  "local_tests": {
+    "primary": {
+      "run": 43,
+      "passed": 43,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "relocated_editable_install": {
+      "run": 43,
+      "passed": 43,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "actual_data_checks": {
+    "frozen_checkpoint_file_and_tensor_hashes": true,
+    "all_100_inputs_regenerated_from_raw_validation_with_two_transforms": true,
+    "all_725070_move_specifications_checked": true,
+    "all_725070_transition_labels_recomputed_two_routes": true,
+    "all_180740_recorded_patch_vectors_checked": true,
+    "all_30452940_trace_metric_values_validated": true,
+    "all_statistics_regenerated_and_compared": true,
+    "all_four_matlab_data_files_matched": true
+  },
+  "numerical_portability": {
+    "max_float32_derived_mean_absolute_difference": 1.1920928955078125e-07,
+    "new_and_recorded_values_retained_separately": true
+  },
+  "not_executed": [
+    "Complete real SpikeSCR neural-network replay",
+    "New model training",
+    "MATLAB rendering in this environment",
+    "A successful upstream-source download from the prepared script",
+    "GitHub create or push",
+    "Hosted GitHub Actions workflow",
+    "Archival DOI creation"
+  ],
+  "publication_decisions_pending": [
+    "Author choice of a repository license",
+    "Complete real-model conformance run before claiming end-to-end validation"
+  ],
+  "raw_official_test_opened": false,
+  "note": "Stored test predictions were read and classification metrics were recomputed. Raw test events were not opened. Test-double forward tests are not a real SpikeSCR replay."
+}

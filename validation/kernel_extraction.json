@@ -1,0 +1,67 @@
+{
+  "recorded_source_sha256": "7af77e0f71a380b684da2a551fb992b8fd80ba60ebab13bcace18cf3f6be03b2",
+  "functions": [
+    {
+      "function": "exact_event_transform",
+      "ast_sha256": "158097c4f86e4f8228373785b55b13db85a0fa2629a8551841dbddc24f6bb664",
+      "body_unchanged": true
+    },
+    {
+      "function": "literal_event_transform",
+      "ast_sha256": "8b9199a2d7772eba59b79c86c828263fda5fc020534e36a5ec8acacaad8f1e95",
+      "body_unchanged": true
+    },
+    {
+      "function": "candidate_specification",
+      "ast_sha256": "e234d3d73721e7229d7cbc92763346ba049dbca375df8987723949ac910dede1",
+      "body_unchanged": true
+    },
+    {
+      "function": "rank_average",
+      "ast_sha256": "197bbd33d23e39aa48847eb65b7e2f21db93d5b874a9740448c46db7edeb429f",
+      "body_unchanged": true
+    },
+    {
+      "function": "spearman_rho",
+      "ast_sha256": "0deb8fa844b4ab8ce8ea357e3711f2ff8208b9fc5b568d7cb004184f8ced885a",
+      "body_unchanged": true
+    },
+    {
+      "function": "gini_nonnegative",
+      "ast_sha256": "0232c736ee5f2bdd80c766f4cb65c5147993e47a9acba2a1c2e088fd2ca7f506",
+      "body_unchanged": true
+    },
+    {
+      "function": "source_bootstrap_mean_ci",
+      "ast_sha256": "ffd80167ad8e8dfbde02b8d6220f6f7cf1b8a1ca1b7194c2f25df1a044fb63ae",
+      "body_unchanged": true
+    },
+    {
+      "function": "source_signflip_test",
+      "ast_sha256": "6f3ff921087bbe2c59923bcffd8d6a5edd1f0cefa8122b5680fb4f174c6dc639",
+      "body_unchanged": true
+    },
+    {
+      "function": "benjamini_hochberg",
+      "ast_sha256": "f1be48a37c60106e681e569657642772e4e409c96af3909784759a599b753f3b",
+      "body_unchanged": true
+    },
+    {
+      "function": "weighted_mean",
+      "ast_sha256": "f268ccd7609c9b83147eb5684cfd0e2e90dbaaaa25914866e79a6507ef5c0690",
+      "body_unchanged": true
+    }
+  ],
+  "geometry_aggregator": "Body unchanged except descriptive function and constant names.",
+  "forward_kernels": [
+    "attention_mask_from_lengths",
+    "upstream_softmax_sum",
+    "trace_output_tensor",
+    "captured_model_forward",
+    "infer_trace_batch_axes",
+    "clean_trace_replacement",
+    "patched_model_scores",
+    "singleton_trace_metrics"
+  ],
+  "forward_bodies_unchanged": true
+}

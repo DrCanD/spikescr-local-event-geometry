@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "original_records": [
+    {
+      "role": "frozen benchmark result",
+      "sha256": "e693b51afe8a1767d2c279dea96f79bab3fc570f9d1ba6eee7245aa387058694"
+    },
+    {
+      "role": "canonical neighborhood archive",
+      "sha256": "fc6669b840bd473bb1f4e16755e417c8530b971124a6dde714ef861519fc1248"
+    },
+    {
+      "role": "internal activation and replacement archive",
+      "sha256": "0aeb599de97caf2d62ee9d0da379c50a049fa08858cb012df5d40710726c3317"
+    },
+    {
+      "role": "recorded experiment code",
+      "sha256": "7af77e0f71a380b684da2a551fb992b8fd80ba60ebab13bcace18cf3f6be03b2"
+    }
+  ],
+  "byte_identical_copies": [
+    {
+      "path": "data/model/frozen_checkpoint.pt",
+      "sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d"
+    },
+    {
+      "path": "data/neighborhood/candidate_records.npz",
+      "sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222"
+    },
+    {
+      "path": "data/internal/activation_metrics_and_replacements.npz",
+      "sha256": "125bca151583c85a289d41ac556ae86105da5617d75bf6650f5d585568d67426"
+    },
+    {
+      "path": "data/benchmark/test_predictions.npz",
+      "sha256": "cf06ab18926ce65f3a27569fc2a0c3d36faad73b241dc0b42040f0068d70d631"
+    },
+    {
+      "path": "data/benchmark/validation_predictions.npz",
+      "sha256": "030c83698d9db28e476ddbb9ce4f1c480328bb3f01513db9795191fef5345d46"
+    }
+  ],
+  "panel_input_derivation": "Transformed from the hash-verified official validation HDF5 with the recorded 5 ms, 5-channel integration. Each source was independently transformed with a literal loop; every candidate specification was compared to the canonical candidate record.",
+  "clean_score_derivation": "Only clean scores were read from the benchmark and preliminary-neighborhood archive. These were retained by the later canonical reconstruction. Preliminary candidate predictions are not distributed or used.",
+  "original_contract_hashes": {
+    "benchmark": "494477e74e54359286e85cb85e105a308156694efb174602da0cf957eb320bdc",
+    "neighborhood": "ded89cf6e33d61ab4ae6d24a51f920a69e9a9cef0e9ae88741a2f91edabeaa6e",
+    "internal": "ca4efc03802f1de36e4ffcddde165e75b600111187c57527bcc39380448e4404"
+  },
+  "renamed_metadata": "Descriptive names and new file checksums do not replace the original recorded contract or artifact hashes."
+}

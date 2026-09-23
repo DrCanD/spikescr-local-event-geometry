@@ -1,0 +1,14 @@
+{
+  "status": "OBSERVED",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "torch": "2.10.0+cpu",
+    "h5py": "3.15.1",
+    "setuptools": "82.0.1"
+  },
+  "cuda_available": false,
+  "matlab_available": false
+}

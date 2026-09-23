@@ -1,0 +1,10 @@
+{
+  "file_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+  "model_forward_executed": false,
+  "selected_epoch_one_based": 282,
+  "state_dict_sha256": "b1651d836fbd76070ad6bcac863cd870904c8e65e1a8e5e18a2f0c30e25ec68c",
+  "status": "PASS",
+  "stored_epoch_zero_based": 281,
+  "tensors": 168,
+  "unsafe_pickle_enabled": false
+}

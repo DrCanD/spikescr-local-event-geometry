@@ -1,0 +1,603 @@
+{
+  "differences": [
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0021102172322571278,
+      "path": "/trace_group_means_unique/class_preserved/attention_1/activity_flip_rate",
+      "recorded": 0.0021102174650877714
+    },
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0021102172322571278,
+      "path": "/trace_group_means_unique/class_preserved/attention_1/mean_abs_change",
+      "recorded": 0.0021102174650877714
+    },
+    {
+      "absolute_difference": 9.094947017729282e-13,
+      "absolute_tolerance": 1e-06,
+      "computed": 1.0324847607989796e-05,
+      "path": "/trace_group_means_unique/class_preserved/attention_1/mean_signed_change",
+      "recorded": 1.0324846698495094e-05
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.5818046927452087,
+      "path": "/trace_group_means_unique/class_preserved/attention_1/relative_l2_change",
+      "recorded": 0.5818047523498535
+    },
+    {
+      "absolute_difference": 5.587935447692871e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.030128834769129753,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/activity_flip_rate",
+      "recorded": 0.030128829181194305
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.47520074248313904,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/cosine_distance",
+      "recorded": 0.4752008020877838
+    },
+    {
+      "absolute_difference": 5.587935447692871e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.030128834769129753,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/mean_abs_change",
+      "recorded": 0.030128829181194305
+    },
+    {
+      "absolute_difference": 7.275957614183426e-12,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.00011248530790908262,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/mean_signed_change",
+      "recorded": 0.00011248531518504024
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.9169694185256958,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/relative_l2_change",
+      "recorded": 0.916969358921051
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.1626051962375641,
+      "path": "/trace_group_means_unique/class_preserved/attention_2/rms_change",
+      "recorded": 0.1626051813364029
+    },
+    {
+      "absolute_difference": 2.7939677238464355e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.015261909924447536,
+      "path": "/trace_group_means_unique/class_preserved/block_1/activity_flip_rate",
+      "recorded": 0.015261907130479813
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08365420252084732,
+      "path": "/trace_group_means_unique/class_preserved/block_1/cosine_distance",
+      "recorded": 0.08365419507026672
+    },
+    {
+      "absolute_difference": 3.725290298461914e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.018612662330269814,
+      "path": "/trace_group_means_unique/class_preserved/block_1/mean_abs_change",
+      "recorded": 0.018612658604979515
+    },
+    {
+      "absolute_difference": 5.4569682106375694e-12,
+      "absolute_tolerance": 1e-06,
+      "computed": -6.8569665927498136e-06,
+      "path": "/trace_group_means_unique/class_preserved/block_1/mean_signed_change",
+      "recorded": -6.856961135781603e-06
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.1875971108675003,
+      "path": "/trace_group_means_unique/class_preserved/block_2/cosine_distance",
+      "recorded": 0.1875970959663391
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08825676143169403,
+      "path": "/trace_group_means_unique/class_preserved/block_2/mean_abs_change",
+      "recorded": 0.08825674653053284
+    },
+    {
+      "absolute_difference": 2.9103830456733704e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0003012715023942292,
+      "path": "/trace_group_means_unique/class_preserved/block_2/mean_signed_change",
+      "recorded": 0.0003012714732903987
+    },
+    {
+      "absolute_difference": 1.1920928955078125e-07,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.5751832127571106,
+      "path": "/trace_group_means_unique/class_preserved/block_2/relative_l2_change",
+      "recorded": 0.575183093547821
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.28761419653892517,
+      "path": "/trace_group_means_unique/class_preserved/block_2/rms_change",
+      "recorded": 0.2876141667366028
+    },
+    {
+      "absolute_difference": 9.313225746154785e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.00918098259717226,
+      "path": "/trace_group_means_unique/class_preserved/local_1/activity_flip_rate",
+      "recorded": 0.009180981665849686
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.23336422443389893,
+      "path": "/trace_group_means_unique/class_preserved/local_1/cosine_distance",
+      "recorded": 0.23336420953273773
+    },
+    {
+      "absolute_difference": 9.313225746154785e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.00918098259717226,
+      "path": "/trace_group_means_unique/class_preserved/local_1/mean_abs_change",
+      "recorded": 0.009180981665849686
+    },
+    {
+      "absolute_difference": 5.4569682106375694e-12,
+      "absolute_tolerance": 1e-06,
+      "computed": -2.4762925022514537e-05,
+      "path": "/trace_group_means_unique/class_preserved/local_1/mean_signed_change",
+      "recorded": -2.4762919565546326e-05
+    },
+    {
+      "absolute_difference": 2.2351741790771484e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08883936703205109,
+      "path": "/trace_group_means_unique/class_preserved/local_1/rms_change",
+      "recorded": 0.08883938938379288
+    },
+    {
+      "absolute_difference": 2.7939677238464355e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.014908473007380962,
+      "path": "/trace_group_means_unique/class_preserved/local_2/activity_flip_rate",
+      "recorded": 0.014908475801348686
+    },
+    {
+      "absolute_difference": 8.940696716308594e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.34658491611480713,
+      "path": "/trace_group_means_unique/class_preserved/local_2/cosine_distance",
+      "recorded": 0.3465850055217743
+    },
+    {
+      "absolute_difference": 2.7939677238464355e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.014908473007380962,
+      "path": "/trace_group_means_unique/class_preserved/local_2/mean_abs_change",
+      "recorded": 0.014908475801348686
+    },
+    {
+      "absolute_difference": 2.1827872842550278e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0001181895931949839,
+      "path": "/trace_group_means_unique/class_preserved/local_2/mean_signed_change",
+      "recorded": 0.00011818957136711106
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.7822796106338501,
+      "path": "/trace_group_means_unique/class_preserved/local_2/relative_l2_change",
+      "recorded": 0.7822796702384949
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.11389096826314926,
+      "path": "/trace_group_means_unique/class_preserved/local_2/rms_change",
+      "recorded": 0.11389095336198807
+    },
+    {
+      "absolute_difference": 1.4551915228366852e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.00011633511167019606,
+      "path": "/trace_group_means_unique/class_preserved/stem/activity_flip_rate",
+      "recorded": 0.00011633512622211128
+    },
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.001191722578369081,
+      "path": "/trace_group_means_unique/class_preserved/stem/cosine_distance",
+      "recorded": 0.0011917223455384374
+    },
+    {
+      "absolute_difference": 1.4551915228366852e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.00011633511167019606,
+      "path": "/trace_group_means_unique/class_preserved/stem/mean_abs_change",
+      "recorded": 0.00011633512622211128
+    },
+    {
+      "absolute_difference": 5.684341886080802e-14,
+      "absolute_tolerance": 1e-06,
+      "computed": -6.631561859649082e-07,
+      "path": "/trace_group_means_unique/class_preserved/stem/mean_signed_change",
+      "recorded": -6.631561291214894e-07
+    },
+    {
+      "absolute_difference": 1.862645149230957e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.008904613554477692,
+      "path": "/trace_group_means_unique/class_preserved/stem/rms_change",
+      "recorded": 0.008904615417122841
+    },
+    {
+      "absolute_difference": 3.725290298461914e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.03185490518808365,
+      "path": "/trace_group_means_unique/corrective/attention_2/activity_flip_rate",
+      "recorded": 0.03185490891337395
+    },
+    {
+      "absolute_difference": 1.1920928955078125e-07,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.5377814173698425,
+      "path": "/trace_group_means_unique/corrective/attention_2/cosine_distance",
+      "recorded": 0.537781298160553
+    },
+    {
+      "absolute_difference": 3.725290298461914e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.03185490518808365,
+      "path": "/trace_group_means_unique/corrective/attention_2/mean_abs_change",
+      "recorded": 0.03185490891337395
+    },
+    {
+      "absolute_difference": 5.820766091346741e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.0008342300425283611,
+      "path": "/trace_group_means_unique/corrective/attention_2/mean_signed_change",
+      "recorded": -0.000834230100736022
+    },
+    {
+      "absolute_difference": 1.1920928955078125e-07,
+      "absolute_tolerance": 1e-06,
+      "computed": 1.0283880233764648,
+      "path": "/trace_group_means_unique/corrective/attention_2/relative_l2_change",
+      "recorded": 1.0283879041671753
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.17833004891872406,
+      "path": "/trace_group_means_unique/corrective/attention_2/rms_change",
+      "recorded": 0.17833003401756287
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.09706110507249832,
+      "path": "/trace_group_means_unique/corrective/block_1/cosine_distance",
+      "recorded": 0.09706109762191772
+    },
+    {
+      "absolute_difference": 7.275957614183426e-12,
+      "absolute_tolerance": 1e-06,
+      "computed": -9.638652409194037e-05,
+      "path": "/trace_group_means_unique/corrective/block_1/mean_signed_change",
+      "recorded": -9.638653136789799e-05
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08145660907030106,
+      "path": "/trace_group_means_unique/corrective/block_2/activity_flip_rate",
+      "recorded": 0.08145661652088165
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.21846073865890503,
+      "path": "/trace_group_means_unique/corrective/block_2/cosine_distance",
+      "recorded": 0.21846075356006622
+    },
+    {
+      "absolute_difference": 2.546585164964199e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -5.6623925047460943e-05,
+      "path": "/trace_group_means_unique/corrective/block_2/mean_signed_change",
+      "recorded": -5.662395051331259e-05
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.3288019895553589,
+      "path": "/trace_group_means_unique/corrective/block_2/rms_change",
+      "recorded": 0.3288019597530365
+    },
+    {
+      "absolute_difference": 9.313225746154785e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.009720196947455406,
+      "path": "/trace_group_means_unique/corrective/local_1/activity_flip_rate",
+      "recorded": 0.00972019787877798
+    },
+    {
+      "absolute_difference": 9.313225746154785e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.009720196947455406,
+      "path": "/trace_group_means_unique/corrective/local_1/mean_abs_change",
+      "recorded": 0.00972019787877798
+    },
+    {
+      "absolute_difference": 2.1827872842550278e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": 9.201437933370471e-05,
+      "path": "/trace_group_means_unique/corrective/local_2/mean_signed_change",
+      "recorded": 9.201435750583187e-05
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.13396789133548737,
+      "path": "/trace_group_means_unique/corrective/local_2/rms_change",
+      "recorded": 0.13396787643432617
+    },
+    {
+      "absolute_difference": 5.684341886080802e-14,
+      "absolute_tolerance": 1e-06,
+      "computed": -5.248086267783947e-07,
+      "path": "/trace_group_means_unique/corrective/stem/mean_signed_change",
+      "recorded": -5.248085699349758e-07
+    },
+    {
+      "absolute_difference": 3.725290298461914e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.04688780754804611,
+      "path": "/trace_group_means_unique/corrective/stem/relative_l2_change",
+      "recorded": 0.04688781127333641
+    },
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0014461275422945619,
+      "path": "/trace_group_means_unique/lateral/attention_1/activity_flip_rate",
+      "recorded": 0.0014461277751252055
+    },
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.0014461275422945619,
+      "path": "/trace_group_means_unique/lateral/attention_1/mean_abs_change",
+      "recorded": 0.0014461277751252055
+    },
+    {
+      "absolute_difference": 5.820766091346741e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.0007437351159751415,
+      "path": "/trace_group_means_unique/lateral/attention_2/mean_signed_change",
+      "recorded": -0.0007437350577674806
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08321475237607956,
+      "path": "/trace_group_means_unique/lateral/block_1/cosine_distance",
+      "recorded": 0.08321473747491837
+    },
+    {
+      "absolute_difference": 2.1827872842550278e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -8.990768401417881e-05,
+      "path": "/trace_group_means_unique/lateral/block_1/mean_signed_change",
+      "recorded": -8.990766218630597e-05
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.2171349972486496,
+      "path": "/trace_group_means_unique/lateral/block_2/cosine_distance",
+      "recorded": 0.21713502705097198
+    },
+    {
+      "absolute_difference": 1.1641532182693481e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.0012273063184693456,
+      "path": "/trace_group_means_unique/lateral/block_2/mean_signed_change",
+      "recorded": -0.0012273064348846674
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.31394460797309875,
+      "path": "/trace_group_means_unique/lateral/block_2/rms_change",
+      "recorded": 0.31394457817077637
+    },
+    {
+      "absolute_difference": 1.4551915228366852e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.00022424821509048343,
+      "path": "/trace_group_means_unique/lateral/local_1/mean_signed_change",
+      "recorded": -0.00022424822964239866
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.6997323632240295,
+      "path": "/trace_group_means_unique/lateral/local_1/relative_l2_change",
+      "recorded": 0.6997323036193848
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.4292725920677185,
+      "path": "/trace_group_means_unique/lateral/local_2/cosine_distance",
+      "recorded": 0.4292726516723633
+    },
+    {
+      "absolute_difference": 1.4551915228366852e-11,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.00018736011406872422,
+      "path": "/trace_group_means_unique/lateral/local_2/mean_signed_change",
+      "recorded": -0.00018736012862063944
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.12262576818466187,
+      "path": "/trace_group_means_unique/lateral/local_2/rms_change",
+      "recorded": 0.12262576073408127
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.052296675741672516,
+      "path": "/trace_group_means_unique/lateral/stem/relative_l2_change",
+      "recorded": 0.05229668319225311
+    },
+    {
+      "absolute_difference": 9.313225746154785e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.011663359589874744,
+      "path": "/trace_group_means_unique/lateral/stem/rms_change",
+      "recorded": 0.011663360521197319
+    },
+    {
+      "absolute_difference": 2.086162569081562e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.04773132160305977,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_1/attention_minus_local_trace_divergence/mean_contrast",
+      "recorded": -0.04773132368922234
+    },
+    {
+      "absolute_difference": 2.898275848484122e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.06084395239874721,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_1/attention_minus_local_trace_divergence/source_bootstrap95/0",
+      "recorded": -0.06084395529702306
+    },
+    {
+      "absolute_difference": 5.066394803687757e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": -0.0345665711723268,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_1/attention_minus_local_trace_divergence/source_bootstrap95/1",
+      "recorded": -0.03456657066568732
+    },
+    {
+      "absolute_difference": 1.788139358804841e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.12811055414378644,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_2/attention_minus_local_trace_divergence/mean_contrast",
+      "recorded": 0.12811055235564708
+    },
+    {
+      "absolute_difference": 4.917383306102252e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.11435938155464827,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_2/attention_minus_local_trace_divergence/source_bootstrap95/0",
+      "recorded": 0.1143593820463866
+    },
+    {
+      "absolute_difference": 4.693865796046026e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.14179762250185013,
+      "path": "/source_level_inference/global_vs_local/class_preserved/block_2/attention_minus_local_trace_divergence/source_bootstrap95/1",
+      "recorded": 0.14179761780798433
+    },
+    {
+      "absolute_difference": 9.169945330844698e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.15282141245328462,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/attention_2/mean_contrast",
+      "recorded": 0.1528214032833393
+    },
+    {
+      "absolute_difference": 6.877459157728083e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.12779001937462733,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/attention_2/source_bootstrap95/0",
+      "recorded": 0.12779001868688142
+    },
+    {
+      "absolute_difference": 2.2924863396500683e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08443721670370835,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/block_1/mean_contrast",
+      "recorded": 0.08443721899619469
+    },
+    {
+      "absolute_difference": 4.527660524278332e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.10593870534346653,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/block_1/source_bootstrap95/1",
+      "recorded": 0.10593870987112705
+    },
+    {
+      "absolute_difference": 4.584972679300137e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.10460428091195914,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/block_2/mean_contrast",
+      "recorded": 0.10460427632698646
+    },
+    {
+      "absolute_difference": 3.4387294400861634e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.08603541667644794,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/block_2/source_bootstrap95/0",
+      "recorded": 0.086035416332575
+    },
+    {
+      "absolute_difference": 9.169945344722485e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.12457977349941547,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/local_1/mean_contrast",
+      "recorded": 0.12457978266936082
+    },
+    {
+      "absolute_difference": 9.169945358600273e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.09736584035249857,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/local_1/source_bootstrap95/0",
+      "recorded": 0.09736584952244393
+    },
+    {
+      "absolute_difference": 2.2924862008721902e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.1515254183457448,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/local_1/source_bootstrap95/1",
+      "recorded": 0.1515254185749934
+    },
+    {
+      "absolute_difference": 4.584972679300137e-09,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.1355855602484483,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/local_2/mean_contrast",
+      "recorded": 0.13558555566347563
+    },
+    {
+      "absolute_difference": 1.1462431004360951e-10,
+      "absolute_tolerance": 1e-06,
+      "computed": 0.166162165082418,
+      "path": "/source_level_inference/transition_vs_preserved/adverse/local_2/source_bootstrap95/1",
+      "recorded": 0.16616216496779368
+    }
+  ],
+  "errors": [],
+  "max_absolute_difference": 1.1920928955078125e-07,
+  "note": "Float32 reduction results can differ across NumPy builds and CPU architectures; they are not described as bit-identical.",
+  "status": "PASS"
+}

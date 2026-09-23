@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "source_sha256": "7af77e0f71a380b684da2a551fb992b8fd80ba60ebab13bcace18cf3f6be03b2",
+  "kernel_comparisons": [
+    {
+      "function": "exact_event_transform",
+      "ast_equal": true
+    },
+    {
+      "function": "literal_event_transform",
+      "ast_equal": true
+    },
+    {
+      "function": "candidate_specification",
+      "ast_equal": true
+    },
+    {
+      "function": "rank_average",
+      "ast_equal": true
+    },
+    {
+      "function": "spearman_rho",
+      "ast_equal": true
+    },
+    {
+      "function": "gini_nonnegative",
+      "ast_equal": true
+    },
+    {
+      "function": "source_bootstrap_mean_ci",
+      "ast_equal": true
+    },
+    {
+      "function": "source_signflip_test",
+      "ast_equal": true
+    },
+    {
+      "function": "benjamini_hochberg",
+      "ast_equal": true
+    },
+    {
+      "function": "weighted_mean",
+      "ast_equal": true
+    },
+    {
+      "function": "attention_mask_from_lengths",
+      "ast_equal": true
+    },
+    {
+      "function": "upstream_softmax_sum",
+      "ast_equal": true
+    },
+    {
+      "function": "trace_output_tensor",
+      "ast_equal": true
+    },
+    {
+      "function": "captured_model_forward",
+      "ast_equal": true
+    },
+    {
+      "function": "infer_trace_batch_axes",
+      "ast_equal": true
+    },
+    {
+      "function": "clean_trace_replacement",
+      "ast_equal": true
+    },
+    {
+      "function": "patched_model_scores",
+      "ast_equal": true
+    },
+    {
+      "function": "singleton_trace_metrics",
+      "ast_equal": true
+    },
+    {
+      "function": "geometry_aggregates",
+      "ast_equal_after_declared_renaming": true
+    },
+    {
+      "function": "recompute_internal",
+      "recorded_aggregation_body_verbatim_after_constant_renaming": true
+    }
+  ],
+  "adapter_change": "The reset adapter now raises an explicit error before SpikingJelly is configured; once configured it calls the same reset_net function.",
+  "forbidden_public_text_findings": [],
+  "font_files": []
+}

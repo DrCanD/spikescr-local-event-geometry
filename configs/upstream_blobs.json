@@ -1,0 +1,10 @@
+{
+  "configs/best_config_SSC_former.py": "9e0d97705eefa6060cb7f400360e826634cd5ae8",
+  "Training/main_former_v2_ssc_spikescr.py": "3f86fbd8f2ae736065cf29cec9cd8d35e0a245e9",
+  "datasets.py": "838487841186c1c1cb0eed77f84640ffba2827fa",
+  "models/spikescr.py": "33cc3e2d68ae8e32f408e9357c3f822706294dd8",
+  "module/spikscr_module.py": "1d212210378c5c8124f5e6c1f5a7bdbdae1677d1",
+  "module/conv.py": "632d6319924a8ca9a0fbe67e7aa11b2467e46b46",
+  "utils.py": "3ed0a5e543fdcd6b7efa2fa819ec0569cf03f80c",
+  "requirements.txt": "9ca286acbb5264630d7790217ebfcc3ce4a6bcf8"
+}
