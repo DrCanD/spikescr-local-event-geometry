@@ -1,10 +1,28 @@
 cff-version: 1.2.0
-message: "This is a local release candidate. Cite the associated manuscript and identify the actual repository commit after publication."
+message: "If you use this software or its recorded results, cite this software and the associated manuscript. Identify the release version and repository commit used."
 type: software
 title: "Local event geometry in a frozen spiking speech classifier"
 version: 0.1.0rc1
+repository-code: "https://github.com/DrCanD/spikescr-local-event-geometry"
+url: "https://github.com/DrCanD/spikescr-local-event-geometry"
 authors:
   - family-names: Dikmen
     given-names: İsmail Can
     orcid: "https://orcid.org/0000-0002-7747-7777"
-abstract: "Fixed-checkpoint finite-neighborhood analysis of SpikeSCR on Spiking Speech Commands. Includes recorded artifacts, statistical regeneration, and separately gated model replay."
+abstract: >-
+  Technical reproduction package for a fixed-checkpoint study of local event
+  geometry in SpikeSCR on Spiking Speech Commands. The experiment evaluates
+  725,070 neighboring inputs from 100 validation utterances, measures activation
+  changes at seven network boundaries, and records 180,740 activation-replacement
+  score vectors. The package includes the frozen checkpoint, transformed inputs,
+  recorded outputs, statistical regeneration, and model-replay tools with
+  numerical conformance checks. Validation coverage and replay limitations are
+  documented in the repository.
+keywords:
+  - spiking neural networks
+  - speech recognition
+  - Spiking Speech Commands
+  - SpikeSCR
+  - local event geometry
+  - activation replacement
+  - reproducible research
