@@ -3,6 +3,9 @@ message: "If you use this software or its recorded results, cite this software a
 type: software
 title: "Local event geometry in a frozen spiking speech classifier"
 version: 0.1.0rc1
+date-released: 2026-09-24
+# This is the software license. Non-code artifacts have the separate scope below.
+license: MIT
 repository-code: "https://github.com/DrCanD/spikescr-local-event-geometry"
 url: "https://github.com/DrCanD/spikescr-local-event-geometry"
 authors:
@@ -17,7 +20,10 @@ abstract: >-
   score vectors. The package includes the frozen checkpoint, transformed inputs,
   recorded outputs, statistical regeneration, and model-replay tools with
   numerical conformance checks. Validation coverage and replay limitations are
-  documented in the repository.
+  documented in the repository. Original project software is licensed under MIT;
+  project-authored research outputs, documentation and model weights are licensed
+  under CC BY 4.0, within the author's rights. Dataset attribution and third-party
+  software terms remain in force; see LICENSE_NOTICE.md for the file-level scope.
 keywords:
   - spiking neural networks
   - speech recognition

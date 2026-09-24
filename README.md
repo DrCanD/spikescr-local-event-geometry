@@ -176,4 +176,4 @@ Software citation metadata is available in [`CITATION.cff`](CITATION.cff).
 
 The study uses the [SpikeSCR implementation](https://github.com/JackieWang9811/SpikeSCR) and the Spiking Speech Commands dataset. See [third-party notices](docs/THIRD_PARTY_NOTICES.md) for source references, attribution and dataset terms.
 
-Project-specific code, checkpoint and study results currently have no blanket license assigned. Consult [`LICENSE_NOTICE.md`](LICENSE_NOTICE.md); dataset and upstream-code terms apply separately.
+Original project code is licensed under [MIT](LICENSE). Project-authored research outputs, documentation and the frozen model weights are licensed under [CC BY 4.0](LICENSES/CC-BY-4.0.txt), within the author's rights. The transformed SSC panel retains the dataset's CC BY 4.0 attribution. See [`LICENSE_NOTICE.md`](LICENSE_NOTICE.md) for the file-level scope; upstream source and dependencies retain their own terms.

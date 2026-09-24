@@ -1,8 +1,8 @@
 # Releases and Zenodo archival
 
-The current package version is `0.1.0rc1`. The corresponding proposed GitHub tag
-is `v0.1.0rc1`. These instructions and the notes below prepare a release; they do
-not establish that a release or a Zenodo record has been published.
+The package version `0.1.0rc1` corresponds to GitHub tag `v0.1.0rc1`.
+The [GitHub releases page](https://github.com/DrCanD/spikescr-local-event-geometry/releases)
+is the authoritative source for publication status.
 
 ## Repository metadata
 
@@ -21,11 +21,10 @@ the repository's website field.
 
 ## Publish in this order
 
-1. **Choose the publication license.** Project-specific artifacts currently have
-   no blanket license assigned; see [LICENSE_NOTICE.md](../LICENSE_NOTICE.md).
-   Zenodo requires a license. Record the owner's chosen terms and their scope
-   consistently in the repository and archival metadata. Preserve the separate
-   [dataset and upstream terms](THIRD_PARTY_NOTICES.md).
+1. **Check the license scope.** Original project software uses MIT; research
+   artifacts, documentation and model weights use CC BY 4.0 within the author's
+   rights. Keep [LICENSE_NOTICE.md](../LICENSE_NOTICE.md), citation metadata and
+   the [dataset and upstream terms](THIRD_PARTY_NOTICES.md) consistent.
 2. **Connect GitHub to Zenodo and enable this repository.** In Zenodo's profile
    menu, open **GitHub**, synchronize repositories if needed, and enable
    `DrCanD/spikescr-local-event-geometry`.
@@ -54,7 +53,7 @@ Official guidance: [enable a repository](https://help.zenodo.org/docs/github/ena
 [citation metadata](https://help.zenodo.org/docs/github/describe-software/citation-file/),
 and [licenses](https://help.zenodo.org/docs/deposit/describe-records/licenses/).
 
-## Prepared release notes
+## Release notes for v0.1.0rc1
 
 **Title:** `v0.1.0rc1 — Technical reproduction package`
 
@@ -73,6 +72,14 @@ frozen SpikeSCR checkpoint on Spiking Speech Commands.
   preparation script, pinned dependencies and numerical conformance checks.
 - Data schemas, provenance, reproduction instructions, SHA-256 manifests and
   recorded validation results.
+
+### Licenses
+
+Original project software is licensed under MIT. Project-authored research
+outputs, documentation and the frozen model weights are licensed under
+CC BY 4.0, within the author's rights. The transformed SSC panel retains the
+dataset's CC BY 4.0 attribution; upstream source and dependencies retain their
+own terms. See `LICENSE_NOTICE.md` for the file-level scope.
 
 ### Validation scope
 

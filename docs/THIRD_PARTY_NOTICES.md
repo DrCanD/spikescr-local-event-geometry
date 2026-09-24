@@ -24,4 +24,9 @@ The model source is not bundled here. A separate program retrieves the required 
 
 The checkpoint was trained for the reported reproduction. Its bytes and tensor-state digest are retained. The study's recorded numerical outputs are renamed without changing their contents, except for documented descriptive metadata and the boolean representation in a CSV.
 
-No blanket license has been assigned to the project-specific code, checkpoint or study results. See `LICENSE_NOTICE.md`. Dataset and upstream-code terms remain separate.
+Original project software is licensed under [MIT](../LICENSE). Project-authored
+research outputs, documentation and the trained checkpoint are licensed under
+[CC BY 4.0](../LICENSES/CC-BY-4.0.txt), for rights held by the project author.
+See [LICENSE_NOTICE.md](../LICENSE_NOTICE.md) for the file-level scope. These
+grants preserve the dataset attribution and do not relicense upstream source
+or dependencies.
