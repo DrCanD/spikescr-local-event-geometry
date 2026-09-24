@@ -1,6 +1,7 @@
 # SpikeSCR Local Event Geometry
 
 [![Validation](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml)
+[![DOI](https://zenodo.org/badge/1383291350.svg)](https://doi.org/10.5281/zenodo.22936264)
 
 Research code and data accompanying **Stable predictions can hide substantial temporal changes in a high-accuracy spiking speech classifier** by **İsmail Can Dikmen**.
 
@@ -171,6 +172,8 @@ Please cite the associated manuscript and identify the repository commit used in
 > İsmail Can Dikmen. *Stable predictions can hide substantial temporal changes in a high-accuracy spiking speech classifier.*
 
 Software citation metadata is available in [`CITATION.cff`](CITATION.cff).
+
+The software archive is available on Zenodo: [all versions](https://doi.org/10.5281/zenodo.22936264) and [the archived `v0.1.0rc1` version](https://doi.org/10.5281/zenodo.22936265). Use the version-specific DOI and repository commit to identify the exact materials used.
 
 ## Attribution and terms
 

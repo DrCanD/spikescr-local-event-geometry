@@ -3,6 +3,11 @@ message: "If you use this software or its recorded results, cite this software a
 type: software
 title: "Local event geometry in a frozen spiking speech classifier"
 version: 0.1.0rc1
+doi: 10.5281/zenodo.22936265
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22936264
+    description: "Concept DOI covering all archived versions of this software."
 date-released: 2026-09-24
 # This is the software license. Non-code artifacts have the separate scope below.
 license: MIT
