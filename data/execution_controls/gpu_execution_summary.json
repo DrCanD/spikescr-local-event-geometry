@@ -1,0 +1,144 @@
+{
+  "CPU_B1_reference": {
+    "accuracy": 0.8607353972547841,
+    "balanced_accuracy": 0.8480299448112326,
+    "correct": 8591,
+    "macro_f1": 0.8540924767742887,
+    "samples": 9981
+  },
+  "GPU_B1_vs_CPU_B1_score_max_abs": 3.051301956176758,
+  "archived_GPU_B256_reference": {
+    "accuracy": 0.8633403466586514,
+    "balanced_accuracy": 0.8526823433951778,
+    "correct": 8617,
+    "macro_f1": 0.8573251637167693,
+    "samples": 9981
+  },
+  "canonical_panel": {
+    "max_abs_score_difference": 0.0,
+    "predicted_label_disagreements": 0,
+    "sources": 100
+  },
+  "completed": true,
+  "conditions": {
+    "B1_native": {
+      "accuracy": 0.8608355876164713,
+      "balanced_accuracy": 0.8482463950276828,
+      "correct": 8592,
+      "macro_f1": 0.8542901908011461,
+      "samples": 9981
+    },
+    "B1_padding_matched": {
+      "accuracy": 0.8604348261697224,
+      "balanced_accuracy": 0.8484700796927054,
+      "correct": 8588,
+      "macro_f1": 0.8534300363816426,
+      "samples": 9981
+    },
+    "B256": {
+      "accuracy": 0.8633403466586514,
+      "balanced_accuracy": 0.8526823433951778,
+      "correct": 8617,
+      "macro_f1": 0.8573251637167693,
+      "samples": 9981
+    },
+    "B256_reversed": {
+      "accuracy": 0.8586313996593528,
+      "balanced_accuracy": 0.8472843080919099,
+      "correct": 8570,
+      "macro_f1": 0.8513983443366894,
+      "samples": 9981
+    }
+  },
+  "contract_sha256": "0ec56d8ca12ea9395a7e9c0c3103b87cf6d742c7148cd080eae062ffb857d0f5",
+  "cpu_smoke": false,
+  "elapsed_seconds_this_invocation": 3852.8607923090003,
+  "environment": {
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "dependencies": {
+      "einops": "0.8.0",
+      "rotary-embedding-torch": "0.8.4",
+      "spikingjelly": "0.0.0.0.14"
+    },
+    "device": "cuda:0",
+    "device_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "gpu_properties": {
+      "compute_capability": [
+        12,
+        0
+      ],
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "total_memory_bytes": 101974081536,
+      "uuid": "e867373a-924b-418e-f03f-c0d7c6a86230"
+    },
+    "threads": 1,
+    "torch": "2.11.0+cu128"
+  },
+  "identical_singleton_replays": 10,
+  "interpretation": "Historical vs fresh B256 drift is reported separately. Fixed GPU hardware does not by itself exclude all batch-shape numerical effects.",
+  "official_test_access": false,
+  "paired_comparisons": [
+    {
+      "a": "CPU_B1",
+      "a_correct_b_wrong": 0,
+      "a_wrong_b_correct": 1,
+      "b": "B1_native",
+      "both_correct": 8591,
+      "both_wrong": 1389,
+      "both_wrong_different_label": 1,
+      "predicted_label_disagreements": 2
+    },
+    {
+      "a": "B1_native",
+      "a_correct_b_wrong": 110,
+      "a_wrong_b_correct": 106,
+      "b": "B1_padding_matched",
+      "both_correct": 8482,
+      "both_wrong": 1283,
+      "both_wrong_different_label": 128,
+      "predicted_label_disagreements": 344
+    },
+    {
+      "a": "B1_padding_matched",
+      "a_correct_b_wrong": 191,
+      "a_wrong_b_correct": 220,
+      "b": "B256",
+      "both_correct": 8397,
+      "both_wrong": 1173,
+      "both_wrong_different_label": 203,
+      "predicted_label_disagreements": 614
+    },
+    {
+      "a": "B1_native",
+      "a_correct_b_wrong": 199,
+      "a_wrong_b_correct": 224,
+      "b": "B256",
+      "both_correct": 8393,
+      "both_wrong": 1165,
+      "both_wrong_different_label": 196,
+      "predicted_label_disagreements": 619
+    },
+    {
+      "a": "B256",
+      "a_correct_b_wrong": 205,
+      "a_wrong_b_correct": 158,
+      "b": "B256_reversed",
+      "both_correct": 8412,
+      "both_wrong": 1206,
+      "both_wrong_different_label": 168,
+      "predicted_label_disagreements": 531
+    },
+    {
+      "a": "archived_GPU_B256",
+      "a_correct_b_wrong": 0,
+      "a_wrong_b_correct": 0,
+      "b": "B256",
+      "both_correct": 8617,
+      "both_wrong": 1364,
+      "both_wrong_different_label": 0,
+      "predicted_label_disagreements": 0
+    }
+  ],
+  "samples": 9981
+}

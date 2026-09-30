@@ -15,6 +15,10 @@ def main(argv=None) -> int:
     sub.add_parser('checkpoint',help='Safely inspect and hash the frozen checkpoint; requires torch')
     p=sub.add_parser('reproduce',help='Recompute tables and statistics from released predictions and traces')
     p.add_argument('--out',type=Path,required=True)
+    p=sub.add_parser('execution-controls',help='Recompute padding, q/k isolation and device comparisons; no model inference')
+    p.add_argument('--out',type=Path,required=True)
+    p=sub.add_parser('extended-analyses',help='Recompute finite search coverage and paired count-readout replicas; no model inference')
+    p.add_argument('--out',type=Path,required=True)
     p=sub.add_parser('raw-validation',help='Compare both preprocessing implementations with released panel inputs')
     p.add_argument('--h5',type=Path,required=True)
     args=parser.parse_args(argv)
@@ -26,7 +30,12 @@ def main(argv=None) -> int:
         elif args.command=='checkpoint':report=verify_checkpoint(root)
         elif args.command=='raw-validation':report=verify_raw_validation(root,args.h5)
         else:
-            from .analysis import reproduce
+            if args.command=='execution-controls':
+                from .execution_controls import reproduce
+            elif args.command=='extended-analyses':
+                from .retained_map_analyses import reproduce
+            else:
+                from .analysis import reproduce
             out=fresh_output(root,args.out)
             try:report=reproduce(root,out)
             except Exception as exc:

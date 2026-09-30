@@ -1,0 +1,121 @@
+{
+  "accepted_source_gradients": 3400,
+  "budgets": [
+    {
+      "actual_discovered_sources": 2,
+      "budget_per_source": 1,
+      "policy": "max_directional_gain",
+      "selected_adverse_candidates": 2,
+      "total_candidate_queries": 84,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 4,
+      "budget_per_source": 10,
+      "policy": "max_directional_gain",
+      "selected_adverse_candidates": 12,
+      "total_candidate_queries": 840,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 7,
+      "budget_per_source": 100,
+      "policy": "max_directional_gain",
+      "selected_adverse_candidates": 100,
+      "total_candidate_queries": 8400,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 10,
+      "budget_per_source": 1000,
+      "policy": "max_directional_gain",
+      "selected_adverse_candidates": 904,
+      "total_candidate_queries": 84000,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 2,
+      "budget_per_source": 1,
+      "policy": "max_predicted_target_margin",
+      "selected_adverse_candidates": 2,
+      "total_candidate_queries": 84,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 4,
+      "budget_per_source": 10,
+      "policy": "max_predicted_target_margin",
+      "selected_adverse_candidates": 12,
+      "total_candidate_queries": 840,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 8,
+      "budget_per_source": 100,
+      "policy": "max_predicted_target_margin",
+      "selected_adverse_candidates": 98,
+      "total_candidate_queries": 8400,
+      "vulnerable_sources": 13
+    },
+    {
+      "actual_discovered_sources": 11,
+      "budget_per_source": 1000,
+      "policy": "max_predicted_target_margin",
+      "selected_adverse_candidates": 900,
+      "total_candidate_queries": 84000,
+      "vulnerable_sources": 13
+    }
+  ],
+  "candidate_outcomes": "looked up after frozen ranking; no new candidate forwards",
+  "clean_correct_source_backward_cost": 2856,
+  "completed": true,
+  "contract_sha256": "549255935b930a870b40869b7938bb0af29f097ea4e8ed2ab86c7c46ca9b1a57",
+  "eligible_clean_correct_sources": 84,
+  "new_candidate_forward_passes": 0,
+  "official_test_access": false,
+  "panel_sources": 100,
+  "posthoc_prefixes": [
+    {
+      "capped_queries": 598437,
+      "fraction_of_exhaustive": 0.9526657550253036,
+      "policy": "max_directional_gain",
+      "posthoc_prefix_per_source": 8399
+    },
+    {
+      "capped_queries": 461870,
+      "fraction_of_exhaustive": 0.7352615768636247,
+      "policy": "max_predicted_target_margin",
+      "posthoc_prefix_per_source": 5619
+    }
+  ],
+  "sum_worker_gradient_seconds": 2222.1479106029997,
+  "runner_up_gradient_parity": {
+    "sources": 100,
+    "bit_exact_input_gradients": 100,
+    "max_abs_difference": 0.0
+  },
+  "fresh_witness_verification": {
+    "all_predictions_match": true,
+    "completed": true,
+    "environment": {
+      "cuda": null,
+      "cudnn": null,
+      "dependencies": {
+        "einops": "0.8.0",
+        "rotary-embedding-torch": "0.8.4",
+        "spikingjelly": "0.0.0.0.14"
+      },
+      "device": "cpu",
+      "device_name": "CPU",
+      "threads": 1,
+      "torch": "2.11.0+cpu"
+    },
+    "official_test_access": false,
+    "policies": 2,
+    "policy_witness_entries": 26,
+    "script_sha256": "bc312f1ef3dbc742ba511b253e4289567111d3475386ed396c7d829433c7c3b3",
+    "unique_candidate_forward_passes": 17,
+    "unique_clean_forward_passes": 13,
+    "vulnerable_sources": 13
+  }
+}

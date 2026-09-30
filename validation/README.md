@@ -2,11 +2,19 @@
 
 These records distinguish numerical analysis checks from execution of the real neural network.
 
-## Current analysis check
+## Current repository update
+
+`maintenance_status.json` records the later repository update, its actual environment, executed test counts and skips. `maintenance_tests.log` contains that run. The added execution-control and extended-analysis reports describe recomputation from retained arrays, without new model inference. The original checks below remain unchanged as historical evidence.
+
+The current CI workflow executes the original statistical regeneration plus `execution-controls` and `extended-analyses`. The real-model job still performs the separate four-probe CPU preflight. See [execution controls](../docs/EXECUTION_CONTROLS.md) for the full-validation and 25,820-candidate recorded inference evidence.
+
+The paired device replay reproduces every original CUDA class-changing label and retains the same 13 sensitive sources on CPU. It does not establish full CPU score equivalence or replay all originally preserved neighbors.
+
+## Original analysis and model-preflight check
 
 - `status.json` identifies the checked code/configuration digest, executed checks and test counts, including skipped tests.
 - `analysis_environment.json` records the locally observed Python and package versions.
-- `tests_primary.log` contains the latest local unit and integration test output. PyTorch-dependent tests are skipped when PyTorch is unavailable.
+- `tests_primary.log` contains the original retained unit and integration test output. PyTorch-dependent tests are skipped when PyTorch is unavailable.
 - `statistical_regeneration.json` and `numerical_agreement.json` report recomputation from the released arrays and comparison with the recorded numerical references.
 - `upstream_source.json` records verification of the eight pinned upstream source files.
 - `model_preflight_cpu.json` records the four-probe real-model run, parameter inventory, numerical differences and resume check.

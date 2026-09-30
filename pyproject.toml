@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spikescr-local-event-geometry"
-version = "0.1.0rc1"
+version = "0.2.0.dev0"
 description = "Auditable finite-neighborhood analysis of a frozen SpikeSCR speech classifier"
 license = {file = "LICENSE"}
 requires-python = ">=3.11,<3.14"

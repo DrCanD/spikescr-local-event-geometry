@@ -6,4 +6,6 @@ The recorded setup uses seed 312, 300 epochs, AdamW at learning rate 0.005 and w
 
 The upstream source file `Training/main_former_v2_ssc_spikescr.py` is one of the eight hash-checked files downloaded by the source preparation program. It documents the public training implementation. It is not presented as a drop-in reproduction of every historical wrapper, preprocessing cache and random-number state used to obtain this checkpoint.
 
+The checkpoint was optimized with batch size 256 and the public q/k reshape path. Its weights therefore belong to the coupled training function. Native singleton evaluation and the later source-isolation diagnostic specify their own execution contracts; a conventional head/time layout would be an unevaluated third function, not an already optimized corrected model.
+
 No clean-room retraining experiment was run during packaging. This release does not include a tested from-scratch training command. Independent training reproducibility should be reported separately from the complete fixed-checkpoint neighborhood audit. The official test split must not be used for training, checkpoint selection or tuning.

@@ -2,9 +2,9 @@
 
 ## Distinguish the operations
 
-`verify` reads file bytes and checks hashes. `reproduce` recalculates statistics from released arrays. `run_singleton_audit.py` runs the neural network. They answer different questions. Successful checksums alone do not validate a model or a statistical claim.
+`verify` reads file bytes and checks hashes. `reproduce` recalculates the original statistics from released arrays. `extended-analyses` recalculates search policies and replica contrasts; `execution-controls` recalculates paired padding/order/device results. Both added commands print their phases and perform no model inference. `run_singleton_audit.py` runs the neural network. They answer different questions. Successful checksums alone do not validate a model or a statistical claim.
 
-The tests exercise the recorded arrays and the orchestration helpers. They do not execute the full SpikeSCR model. When PyTorch is installed, forward-kernel tests use an explicitly labelled small test double and a separate test loads the real checkpoint with `weights_only=True` to check its tensor-state digest. Those tests are reported as skipped when PyTorch is absent.
+The local analysis tests exercise the recorded arrays and orchestration helpers; the dedicated real-model CI job executes four fixed SpikeSCR probes. The analysis suite does not execute the complete model census. When PyTorch is installed, forward-kernel tests use an explicitly labelled small test double and a separate test loads the real checkpoint with `weights_only=True` to check its tensor-state digest. Those tests are reported as skipped when PyTorch is absent.
 
 ## Statistical regeneration
 
@@ -52,6 +52,8 @@ python -m pip install --no-deps --require-hashes -r requirements-pinned-wheels.t
 ```
 
 Install the ordinary runtime dependencies required by SpikingJelly and HDF5, including a torchvision build compatible with the installed torch build, in that environment. The original versions of all those transitive packages are not recoverable from the stored dependency probe. Their absence is stated explicitly rather than replaced by a fabricated lockfile. Save the actual environment and use the conformance output, not version similarity alone, to judge a replay.
+
+The canonical decision census uses CUDA singleton inference at each source's native horizon, with state reset before each forward and the unmodified public time-summed softmax readout. CPU singleton, padded singleton, original batch-256 and q/k-isolated diagnostics are distinct conditions.
 
 The loader validates the pinned source and configuration, applies the recorded 3D BatchNorm adapter, sets `use_ln=False`, selects the 5 ms input override and PyTorch neuron backend, and strictly loads the checkpoint. It separately checks 3,302,416 total parameters, 3,302,400 trainable parameters and 16 fixed rotary-frequency parameters, plus all seven named boundaries. Model weights, neuron equations and attention tensor reshapes are not changed.
 
@@ -110,3 +112,46 @@ This is a replication of a previously committed benchmark, not a new model-selec
 The replication target is the experiment at the supplied frozen checkpoint. Training a new model and preparing manuscript presentation assets are outside this target.
 
 File-integrity checks, statistical regeneration, upstream-source hash verification and the real-model CPU preflight have been executed. The latest local check and the provenance of earlier preparation records are described in `validation/README.md`. The known CPU portability failure is retained there as well. A complete real-model CUDA replay report is not included. Run the full singleton audit in the reference environment to establish its numerical conformance; passing analysis tests or four CPU probes does not establish that result.
+
+## Search and replica analyses
+
+```bash
+python -m ssc_geometry extended-analyses --out outputs/extended_01
+```
+
+The command recomputes uniform and 10/25/50 percent low-margin allocations, the
+50/50 uniform/quartile mixture, raw and horizon-normalized margin ranks, exact
+finite-population detection probabilities, and frozen gradient discovery.
+Allocation caps and largest-remainder ties use the original rational policy.
+Surrogate scores freeze the clean runner-up or all 34 non-clean targets. Saved
+candidate ranks are checked against scores with candidate-ID tie breaks before
+outcomes are looked up. Runner-up directional scores are also rederived from
+the included input gradients. Full all-target gradient tensors are not included
+in the compact copy; their original file hashes and compaction checks are kept.
+
+The reported common-prefix costs cap each source at its actual neighborhood
+size. In particular, 5,612 is a post hoc runner-up prefix and its cost is
+461,380, not 5,612 multiplied by 84. Threshold sweeps are retrospective
+sensitivity analyses; they do not establish independent policy generalization.
+
+Count-readout replicas are a separate architecture with native 10 ms bins. Their
+source-level records and full-validation predictions verify the 5.21-fold
+class-change contrast, the four-source concentration, and the reversed
+adverse-rate ordering among their 67 common-correct sources. This command does
+not rerun either replica census or its recorded bootstrap intervals.
+
+## Paired execution controls
+
+```bash
+python -m ssc_geometry execution-controls --out outputs/execution_01
+```
+
+This command recomputes full-validation accuracy and changed-label counts,
+source-wise score displacement distributions, padding-gap counts, order
+invariance and the q/k-isolation residual. It aligns all 25,820 paired CPU/GPU
+class-changing candidate records directly to their rows in the original census.
+The 699,250 originally preserved candidates are outside that device replay.
+Historical prefix ablations and pair controls have retained aggregate summaries,
+not a complete array-only regeneration in this package. See
+[execution controls](EXECUTION_CONTROLS.md) for the evaluated functions and
+[recorded scripts](../scripts/recorded/README.md) for original launch contexts.

@@ -1,0 +1,62 @@
+{
+  "contract_sha256": "0ec56d8ca12ea9395a7e9c0c3103b87cf6d742c7148cd080eae062ffb857d0f5",
+  "payload": {
+    "archived_GPU_B256_reference_sha256": "030c83698d9db28e476ddbb9ce4f1c480328bb3f01513db9795191fef5345d46",
+    "batch_groups": "ascending source IDs, contiguous groups of 256; last group retains its native size",
+    "checkpoint_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+    "conditions": {
+      "B1_native": "one source, its native input horizon",
+      "B1_padding_matched": "one source, padded with zero counts to its corresponding B256 group horizon; same valid-input mask",
+      "B256": "all sources in the same contiguous group, zero padding to group maximum horizon",
+      "B256_reversed": "same padded tensors and same B/T shapes, with source order reversed and restored after prediction"
+    },
+    "cpu_B1_reference_sha256": "5de1bfbf42cac29811eee58a6b2b334100322b390cdb0d538345ba77bb094bde",
+    "cpu_smoke": false,
+    "data": {
+      "data_fingerprint": "f3e17e76ea55389307780346ebf498bfa9bff80d9b73653b5928777e98e60bb7",
+      "kind": "cache",
+      "manifest_sha256": "b912960b336f97a1bc703cbe3c0160bf954e8691b2949cbf6273a1bd2dbf07f7",
+      "source_sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210"
+    },
+    "environment": {
+      "cuda": "12.8",
+      "cudnn": 91900,
+      "dependencies": {
+        "einops": "0.8.0",
+        "rotary-embedding-torch": "0.8.4",
+        "spikingjelly": "0.0.0.0.14"
+      },
+      "device": "cuda:0",
+      "device_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_properties": {
+        "compute_capability": [
+          12,
+          0
+        ],
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "total_memory_bytes": 101974081536,
+        "uuid": "e867373a-924b-418e-f03f-c0d7c6a86230"
+      },
+      "threads": 1,
+      "torch": "2.11.0+cu128"
+    },
+    "execution": "identical frozen model, GPU, runtime, float32, eval, state reset per forward; AMP and TF32 disabled; deterministic algorithms",
+    "interpretation": "Historical vs fresh B256 drift is reported separately. Fixed GPU hardware does not by itself exclude all batch-shape numerical effects.",
+    "official_test_access": false,
+    "panel_clean_reference_sha256": "ce37ffa0c1aaf8e1c3d96721dfe38259739b9586ba718b09d1ccc7e68f5de078",
+    "role": "Estimate hardware/runtime difference at B1, padding difference at B1, and batched execution difference at fixed padding. Reversed B256 keeps group composition and tensor shape fixed.",
+    "runner_sha256": "3d32f25572cafe6529f01483853e057821db5de9323b93621cb926e6c13371a1",
+    "scores": "Pinned public readout: sum over every padded time bin of softmax(logits); no new masking of output scores.",
+    "script_sha256": "cbddceaf5696a9159699b1018940aa642958b283ff6bed2c552d63828996df41",
+    "source_blobs": {
+      "configs/best_config_SSC_former.py": "9e0d97705eefa6060cb7f400360e826634cd5ae8",
+      "models/spikescr.py": "33cc3e2d68ae8e32f408e9357c3f822706294dd8",
+      "module/conv.py": "632d6319924a8ca9a0fbe67e7aa11b2467e46b46",
+      "module/spikscr_module.py": "1d212210378c5c8124f5e6c1f5a7bdbdae1677d1"
+    },
+    "source_count_requested": 9981,
+    "split": "validation only",
+    "state_dict_sha256": "b1651d836fbd76070ad6bcac863cd870904c8e65e1a8e5e18a2f0c30e25ec68c",
+    "version": "same-runtime-execution-controls-20260930-v1"
+  }
+}

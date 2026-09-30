@@ -1,0 +1,62 @@
+{
+  "contract_sha256": "159b0820e2995625685c8b597e0c83dead337c805ab48ea169ecbce5f4ed7454",
+  "payload": {
+    "D_scope": "all 25,820 originally class-changing candidates on both CPU and GPU; this is not a new exhaustive map of originally preserved candidates",
+    "candidate_chunk_size": 128,
+    "canonical_original_audit_device": "CUDA; the later full-validation CPU replay is a separate record",
+    "cpu_threads": 1,
+    "data_role": "frozen validation only; no training or test inference",
+    "official_test_access": false,
+    "panel_sha256": "ce37ffa0c1aaf8e1c3d96721dfe38259739b9586ba718b09d1ccc7e68f5de078",
+    "provenance": {
+      "audit_contract_sha256": "ded89cf6e33d61ab4ae6d24a51f920a69e9a9cef0e9ae88741a2f91edabeaa6e",
+      "checkpoint_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+      "geometry_sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222",
+      "history_contract_sha256": "0ec56d8ca12ea9395a7e9c0c3103b87cf6d742c7148cd080eae062ffb857d0f5",
+      "history_predictions_sha256": "7eed2566623c81553c5c86a5e6508d3761e630a176157db881c881e54de9215a",
+      "launcher_sha256": "baed6fd8c53f2549e69ee8d8043b011931d87f0e7fc8d5cee6566eec5a293c2c",
+      "support_sha256": "4f74ea2da4b30c34f47ffe7a4bdca835a79876933a7c9809d1ec4d68b50a6f76",
+      "wheel_sha256": {
+        "einops-0.8.0-py3-none-any.whl": "9572fb63046264a862693b0a87088af3bdc8c068fde03de63453cbbde245465f",
+        "rotary_embedding_torch-0.8.4-py3-none-any.whl": "8cf9e709fc0768b8da89f86314cdbe57a816d018a02bf29f2ea8e26bf1a54a34",
+        "spikingjelly-0.0.0.0.14-py3-none-any.whl": "9f43c8f3164909e8503d6b5488a16c07b4e5338c6a70529fca408593c4baf151"
+      }
+    },
+    "qk_intervention": "isolate sources at q_lif2/k_lif2 while retaining the exact public singleton convention",
+    "runtime": {
+      "CPU": {
+        "cuda": "12.8",
+        "cudnn": 91900,
+        "dependencies": {
+          "einops": "0.8.0",
+          "rotary-embedding-torch": "0.8.4",
+          "spikingjelly": "0.0.0.0.14"
+        },
+        "device": "cpu",
+        "device_name": "CPU",
+        "threads": 1,
+        "torch": "2.11.0+cu128"
+      },
+      "CPU_model": "AMD EPYC 9B45",
+      "GPU": {
+        "cuda": "12.8",
+        "cudnn": 91900,
+        "dependencies": {
+          "einops": "0.8.0",
+          "rotary-embedding-torch": "0.8.4",
+          "spikingjelly": "0.0.0.0.14"
+        },
+        "device": "cuda:0",
+        "device_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "threads": 1,
+        "torch": "2.11.0+cu128"
+      },
+      "GPU_uuid": "dfc554bf-7316-e774-5502-bc19cf9b1724",
+      "numpy": "2.1.3",
+      "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+      "python": "3.13.15"
+    },
+    "script_sha256": "f0b02c09fe2ebe927040967b99ea699779a6f8d8d499898332ff090934a69c79",
+    "version": "ssc-mechanism-device-controls-20260930-v1"
+  }
+}

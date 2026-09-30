@@ -36,4 +36,65 @@ The validation and test archives retain the original ordered source indices, lab
 
 ## Reproducibility boundaries
 
-The code verifies counts and candidate identities exactly. Statistical comparisons have their own explicitly recorded numerical policy. Do not interpret an intact ZIP, a passing subset or a successful file hash as a full model replay.
+The code verifies counts and candidate identities exactly. Statistical comparisons have their own explicitly recorded numerical policy. A passing subset or file hash does not establish a full model replay.
+
+## Search policies
+
+`data/search_policies/candidate_rankings.npz` concatenates all 100 sources in
+ascending source-ID order. `source_offsets` has 101 entries delimiting each
+source's candidate slice. Within a slice, candidate IDs are zero-based and
+follow the original enumeration. `ranked_candidate_index` and `move_scores`
+(in `candidate_policy_scores.npz`) have shape `[3,725070]`. Their source IDs,
+offsets and policy names must agree. Policy order is `runner_up`, `max_directional_gain`,
+`max_predicted_target_margin`. A rank contains within-source candidate IDs,
+not row numbers in the original globally ordered census.
+
+`runner_up_input_gradients.npz` stores `runner_up_input_gradients`, a ragged float32 sequence delimited by
+`gradient_offsets`; reshape each source to `[horizon,140]`. Its directional
+score is gradient at the destination minus gradient at the origin.
+`surrogate_clean_scores` and `rival_class` preserve the scores and target used.
+The input-gradient values, policy scores and ranks retain their original dtypes.
+Full 34-target gradient tensors and per-target directional gains were checked
+during compaction but are not duplicated here. The original per-source hashes,
+archive hash, target-max checks and runner-up parity are in
+`compaction_provenance.json`. Contracts and first-witness checks are included.
+
+## Count-readout replicas
+
+`data/replicas/source_results.csv` contains 100 source records for each of seeds
+341969035 (A) and 554720563 (B), with counts T0–T3 and adverse/corrective/lateral
+T3 directions. `paired_source_data.csv` aligns those records by source ID.
+These replicas use native 10 ms bins and 1,297,705 neighbors each; their
+denominators must not be pooled with the 725,070-neighbor SpikeSCR census.
+Their readout uses global and four-window integer final-layer spike counts.
+The source summaries, original contract and preregistration are preserved;
+raw replica hidden tensors and their complete candidate maps are not bundled.
+
+`validation_replica_A.npz` and `validation_replica_B.npz` each store
+`source_indices`, `labels`, `predictions`, and `[9981,35]` float32 `logits`.
+The recorded replay yields 7,214 and 7,239 correct labels. Original historical
+counts of 7,213 and 7,241 remain reported in the recorded summary; they were not
+silently substituted for the fresh replay.
+
+## Execution controls
+
+All full-validation records have 9,981 rows in ascending source-ID order.
+
+- `gpu_validation_predictions.npz` contains labels, native/padded horizons,
+  transformed-input hashes, and four `[9981,35]` float32 score matrices: native
+  singleton, padding-matched singleton, batch 256, and reversed batch 256.
+- `cpu_validation_predictions.npz` contains the separately recorded native CPU
+  singleton scores and predictions, identical input hashes and native horizons.
+- `qk_isolation_validation.npz` contains original and source-isolated batch score
+  matrices under both orders, all `[9981,35]` float32.
+- `paired_candidate_predictions.npz` contains the 25,820 original class-changing
+  candidates' canonical row IDs, coordinates, labels and transition codes, both
+  devices' `[25820,35]` float32 scores, and paired clean/candidate predictions.
+  Its `geometry_row_index` matches exactly the nonzero transition rows of
+  `candidate_records.npz`. Originally preserved candidates are not in this file.
+
+Original run contracts and summaries retain their logical hashes and environment
+records. Files were renamed descriptively without rewriting their bytes.
+Summaries additionally describe 408 padding-prefix diagnostic sources and three
+pair controls; their full diagnostic arrays are not included here. The
+array-only command reports only what it recomputes from the bundled arrays.

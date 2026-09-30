@@ -1,182 +1,142 @@
-# SpikeSCR Local Event Geometry
+# SpikeSCR local event geometry and execution controls
 
 [![Validation](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml)
 [![DOI](https://zenodo.org/badge/1383291350.svg)](https://doi.org/10.5281/zenodo.22936264)
 
-Research code and data accompanying **Stable predictions can hide substantial temporal changes in a high-accuracy spiking speech classifier** by **İsmail Can Dikmen**.
+Research code and retained results for **Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier** by **İsmail Can Dikmen**.
 
-[Overview](#overview) · [Quick start](#quick-start) · [Model replay](#model-replay) · [Repository contents](#repository-contents) · [Validation](#validation) · [Citation](#citation)
+[Findings](#main-findings) · [Quick start](#quick-start) · [Execution contract](#execution-contract) · [Model replay](#model-replay) · [Data coverage](#data-coverage) · [Citation](#citation)
 
 ## Overview
 
-Can a spiking speech classifier preserve its predicted word while its internal activity changes substantially?
+Aggregate accuracy does not describe where temporal vulnerability lies, how much internal activity changes, or which function a batched implementation actually evaluates.
 
-This study examines that question using a frozen [SpikeSCR](https://github.com/JackieWang9811/SpikeSCR) checkpoint on Spiking Speech Commands. For a fixed panel of 100 validation utterances, it exhaustively evaluates **725,070 neighboring inputs**, measures activation changes at **seven network boundaries**, and tests whether replacing a perturbed activation with its clean counterpart restores the original decision.
+This study audits a frozen [SpikeSCR](https://github.com/JackieWang9811/SpikeSCR) checkpoint on Spiking Speech Commands. It evaluates every distinct one-count transfer to an adjacent **5 ms bin**, within the same feature and input horizon, for a fixed panel of 100 validation utterances. The retained outcome map supports exact finite-population search comparisons and source-level statistics. Internal measurements and activation replacement distinguish stable decisions from stable representations. Execution controls separate padding, batch order and device effects.
 
-Each neighboring input moves one integrated count to the previous or next **5 ms time bin** within the same feature. The transformation preserves the input horizon and total count. The findings apply to this defined neighborhood and panel.
+The census contains **725,070 unique neighbors**, six activation-change metrics at seven boundaries, and **180,740 complete 35-class activation-replacement score vectors**. Completeness refers to the declared neighborhood and panel.
 
-The repository supports two workflows:
+## Main findings
 
-| Workflow | Purpose | Requirements |
-| --- | --- | --- |
-| **Recalculate the reported statistics** | Recompute numerical tables from the included predictions, activation metrics and intervention outputs. | Analysis dependencies; no GPU or raw dataset required. |
-| **Run the model again** | Generate new predictions, activation metrics and intervention outputs, then compare them with the released records. | Frozen checkpoint, verified upstream source and the documented inference environment. |
-
-The reproduction target is the technical experiment at the supplied checkpoint. The [training record](docs/TRAINING.md) documents how that checkpoint was obtained; independent retraining and manuscript presentation assets are outside this package's scope.
+- **Vulnerability is concentrated.** Thirteen of 84 initially correct sources admit adverse transitions. Five sources carry **93.21%** of the adverse candidates, even while source-equal expected accuracy rises from 84.00% to 84.54% under uniform neighbor selection.
+- **Informed search still incurs substantial cost.** The retained runner-up gradient ranking needs a common prefix of 5,612 candidates to find all 13 sensitive sources: **461,380 queries, or 73.45%** of the initially correct-source census. This prefix is a retrospective cost calculation; it does not provide the outcome densities obtained by enumeration.
+- **Decision and representation stability differ.** Large internal changes also occur when the predicted class is preserved. Branch replacement rates depend on whether sources or candidates receive equal weight; positive full-output replacements are pipeline controls.
+- **Nearly equal replica accuracies can mask a concentrated gap.** Secondary count-readout replicas achieve 72.28% and 72.53% validation accuracy but differ **5.21-fold** in class-changing candidates. Four sources drive the contrast; the adverse-rate ordering reverses within their common clean-correct cohort.
+- **Execution settings define the evaluated function.** Native CUDA singleton and batch-256 inference differ on **619 of 9,981 labels**. Reversing batch order changes 531 labels. Isolating logical sources at the two q/k LIF boundaries in each attention block removes every order-dependent score difference. Against padding-matched singleton inference, one label difference remains; score equivalence is not established.
 
 ## Experiment at a glance
 
-| Item | Recorded value |
+| Item | Recorded result |
 | --- | --- |
-| Dataset and input representation | Spiking Speech Commands; 35 classes; 700 channels integrated into 140 features |
-| Checkpoint | Training seed 312; selected epoch 282 |
-| Parameters | 3,302,416 total; 3,302,400 trainable; 16 fixed rotary-frequency parameters |
-| Validation / test benchmark | 8,617 / 9,981 correct; 17,247 / 20,382 correct |
-| Local audit | 100 validation utterances; 725,070 unique neighbors |
-| Preserved / adverse / corrective / lateral outcomes | 699,250 / 5,157 / 9,031 / 11,632 |
-| Event-weighted candidate count | 1,659,158 |
-| Initially correct / adverse-sensitive sources | 84 / 13 |
-| Internal measurements | Six activation-change metrics at seven boundaries |
-| Activation replacement | 25,820 class-changing candidates × seven boundaries = 180,740 patched score vectors |
+| Input | SSC, 35 classes; 700 channels integrated into 140 features; 5 ms bins |
+| Frozen checkpoint | Seed 312; selected epoch 282, stored zero-based epoch 281 |
+| Parameters | 3,302,416 total; 3,302,400 trainable; 16 fixed |
+| Validation benchmark, CUDA batch 256 | 8,617 / 9,981 correct, 86.3340% |
+| Validation audit path, native CUDA singleton | 8,592 / 9,981 correct, **86.0836%** |
+| Validation CPU singleton control | 8,591 / 9,981 correct, 86.0735% |
+| Original test benchmark, CUDA batch 256 | 17,247 / 20,382 correct, 84.6188% |
+| Local panel | 100 sources, 84 initially correct, 13 adverse-sensitive |
+| Preserved / adverse / corrective / lateral | 699,250 / 5,157 / 9,031 / 11,632 |
+| Event-weighted denominator | 1,659,158 |
+| Paired CPU/GPU replay | 25,794 / 25,820 labels agree, **99.8993%**; same 13 sensitive sources |
 
-**Preserved** means the predicted class stays the same. An **adverse** transition changes a correct prediction to an incorrect one; a **corrective** transition does the reverse. A **lateral** transition changes one incorrect class to another.
-
-The total parameter count includes 16 fixed rotary-frequency parameters. The checkpoint stores epoch 281 using zero-based indexing, corresponding to reported epoch 282.
+**Preserved** means the predicted class stays the same. **Adverse** changes a correct prediction to a wrong one; **corrective** changes a wrong prediction to the true class; **lateral** changes one wrong class to another. A source is one validation utterance; a candidate is one distinct neighboring input. Candidate moves are nested measurements, not independent statistical samples.
 
 ## Quick start
 
-Use **Python 3.13** for the analysis environment used by CI. Clone the repository and run the following commands from its root directory.
+Use **Python 3.13** for the analysis environment used by CI. These commands recompute results from included records with visible phase updates. They require no GPU or raw SSC download.
 
 ```bash
 git clone https://github.com/DrCanD/spikescr-local-event-geometry.git
 cd spikescr-local-event-geometry
-```
-
-### Linux and macOS
-
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-analysis.txt
 python -m pip install --no-build-isolation --no-deps -e .
 python -m ssc_geometry verify
 python -m ssc_geometry reproduce --out outputs/analysis_01
+python -m ssc_geometry extended-analyses --out outputs/extended_01
+python -m ssc_geometry execution-controls --out outputs/execution_01
 ```
 
-<details>
-<summary><strong>Windows PowerShell</strong></summary>
+On Windows PowerShell, create the environment with `python -m venv .venv` and substitute `.\.venv\Scripts\python.exe` for `python`; activation is optional.
 
-Use the environment's Python executable directly; activation is optional.
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-analysis.txt
-.\.venv\Scripts\python.exe -m pip install --no-build-isolation --no-deps -e .
-.\.venv\Scripts\python.exe -m ssc_geometry verify
-.\.venv\Scripts\python.exe -m ssc_geometry reproduce --out outputs/analysis_01
-```
-
-</details>
-
-`verify` checks the release files against the checksum manifest. `reproduce` recalculates benchmark classification metrics, outcome counts, source summaries, bootstrap intervals, internal contrasts, replacement rates and false-discovery-rate adjustments. Recorded summaries are used as comparison targets after calculation.
-
-| Output | Location |
+| Command | Recomputed evidence |
 | --- | --- |
-| Recomputed statistics | `outputs/analysis_01/statistics/` |
-| Full-precision CSV tables | `outputs/analysis_01/tables/` |
-| Numerical agreement and validation reports | `outputs/analysis_01/` |
+| `verify` | Every manifest hash and protected repository path |
+| `reproduce` | Original benchmark metrics, census, source statistics, internal contrasts, bootstrap/FDR and activation-replacement rates |
+| `extended-analyses` | Margin cutoff sensitivity, frozen single/multi-target gradient discovery, capped search costs and replica cohort decomposition |
+| `execution-controls` | Full-validation padding/order/device contrasts, q/k isolation and all original class-changing candidate replays |
 
-Use a new output directory for each run; existing results are never overwritten. Retain the repository alongside the installed package because the package alone does not include the research data. To run from another location, provide the repository explicitly: `python -m ssc_geometry --root /path/to/repository verify`.
+Each analysis writes JSON reports and full-precision CSV tables to its specified directory. Existing result directories are never overwritten. Retain the repository alongside the installed package: the Python package alone does not contain the research data. From another directory, use `python -m ssc_geometry --root /path/to/repository verify`.
+
+## Execution contract
+
+The **canonical decision census uses the unmodified public model, CUDA, batch size one, native input horizon, a reset before each forward, and the public time-summed softmax readout**. The batch-256 benchmark, CPU singleton replay and source-isolated diagnostic are separately identified conditions.
+
+Padding changes both the readout support and valid-prefix processing. On the same GPU, padding alone changes 344 validation labels. Q/k source isolation removes the 531 original batch-order changes and reproduces padding-matched singleton labels on **9,980 of 9,981 inputs**. The residual score displacement has median 1.91e-6 but maximum **3.7136**; the maximum is not a machine-precision discrepancy.
+
+CPU/GPU candidate replay covers all **25,820 originally class-changing candidates**. All 13 sensitive sources and their first canonical adverse witnesses persist on both devices. The 699,250 originally class-preserved candidates were not replayed in this device control, so additional adverse incidence outside that cohort is not estimated.
+
+The checkpoint was trained using the public coupled batch path. Source isolation is a diagnostic intervention that preserves the public singleton convention; a conventional head/time permutation would define a third function for which these weights were not optimized and which was not evaluated. See [execution controls](docs/EXECUTION_CONTROLS.md) for mechanisms, paired counts, score distributions and control limits.
 
 ## Model replay
 
-First prepare a separate inference environment using the [reproduction protocol](docs/REPRODUCIBILITY.md#configure-inference-deliberately). The recorded reference uses **PyTorch 2.11.0+cu128 on CUDA**. The protocol also provides a CPU diagnostic setup.
-
-The model source is pinned to upstream commit [`095f418`](https://github.com/JackieWang9811/SpikeSCR/tree/095f418f53b3b24c21caf558225c65ad674d44b1). Eight source files are downloaded and checked against their recorded Git blob hashes before import.
+Create a separate inference environment following the [reproduction protocol](docs/REPRODUCIBILITY.md#configure-inference-deliberately). The recorded canonical environment uses **PyTorch 2.11.0+cu128 on CUDA**. Eight source files are pinned to upstream commit [`095f418`](https://github.com/JackieWang9811/SpikeSCR/tree/095f418f53b3b24c21caf558225c65ad674d44b1) and hash-checked before import.
 
 ```bash
 python scripts/prepare_upstream.py
 python -m ssc_geometry checkpoint
-
-# Check four fixed probes, covering all four transition types.
 python scripts/run_singleton_audit.py --mode preflight --out outputs/preflight_01
-
-# Evaluate the complete panel and all declared interventions.
 python scripts/run_singleton_audit.py --mode full --out outputs/singleton_01
 ```
 
-A full audit covers all 100 sources, 725,070 candidates and 25,820 sets of seven activation replacements. Newly computed outputs are compared with the released records, and the run stops on a conformance failure.
+The full command compares new model outputs with all 100 sources, 725,070 candidates and 25,820 seven-boundary replacement sets. Repeat the same command with `--resume` after interruption; verified completed source archives are reused. A complete fresh CUDA conformance report for this entire workload is **not included**. The later class-changing device replay is narrower evidence.
 
-To resume an interrupted run, repeat the same command with `--resume`. Completed source archives are verified before reuse; an incomplete source is recomputed.
+Benchmark replay retains its batch size, order and padding; it does not substitute for the canonical audit. The [training record](docs/TRAINING.md) documents checkpoint provenance. Independently retraining the models and preparing manuscript presentation assets remain separate workflows.
 
-**Batch size is part of the experiment:** the local audit uses one sample per forward pass; the benchmark uses batches of 256. Keep these execution paths separate. See the protocol for [benchmark replay](docs/REPRODUCIBILITY.md#replay-the-benchmark-only-when-intended) and [raw validation-data checks](docs/REPRODUCIBILITY.md#validate-the-raw-validation-input).
+## Data coverage
 
-## Repository contents
-
-| Path | Contents |
+| Path | Included material |
 | --- | --- |
-| [`src/ssc_geometry/`](src/ssc_geometry/) | Input transforms, neighborhood enumeration, statistics and model-replay helpers |
-| [`scripts/`](scripts/) | Upstream-source preparation, singleton audit and benchmark replay |
-| [`configs/`](configs/) | Experiment settings, recorded environment and upstream hashes |
-| [`data/model/`](data/model/) | Original frozen checkpoint |
-| [`data/panel/`](data/panel/) | Transformed validation inputs, source manifest and clean score vectors |
-| [`data/neighborhood/`](data/neighborhood/) | Canonical candidate records and source geometry |
-| [`data/internal/`](data/internal/) | Activation-change metrics and complete patched score vectors |
+| [`data/model/`](data/model/), [`data/panel/`](data/panel/) | Frozen checkpoint, transformed 100-source panel and full clean scores |
+| [`data/neighborhood/`](data/neighborhood/) | Every canonical candidate record and source summary |
+| [`data/internal/`](data/internal/) | Six metrics at seven boundaries and full patched score vectors |
 | [`data/benchmark/`](data/benchmark/) | Recorded validation and test predictions |
-| [`data/reference/`](data/reference/) | Numerical summaries used for comparison |
-| [`tests/`](tests/) | Operator, analysis, integrity and model-loading checks |
-| [`validation/`](validation/) | Executed checks and their provenance |
-| [`checksums/`](checksums/) | File-integrity manifest and SHA-256 listing |
+| [`data/search_policies/`](data/search_policies/) | All frozen policy scores/ranks, runner-up input gradients, contracts and witness verification |
+| [`data/replicas/`](data/replicas/) | Source-level count-readout records, paired cohorts and full-validation scores |
+| [`data/execution_controls/`](data/execution_controls/) | CPU/GPU full-validation scores, q/k isolation outputs, paired candidate scores and original run contracts/summaries |
+| [`data/reference/`](data/reference/) | Numerical comparison targets |
+| [`scripts/recorded/`](scripts/recorded/) | Byte-preserved experiment sources and their original execution context |
+| [`validation/`](validation/), [`checksums/`](checksums/) | Executed checks, provenance and integrity manifests |
 
-### Artifact coverage
+The compact search archive preserves policy scores and ranks exactly. All-target gradients and directional gains were independently checked when extracting those ranks; their full tensors are not duplicated here. The original raw hidden tensors and all unpatched census score vectors are also outside the original package. Padding-prefix ablations and three pair controls currently have recorded summaries; their full per-source diagnostic arrays are not bundled. These boundaries are detailed in the [data schema](docs/DATA_SCHEMA.md) and [provenance](docs/provenance.json).
 
-The release includes every candidate's prediction and scalar score descriptors, six activation-change metrics at each boundary, and all **35-class patched score vectors**. It does not store every raw hidden-state tensor or every full unpatched candidate score vector. Candidate replay therefore compares the recorded prediction and score descriptors; clean and patched score vectors are checked in full.
-
-The transformed 100-source validation panel is included. Raw SSC train, validation and test event files are obtained separately when needed. Source hashes and derivation details are documented in the [provenance record](docs/provenance.json).
+Raw SSC event files are obtained separately. The included full-validation input hashes and horizons establish the pairing of the recorded execution conditions; they are not a substitute for raw inputs when running fresh inference.
 
 ## Validation
 
-| Check | Recorded status |
-| --- | --- |
-| File integrity and statistical regeneration | Passed; see the [validation records](validation/README.md). |
-| Real-model CPU preflight | Four fixed probes passed, including 64 forward passes and a resume check. |
-| Complete model replay in the reference CUDA environment | A full conformance report is not yet included. |
-
-[GitHub Actions](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml) runs recorded-result checks and a separate real-model CPU preflight. Its passing status covers those checks, rather than the complete 725,070-candidate replay. Recorded CPU diagnostics include a source-level score discrepancy; their scope is described in the [validation notes](validation/README.md#model-replay). Full CPU and cross-device equivalence have not been established.
-
-The original environment is documented only to the extent recoverable from the experiment records. Use each replay's environment and numerical conformance report to assess its result.
-
-<details>
-<summary><strong>Numerical comparison and integrity</strong></summary>
-
-Counts and class outcomes are checked exactly. Statistical comparisons allow `1e-6` for designated float32-derived descriptive means and confidence limits, and `1e-12` for the remaining quantities, including p-values, q-values and recovery rates. Every numerical difference is reported. Model-replay tolerances are specified separately in [`configs/experiment.json`](configs/experiment.json).
-
-Source utterances are the statistical sampling units; candidate moves are nested measurements. A separate implementation recounts the outcome categories, and SciPy independently checks the Spearman coefficient and internal FDR calculations.
-
-SHA-256 checks establish consistency with the included manifest. Identify the repository commit when recording or citing a reproduction run.
-
-To run the test suite in an activated environment:
+[GitHub Actions](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml) runs all retained-result checks, both added analysis commands and a separate four-probe real-model CPU preflight. Its passing status covers that workload. Historical checks and the source-4959 CPU score discrepancy are retained in the [validation records](validation/README.md).
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-Tests that require PyTorch or the verified upstream source report a skip when their prerequisites are unavailable. The dedicated real-model CI job requires those prerequisites.
+PyTorch-dependent tests report a skip when their prerequisites are absent. The dedicated real-model CI job installs those prerequisites. Predictions and counts are checked exactly; float32 descriptive statistics and model replay have their separately documented tolerances. Hash checks establish consistency with the supplied manifest, so retain the commit identifier with any reproduction.
 
-</details>
+## Related work
+
+Yan, Zhu, Tang, Cai, Liu and Wong, [*Latency and accuracy tradeoffs in Spiking Neural Networks*](https://doi.org/10.48550/arXiv.2609.35260), arXiv preprint, 2026. Their construction shows that varying a layer's delay can preserve its spike counts while changing downstream firing and producing non-monotone accuracy. The present study measures a distinct, finite input-retiming neighborhood in a trained classifier. Their hardware reconstruction also motivates making the implemented time-axis convention explicit; it does not validate the batch layout examined here.
 
 ## Citation
 
-Please cite the associated manuscript and identify the repository commit used in your work:
+> İsmail Can Dikmen. *Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier.* Manuscript, 2026.
 
-> İsmail Can Dikmen. *Stable predictions can hide substantial temporal changes in a high-accuracy spiking speech classifier.*
+Software metadata is in [`CITATION.cff`](CITATION.cff). Identify the repository commit as well as the archive version you use.
 
-Software citation metadata is available in [`CITATION.cff`](CITATION.cff).
-
-The software archive is available on Zenodo: [all versions](https://doi.org/10.5281/zenodo.22936264) and [the archived `v0.1.0rc1` version](https://doi.org/10.5281/zenodo.22936265). Use the version-specific DOI and repository commit to identify the exact materials used.
+The [concept DOI](https://doi.org/10.5281/zenodo.22936264) groups published versions. [Original archive DOI 10.5281/zenodo.22936265](https://doi.org/10.5281/zenodo.22936265) covers the original technical package with software version `0.1.0rc1`; Git tags `v0.1.0rc1` and `v1.0` identify the same original commit. **The later execution controls, search extensions and replica analysis on current `main` are not included in that original DOI version.** Current development metadata uses `0.2.0.dev0`; no new release or archival DOI is asserted. See [release status](docs/RELEASING.md).
 
 ## Attribution and terms
 
-The study uses the [SpikeSCR implementation](https://github.com/JackieWang9811/SpikeSCR) and the Spiking Speech Commands dataset. See [third-party notices](docs/THIRD_PARTY_NOTICES.md) for source references, attribution and dataset terms.
+The study uses the [SpikeSCR implementation](https://github.com/JackieWang9811/SpikeSCR) and SSC dataset. Retain the [third-party attributions](docs/THIRD_PARTY_NOTICES.md).
 
-Original project code is licensed under [MIT](LICENSE). Project-authored research outputs, documentation and the frozen model weights are licensed under [CC BY 4.0](LICENSES/CC-BY-4.0.txt), within the author's rights. The transformed SSC panel retains the dataset's CC BY 4.0 attribution. See [`LICENSE_NOTICE.md`](LICENSE_NOTICE.md) for the file-level scope; upstream source and dependencies retain their own terms.
+Original project software is licensed under [MIT](LICENSE). Project-authored research outputs, documentation and frozen model weights use [CC BY 4.0](LICENSES/CC-BY-4.0.txt), within the author's rights; transformed SSC material retains its dataset attribution. See [LICENSE_NOTICE.md](LICENSE_NOTICE.md) for file-level scope. Third-party software retains its own terms.

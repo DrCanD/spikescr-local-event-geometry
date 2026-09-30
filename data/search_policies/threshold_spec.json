@@ -1,0 +1,14 @@
+{
+  "version": "threshold-sensitivity-20260930-v1",
+  "timing": "Specified before this numerical sweep, after the parent audit and prior quartile analysis; retrospective sensitivity only.",
+  "population": "All 84 clean-correct EB18 sources; no exclusion based on adverse outcomes.",
+  "percent_thresholds": [10, 25, 50],
+  "selected_source_count": "ceil(percent * 84 / 100): 9, 21, 42",
+  "rankings": ["raw_margin", "margin_per_horizon"],
+  "rank_tie_break": "ascending source_index",
+  "total_candidate_query_budgets": [840, 8400, 84000],
+  "allocation": "Identical capped proportional allocation and largest-remainder rounding to the original retained-map analysis; source-ID tie break; uniform overflow only once focus capacity is exhausted.",
+  "sampling": "Uniform without replacement within each allocated source.",
+  "outcomes": "Used only after allocation to compute exact finite-population detection expectations.",
+  "new_inference": 0
+}

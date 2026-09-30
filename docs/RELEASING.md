@@ -1,103 +1,65 @@
 # Releases and Zenodo archival
 
-The package version `0.1.0rc1` corresponds to GitHub tag `v0.1.0rc1`.
-The [GitHub releases page](https://github.com/DrCanD/spikescr-local-event-geometry/releases)
-is the authoritative source for publication status.
+## Published original package
 
-## Repository metadata
+The original technical package was published on 24 September 2026. Its software
+metadata uses `0.1.0rc1`. Git tags `v0.1.0rc1` and `v1.0` both point to commit
+`a225e8b72466a1a9308ce8afa26da28269681104`; the published GitHub release is
+named `v1.0 — Technical reproduction package`.
 
-Use the following description in GitHub's **About** settings:
+- [Published GitHub release](https://github.com/DrCanD/spikescr-local-event-geometry/releases/tag/v1.0)
+- [Original version DOI 10.5281/zenodo.22936265](https://doi.org/10.5281/zenodo.22936265)
+- [Concept DOI 10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264)
 
-> Code, frozen checkpoint and data for local event geometry and activation-replacement analysis of SpikeSCR on Spiking Speech Commands.
+The original archive contains the checkpoint, panel, complete decision census,
+internal metrics, activation-replacement scores and original reproduction tools.
+Later GitHub documentation commits do not change that immutable archive.
 
-Suggested topics:
+## Current development main
 
-`spiking-neural-networks`, `speech-recognition`, `spiking-speech-commands`,
-`spikescr`, `neuromorphic-computing`, `activation-replacement`,
-`reproducible-research`
+Development metadata uses `0.2.0.dev0`. Current main adds:
 
-After Zenodo has created the archival record, use its DOI landing-page URL for
-the repository's website field.
+- A manuscript title and contribution narrative aligned with the completed
+  source-level, search and execution analyses.
+- Exact retained-map recomputation of 10/25/50 percent margin policies and
+  single- and multi-target gradient discovery, including capped prefix costs.
+- Paired count-readout replica records, validation scores and the four-source
+  decomposition of the class-change gap.
+- Full-validation CPU/CUDA scores, padding and order controls, q/k-isolated
+  batch outputs, and paired device replay of all 25,820 original class-changing
+  candidates.
+- Byte-preserved executed sources, original logical contracts, provenance,
+  additional numerical references and automated analysis checks.
 
-## Publish in this order
+These later records are **not covered by the original version DOI**. No
+replacement archive, new release date or new version-specific DOI is asserted
+by the development citation metadata. Identify the exact GitHub commit when
+using these files until a subsequent archive is published.
 
-1. **Check the license scope.** Original project software uses MIT; research
-   artifacts, documentation and model weights use CC BY 4.0 within the author's
-   rights. Keep [LICENSE_NOTICE.md](../LICENSE_NOTICE.md), citation metadata and
-   the [dataset and upstream terms](THIRD_PARTY_NOTICES.md) consistent.
-2. **Connect GitHub to Zenodo and enable this repository.** In Zenodo's profile
-   menu, open **GitHub**, synchronize repositories if needed, and enable
-   `DrCanD/spikescr-local-event-geometry`.
-3. **Finalize the release commit.** Keep `CITATION.cff` and `pyproject.toml`
-   versions consistent, validate citation metadata, and refresh both checksum
-   files after any tracked-file change. Require a passing file-integrity check
-   and the repository's two CI jobs for the selected commit.
-4. **Publish the GitHub release.** Create the tag from the verified commit and
-   use the release notes below. For `v0.1.0rc1`, mark the release as a pre-release.
-   A saved draft is preparation only; publish after the Zenodo repository
-   integration is enabled and the metadata is final.
-5. **Verify the Zenodo record.** Wait for processing, check that the archived
-   version, files, author, license and citation metadata are correct, and retain
-   the assigned DOI.
-6. **Add the DOI links.** Add the DOI to `CITATION.cff`, a DOI badge to the README,
-   and the DOI landing-page URL to the About website field. Refresh checksums
-   for this follow-up documentation commit. Keep the published release tag
-   fixed; later changes belong to subsequent commits or releases.
+## Prepare the next archived release
 
-`CITATION.cff` supplies the citation metadata. An additional `.zenodo.json` is
-unnecessary unless Zenodo-specific fields are needed; when both files exist,
-Zenodo gives `.zenodo.json` precedence.
+1. Run all retained-result commands and require both GitHub Actions jobs to
+   pass on the chosen commit. Retain their precise coverage, including the
+   absence of a complete fresh CUDA census conformance report.
+2. Keep `pyproject.toml`, the package version and `CITATION.cff` consistent.
+   Finalize the selected release version and date; refresh both checksum files.
+3. Include the full expanded source data in the next Zenodo version under the
+   existing concept DOI. The compact GitHub copy omits full all-target gradient
+   tensors, complete replica candidate maps and padding-prefix diagnostic
+   arrays; specify these boundaries and include the corresponding full records
+   in the archival package when available.
+4. Verify the published files, checksums, author, licenses and assigned
+   version-specific DOI before updating citation metadata. A draft is not a
+   published archive.
+5. Keep existing tags fixed. A new release uses a new tag at its verified commit.
 
-Official guidance: [enable a repository](https://help.zenodo.org/docs/github/enable-repository/),
-[archive a GitHub release](https://help.zenodo.org/docs/github/archive-software/github-upload/),
-[citation metadata](https://help.zenodo.org/docs/github/describe-software/citation-file/),
-and [licenses](https://help.zenodo.org/docs/deposit/describe-records/licenses/).
+The repository's [releases page](https://github.com/DrCanD/spikescr-local-event-geometry/releases)
+and published DOI record determine release status.
 
-## Release notes for v0.1.0rc1
+## Attribution and licenses
 
-**Title:** `v0.1.0rc1 — Technical reproduction package`
-
-This release candidate accompanies *Stable predictions can hide substantial
-temporal changes in a high-accuracy spiking speech classifier* by İsmail Can
-Dikmen. It supports reproduction of the technical experiment at the supplied
-frozen SpikeSCR checkpoint on Spiking Speech Commands.
-
-### Included
-
-- Frozen checkpoint, transformed 100-utterance validation panel, clean scores
-  and recorded benchmark predictions.
-- All 725,070 candidate records, six activation-change metrics at seven network
-  boundaries, and 180,740 complete 35-class activation-replacement score vectors.
-- Statistical regeneration, model-replay tools, a hash-verified upstream-source
-  preparation script, pinned dependencies and numerical conformance checks.
-- Data schemas, provenance, reproduction instructions, SHA-256 manifests and
-  recorded validation results.
-
-### Licenses
-
-Original project software is licensed under MIT. Project-authored research
-outputs, documentation and the frozen model weights are licensed under
-CC BY 4.0, within the author's rights. The transformed SSC panel retains the
-dataset's CC BY 4.0 attribution; upstream source and dependencies retain their
-own terms. See `LICENSE_NOTICE.md` for the file-level scope.
-
-### Validation scope
-
-Recorded-result integrity and statistical regeneration checks pass. The recorded
-real-model CPU preflight covers four fixed probes and 64 forward passes, with a
-resume check. A full conformance report for all 725,070 candidates in the
-reference CUDA environment is not yet included. Full CPU and cross-device
-equivalence have not been established; see the validation notes for the scope
-of recorded diagnostics.
-
-The package includes candidate predictions and scalar score descriptors, but
-not every full unpatched candidate score vector or raw hidden-state tensor.
-Clean and activation-replacement score vectors are included in full. Raw SSC
-event files are obtained separately for the workflows that require them.
-
-### Getting started
-
-Follow the repository README's **Quick start** to verify the files and
-recalculate the statistics. Follow **Model replay** and the reproduction protocol
-to execute the frozen model. Preserve the release tag and commit identifier
-with each reproduction run.
+Original project software uses MIT. Project-authored research outputs,
+documentation and frozen model weights use CC BY 4.0 within the author's
+rights. SSC attribution and upstream software terms remain in force; see
+[LICENSE_NOTICE.md](../LICENSE_NOTICE.md) and
+[third-party notices](THIRD_PARTY_NOTICES.md).

@@ -1,0 +1,55 @@
+{
+  "contract_sha256": "549255935b930a870b40869b7938bb0af29f097ea4e8ed2ab86c7c46ca9b1a57",
+  "payload": {
+    "acceptance": "100-source canonical score tolerance 1e-4; every surrogate forward bit-exact to its current eval forward, including all LIF spikes.",
+    "budgets_per_source": [
+      1,
+      10,
+      100,
+      1000
+    ],
+    "candidate_outcomes": "Frozen and saved ranks are looked up retrospectively in the canonical map.",
+    "checkpoint_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+    "data": {
+      "data_fingerprint": "f3e17e76ea55389307780346ebf498bfa9bff80d9b73653b5928777e98e60bb7",
+      "kind": "cache",
+      "manifest_sha256": "b912960b336f97a1bc703cbe3c0160bf954e8691b2949cbf6273a1bd2dbf07f7",
+      "source_sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210"
+    },
+    "direction": "input_gradient[to,feature] - input_gradient[from,feature]",
+    "environment": {
+      "cuda": null,
+      "cudnn": null,
+      "dependencies": {
+        "einops": "0.8.0",
+        "rotary-embedding-torch": "0.8.4",
+        "spikingjelly": "0.0.0.0.14"
+      },
+      "device": "cpu",
+      "device_name": "CPU",
+      "threads": 1,
+      "torch": "2.11.0+cpu"
+    },
+    "frozen_runner_sha256": "3d32f25572cafe6529f01483853e057821db5de9323b93621cb926e6c13371a1",
+    "geometry_sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222",
+    "objective": "For each c != clean_prediction: sum_time softmax(logits)[c] - sum_time softmax(logits)[clean_prediction].",
+    "official_test_access": false,
+    "panel_sha256": "ce37ffa0c1aaf8e1c3d96721dfe38259739b9586ba718b09d1ccc7e68f5de078",
+    "policies": {
+      "max_directional_gain": "max over all 34 directional gains",
+      "max_predicted_target_margin": "max over all 34 (clean target margin + directional gain)"
+    },
+    "script_sha256": "bf7aab788fcf7c22c6004408c771b593fc6be1a4f025d46202e3ac6dcf55529d",
+    "source_blobs": {
+      "configs/best_config_SSC_former.py": "9e0d97705eefa6060cb7f400360e826634cd5ae8",
+      "models/spikescr.py": "33cc3e2d68ae8e32f408e9357c3f822706294dd8",
+      "module/conv.py": "632d6319924a8ca9a0fbe67e7aa11b2467e46b46",
+      "module/spikscr_module.py": "1d212210378c5c8124f5e6c1f5a7bdbdae1677d1"
+    },
+    "state_dict_sha256": "b1651d836fbd76070ad6bcac863cd870904c8e65e1a8e5e18a2f0c30e25ec68c",
+    "surrogate": "pinned public ATan alpha=5; detach_reset=True",
+    "targets": "All 34 classes other than frozen clean predicted class; increasing class index.",
+    "tie_break": "ascending canonical candidate_index",
+    "version": "multi-target-20260930-v1"
+  }
+}

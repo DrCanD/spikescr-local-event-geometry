@@ -1,14 +1,15 @@
 cff-version: 1.2.0
 message: "If you use this software or its recorded results, cite this software and the associated manuscript. Identify the release version and repository commit used."
 type: software
-title: "Local event geometry in a frozen spiking speech classifier"
-version: 0.1.0rc1
-doi: 10.5281/zenodo.22936265
+title: "SpikeSCR local event geometry and execution controls"
+version: 0.2.0.dev0
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22936264
-    description: "Concept DOI covering all archived versions of this software."
-date-released: 2026-09-24
+    description: "Concept DOI grouping published archive versions; current development main is not yet archived."
+  - type: doi
+    value: 10.5281/zenodo.22936265
+    description: "Original archive with software version 0.1.0rc1; excludes later execution controls and extended analyses."
 # This is the software license. Non-code artifacts have the separate scope below.
 license: MIT
 repository-code: "https://github.com/DrCanD/spikescr-local-event-geometry"
@@ -24,7 +25,12 @@ abstract: >-
   changes at seven network boundaries, and records 180,740 activation-replacement
   score vectors. The package includes the frozen checkpoint, transformed inputs,
   recorded outputs, statistical regeneration, and model-replay tools with
-  numerical conformance checks. Validation coverage and replay limitations are
+  numerical conformance checks. Later records add finite margin/gradient search
+  comparisons, paired count-readout replicas, full-validation padding and q/k
+  isolation controls, and paired CPU/GPU replay of 25,820 class-changing
+  candidates. The associated manuscript is Aggregate accuracy conceals
+  concentrated temporal vulnerability in a spiking speech classifier.
+  Validation coverage and replay limitations are
   documented in the repository. Original project software is licensed under MIT;
   project-authored research outputs, documentation and model weights are licensed
   under CC BY 4.0, within the author's rights. Dataset attribution and third-party

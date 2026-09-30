@@ -1,0 +1,49 @@
+{
+  "contract_sha256": "f60737cc7abec092eb0048d979de17d2a605671569d2d67aee345585174041c4",
+  "payload": {
+    "budgets": [
+      1,
+      10,
+      100,
+      1000
+    ],
+    "checkpoint_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
+    "data": {
+      "data_fingerprint": "f3e17e76ea55389307780346ebf498bfa9bff80d9b73653b5928777e98e60bb7",
+      "kind": "cache",
+      "manifest_sha256": "b912960b336f97a1bc703cbe3c0160bf954e8691b2949cbf6273a1bd2dbf07f7",
+      "source_sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210"
+    },
+    "environment": {
+      "cuda": null,
+      "cudnn": null,
+      "dependencies": {
+        "einops": "0.8.0",
+        "rotary-embedding-torch": "0.8.4",
+        "spikingjelly": "0.0.0.0.14"
+      },
+      "device": "cpu",
+      "device_name": "CPU",
+      "threads": 1,
+      "torch": "2.11.0+cpu"
+    },
+    "geometry_sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222",
+    "gradient": "one clean fixed-runner-up margin-drop surrogate backward; only LIF train mode; BN/dropout eval",
+    "inference": "unmodified public model semantic and computational batch size1, float32, deterministic, AMP/TF32off",
+    "official_test_access": false,
+    "panel_clean_reference_sha256": "ce37ffa0c1aaf8e1c3d96721dfe38259739b9586ba718b09d1ccc7e68f5de078",
+    "preprocessing": "EB18 5ms/5units; source-specific horizon, first-event-relative time; no augmentation/padding to200",
+    "runner_sha256": "3d32f25572cafe6529f01483853e057821db5de9323b93621cb926e6c13371a1",
+    "score_atol": 0.0001,
+    "source_blobs": {
+      "configs/best_config_SSC_former.py": "9e0d97705eefa6060cb7f400360e826634cd5ae8",
+      "models/spikescr.py": "33cc3e2d68ae8e32f408e9357c3f822706294dd8",
+      "module/conv.py": "632d6319924a8ca9a0fbe67e7aa11b2467e46b46",
+      "module/spikscr_module.py": "1d212210378c5c8124f5e6c1f5a7bdbdae1677d1"
+    },
+    "state_dict_sha256": "b1651d836fbd76070ad6bcac863cd870904c8e65e1a8e5e18a2f0c30e25ec68c",
+    "tie_break": "ascending canonical candidate_index",
+    "upstream_commit": "095f418f53b3b24c21caf558225c65ad674d44b1",
+    "version": "singleton-validation-gradient-20260929-v2"
+  }
+}

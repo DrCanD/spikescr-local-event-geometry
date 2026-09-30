@@ -1,0 +1,25 @@
+{
+  "status": "Fixed before this numerical sweep; retrospective to previously observed audit data",
+  "population": "84 initially correct sources in canonical EB18",
+  "input_source_table": "../../data/eb18/EB18_EXACT_B1_SOURCE_GEOMETRY.csv",
+  "ranking_inputs": ["raw clean top-two margin", "clean top-two margin divided by source horizon_steps"],
+  "ranking_tie_break": "ascending source_index",
+  "schemes": {
+    "uniform": "Equal source weights across all 84 sources",
+    "lowest_quartile": "Equal positive weights on the 21 lowest-margin sources; all other initial weights zero",
+    "lowest_half": "Equal positive weights on the 42 lowest-margin sources; all other initial weights zero",
+    "half_uniform_half_quartile": "50 percent weight on uniform84 plus 50 percent weight on uniform lowest21",
+    "half_uniform_half_linear_rank": "50 percent weight on uniform84 plus 50 percent weight proportional to 85-rank (rank1 is lowest margin)"
+  },
+  "primary_comparison": "half_uniform_half_quartile versus uniform at equal total candidate budgets",
+  "sensitivity_comparisons": "hard quartile, hard half, linear-rank mixture; raw versus horizon-normalized clean-margin rank",
+  "headline_budgets": [840, 8400, 84000],
+  "curve_budgets": [84, 168, 420, 840, 1680, 4200, 8400, 16800, 42000, 84000, 168000, 336000, 628171],
+  "allocation": "Capped proportional allocation in real numbers, then floor and assign remaining units by largest fractional remainders, ties ascending source_index. A saturated hard-focus policy assigns overflow uniformly to remaining uncapped sources.",
+  "candidate_sampling": "Uniform distinct candidates without replacement independently within each source, using the allocated integer count",
+  "outcome_use": "Only after allocation, to compute exact finite-population hypergeometric coverage; never used in weights, ranking, caps, redistribution, or budgets",
+  "metrics": ["expected vulnerable-source discoveries out of 13", "probability of finding all13 vulnerable sources", "expected adverse candidates sampled", "expected fraction of total adverse mass in discovered sources"],
+  "cost": "Number of hypothetical candidate forward evaluations; common clean-source scores are already available. No new model inference occurs in this computation.",
+  "no_tuning": "No scheme coefficient, threshold, or budget is chosen by maximizing measured outcomes; no new policy is added after seeing the sweep",
+  "interpretation": "Fixed-panel retrospective policy comparison; no held-out policy generalization or empirical runtime/energy claim"
+}
