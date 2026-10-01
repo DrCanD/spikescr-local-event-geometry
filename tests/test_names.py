@@ -21,6 +21,7 @@ PATHS = re.compile(r'/content/|MyDrive|[A-Za-z]:\\|/home/|/Users/|/tmp/|Colab')
 DATES = re.compile(r'_2026\d{4}|2026092\d|2026093[01]')           # date-stamped names and version labels
 VOCABULARY = re.compile(r'\brevision\b|\brecorded\b|\bhistorical\b|byte-preserved')  # user-facing prose only
 SHA = re.compile(r'\b[0-9a-f]{40,64}\b')
+SEED = re.compile(r'seed[ =:_]+\d{8}')                            # the bootstrap seed 20260929 is a number, not a date label
 PROSE = ('README.md', 'CITATION.cff', 'LICENSE_NOTICE.md')
 
 
@@ -56,7 +57,7 @@ class ForbiddenStringTests(unittest.TestCase):
             if path.suffix in ('.npz', '.pt') or not path.is_file() or path.name == 'test_names.py':
                 continue
             relative = path.relative_to(ROOT).as_posix()
-            text = SHA.sub('', path.read_text(encoding='utf-8', errors='replace'))
+            text = SEED.sub('', SHA.sub('', path.read_text(encoding='utf-8', errors='replace')))
             found = set(PATHS.findall(text))
             if path.suffix == '.json':
                 strings = list(json_strings(json.loads(text if path.name != 'records.json' else path.read_text(encoding='utf-8'))))

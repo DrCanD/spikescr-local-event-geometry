@@ -1,11 +1,24 @@
-# Recorded training setup
+# The checkpoint
 
-The analysis target is the released checkpoint, not a distribution over independently trained models. The checkpoint file is byte-identical to the selected training output. Its stored zero-based epoch is 281, corresponding to epoch 282 in the manuscript.
+The analysis target is the released checkpoint (`data/model/checkpoint.pt`), not a distribution over independently
+trained models. The file is the selected training output as saved; its stored zero-based epoch is 281 (epoch 282 in
+the manuscript). `configs/experiment.json` holds its file hash and tensor-state digest; `python -m ssc_geometry checkpoint`
+checks both and counts 3,302,416 parameters (3,302,400 trainable, 16 fixed rotary frequencies).
 
-The recorded setup uses seed 312, 300 epochs, AdamW at learning rate 0.005 and weight decay 0.01, cosine scheduling with T_max 40, and the upstream time-neuron masking augmentation. The input override is 5 ms instead of the pinned public configuration's 10 ms default. Five adjacent input channels are combined into one of 140 features. The network uses two blocks, width 256, 16 attention heads and local kernel size 31.
+Training setup (Supplementary S1): seed 312, 300 epochs, AdamW at learning rate 0.005 with weight decay 0.01, cosine
+schedule with T_max 40, the upstream time-neuron masking augmentation, 5 ms input bins (the pinned public
+configuration defaults to 10 ms), five adjacent input channels combined into one of 140 features, two blocks of width
+256 with 16 attention heads and local kernel size 31, batch size 256.
 
-The upstream source file `Training/main_former_v2_ssc_spikescr.py` is one of the eight hash-checked files downloaded by the source preparation program. It documents the public training implementation. It is not presented as a drop-in reproduction of every historical wrapper, preprocessing cache and random-number state used to obtain this checkpoint.
+The upstream file `Training/main_former_v2_ssc_spikescr.py` is one of the eight hash-checked files that
+`scripts/prepare_upstream.py` downloads; it documents the public training implementation but is not a drop-in
+reproduction of the wrappers, preprocessing cache and random-number state used to obtain this checkpoint. No
+retraining was run for this repository, and no tested from-scratch training command is included; independent
+training reproducibility should be reported separately from the fixed-checkpoint audit.
 
-The checkpoint was optimized with batch size 256 and the public q/k reshape path. Its weights therefore belong to the coupled training function. Native singleton evaluation and the later source-isolation diagnostic specify their own execution contracts; a conventional head/time layout would be an unevaluated third function, not an already optimized corrected model.
+The checkpoint was optimised with batch size 256 through the public q/k reshape path, so its weights belong to that
+coupled function. Native singleton evaluation (the audit path) and the q/k source-isolation diagnostic are their own
+execution contracts (Appendix A); a conventional head/time layout would be an unevaluated third function.
 
-No clean-room retraining experiment was run during packaging. This release does not include a tested from-scratch training command. Independent training reproducibility should be reported separately from the complete fixed-checkpoint neighborhood audit. The official test split must not be used for training, checkpoint selection or tuning.
+The official test split was evaluated once, with batch size 256, for Table 2; it was not used for training,
+checkpoint selection or tuning, and no command in this repository reads it.

@@ -1,142 +1,175 @@
-# SpikeSCR local event geometry and execution controls
+# Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier
 
 [![Validation](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml)
 [![DOI](https://zenodo.org/badge/1383291350.svg)](https://doi.org/10.5281/zenodo.22936264)
 
-Research code and retained results for **Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier** by **İsmail Can Dikmen**.
+Data, code and complete outcome maps behind the manuscript of the same title by **İsmail Can Dikmen**.
+Every table and figure of the manuscript is regenerated from the files in this repository by one command,
+without a GPU and without executing the neural network.
 
-[Findings](#main-findings) · [Quick start](#quick-start) · [Execution contract](#execution-contract) · [Model replay](#model-replay) · [Data coverage](#data-coverage) · [Citation](#citation)
+[What was done](#what-was-done) · [Regenerate the tables](#regenerate-the-tables) · [What is where](#what-is-where) ·
+[Glossary](#glossary) · [Run the model again](#run-the-model-again) · [What is not included](#what-is-not-included) · [Citation](#citation)
 
-## Overview
+## What was done
 
-Aggregate accuracy does not describe where temporal vulnerability lies, how much internal activity changes, or which function a batched implementation actually evaluates.
+A frozen [SpikeSCR](https://github.com/JackieWang9811/SpikeSCR) checkpoint for Spiking Speech Commands (SSC) was
+audited on a fixed panel of 100 validation utterances. For each utterance, **every** distinct move of one spike count
+to an adjacent 5 ms bin in the same feature was evaluated: **725,070 neighbors**. Each neighbor's outcome was classified
+as class-preserved, adverse, corrective or lateral; its internal activation change was measured at seven boundaries;
+and for every class-changing neighbor the clean activation was substituted back at each boundary (**180,740
+replacement score vectors**). Search policies, two independently trained count-readout replicas and a set of execution
+controls complete the study.
 
-This study audits a frozen [SpikeSCR](https://github.com/JackieWang9811/SpikeSCR) checkpoint on Spiking Speech Commands. It evaluates every distinct one-count transfer to an adjacent **5 ms bin**, within the same feature and input horizon, for a fixed panel of 100 validation utterances. The retained outcome map supports exact finite-population search comparisons and source-level statistics. Internal measurements and activation replacement distinguish stable decisions from stable representations. Execution controls separate padding, batch order and device effects.
+### Main findings
 
-The census contains **725,070 unique neighbors**, six activation-change metrics at seven boundaries, and **180,740 complete 35-class activation-replacement score vectors**. Completeness refers to the declared neighborhood and panel.
+- **Vulnerability is concentrated.** 13 of the 84 initially correct sources admit adverse neighbors; five sources carry
+  **93.21%** of all adverse candidates, while the equal-source expected accuracy under a uniform neighbor draw rises
+  from 84.00% to 84.54% (Table 3, §4.2, Fig. 3).
+- **Informed search does not remove the cost of enumeration.** At 8,400 candidate queries, uniform sampling finds an
+  expected 7.61 of the 13 vulnerable sources, the best margin-focused allocation 9.42, and the gradient rankings 7–8.
+  Finding all 13 with the runner-up gradient ranking needs a common prefix of 5,612 candidates per source:
+  **461,380 queries, 73.45%** of the census of initially correct sources (Table 4).
+- **Decision stability and representation stability differ.** 617,941 of the 699,250 class-preserved neighbors change
+  the final-block activation (median relative L2 change 0.6464). Among nonzero responses, the activation norm only
+  weakly ranks margin displacement (Tables 5 and 7). Replacing a candidate's activation by the clean activation at a
+  single attention or local boundary restores the clean, correct decision for 78–93% of adverse candidates in the
+  equal-source sense (Table 8).
+- **Near-equal replica accuracies hide a 5.21-fold difference** in class-changing neighbors between two count-readout
+  replicas (72.28% vs 72.53% validation accuracy). Four sources drive it; on the 67 sources both replicas classify
+  correctly the ordering of adverse rates reverses (Table 9).
+- **Execution settings define the evaluated function.** Native singleton and batch-256 inference of the same
+  checkpoint differ on **619 of 9,981** validation labels; reversing the batch order changes 531. The cause is a
+  reshape in the public attention code that mixes sources across the LIF membrane lanes; isolating sources at those
+  two boundaries makes all 9,981 batched score vectors bitwise order-invariant (Table 2, Appendix A).
 
-## Main findings
+### At a glance
 
-- **Vulnerability is concentrated.** Thirteen of 84 initially correct sources admit adverse transitions. Five sources carry **93.21%** of the adverse candidates, even while source-equal expected accuracy rises from 84.00% to 84.54% under uniform neighbor selection.
-- **Informed search still incurs substantial cost.** The retained runner-up gradient ranking needs a common prefix of 5,612 candidates to find all 13 sensitive sources: **461,380 queries, or 73.45%** of the initially correct-source census. This prefix is a retrospective cost calculation; it does not provide the outcome densities obtained by enumeration.
-- **Decision and representation stability differ.** Large internal changes also occur when the predicted class is preserved. Branch replacement rates depend on whether sources or candidates receive equal weight; positive full-output replacements are pipeline controls.
-- **Nearly equal replica accuracies can mask a concentrated gap.** Secondary count-readout replicas achieve 72.28% and 72.53% validation accuracy but differ **5.21-fold** in class-changing candidates. Four sources drive the contrast; the adverse-rate ordering reverses within their common clean-correct cohort.
-- **Execution settings define the evaluated function.** Native CUDA singleton and batch-256 inference differ on **619 of 9,981 labels**. Reversing batch order changes 531 labels. Isolating logical sources at the two q/k LIF boundaries in each attention block removes every order-dependent score difference. Against padding-matched singleton inference, one label difference remains; score equivalence is not established.
-
-## Experiment at a glance
-
-| Item | Recorded result |
+| Item | Value |
 | --- | --- |
-| Input | SSC, 35 classes; 700 channels integrated into 140 features; 5 ms bins |
-| Frozen checkpoint | Seed 312; selected epoch 282, stored zero-based epoch 281 |
-| Parameters | 3,302,416 total; 3,302,400 trainable; 16 fixed |
-| Validation benchmark, CUDA batch 256 | 8,617 / 9,981 correct, 86.3340% |
-| Validation audit path, native CUDA singleton | 8,592 / 9,981 correct, **86.0836%** |
-| Validation CPU singleton control | 8,591 / 9,981 correct, 86.0735% |
-| Original test benchmark, CUDA batch 256 | 17,247 / 20,382 correct, 84.6188% |
-| Local panel | 100 sources, 84 initially correct, 13 adverse-sensitive |
-| Preserved / adverse / corrective / lateral | 699,250 / 5,157 / 9,031 / 11,632 |
-| Event-weighted denominator | 1,659,158 |
-| Paired CPU/GPU replay | 25,794 / 25,820 labels agree, **99.8993%**; same 13 sensitive sources |
+| Input | SSC, 35 classes; 700 channels integrated into 140 features; 5 ms bins; source-specific horizon |
+| Frozen checkpoint | seed 312, epoch 282; 3,302,416 parameters |
+| Validation accuracy | 86.3340% (batch 256), **86.0836%** (native GPU singleton, the audit path), 86.0735% (CPU singleton) |
+| Official test accuracy | 84.6188% (batch 256, evaluated once) |
+| Panel | 100 sources, 84 initially correct, 13 adverse-sensitive, 25 with any class change |
+| Neighbors | 699,250 preserved / 5,157 adverse / 9,031 corrective / 11,632 lateral |
+| Replicas | 1,297,705 neighbors each; 3,564 vs 18,566 class changes |
+| CPU/GPU replay | 25,794 of 25,820 class-changing candidates keep their label; same 13 sources on both devices |
 
-**Preserved** means the predicted class stays the same. **Adverse** changes a correct prediction to a wrong one; **corrective** changes a wrong prediction to the true class; **lateral** changes one wrong class to another. A source is one validation utterance; a candidate is one distinct neighboring input. Candidate moves are nested measurements, not independent statistical samples.
+## Regenerate the tables
 
-## Quick start
-
-Use **Python 3.13** for the analysis environment used by CI. These commands recompute results from included records with visible phase updates. They require no GPU or raw SSC download.
+Python 3.11–3.13, NumPy and SciPy; no GPU, no dataset download, about 20 seconds.
 
 ```bash
 git clone https://github.com/DrCanD/spikescr-local-event-geometry.git
 cd spikescr-local-event-geometry
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-analysis.txt
+python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+python -m pip install -r requirements/analysis.txt
 python -m pip install --no-build-isolation --no-deps -e .
-python -m ssc_geometry verify
-python -m ssc_geometry reproduce --out outputs/analysis_01
-python -m ssc_geometry extended-analyses --out outputs/extended_01
-python -m ssc_geometry execution-controls --out outputs/execution_01
+python -m ssc_geometry verify                           # every file against provenance/manifest.json
+python -m ssc_geometry paper --out outputs/paper        # every table, figure data and report.json
 ```
 
-On Windows PowerShell, create the environment with `python -m venv .venv` and substitute `.\.venv\Scripts\python.exe` for `python`; activation is optional.
+`outputs/paper/report.json` lists **434 numbers printed in the manuscript** (Tables 2–9, A.1–A.3 and the in-text
+values), each with the regenerated value and PASS/FAIL at the manuscript's printed precision. The same directory holds
+`table_02.csv` … `table_09.csv`, `table_A1.csv` … `table_A3.csv` and `figure_02.csv` … `figure_04_b.csv`.
 
-| Command | Recomputed evidence |
-| --- | --- |
-| `verify` | Every manifest hash and protected repository path |
-| `reproduce` | Original benchmark metrics, census, source statistics, internal contrasts, bootstrap/FDR and activation-replacement rates |
-| `extended-analyses` | Margin cutoff sensitivity, frozen single/multi-target gradient discovery, capped search costs and replica cohort decomposition |
-| `execution-controls` | Full-validation padding/order/device contrasts, q/k isolation and all original class-changing candidate replays |
+| Command | Manuscript | Output files |
+| --- | --- | --- |
+| `python -m ssc_geometry census --out DIR` | §4.1–4.2, 4.4–4.6; Tables 3, 5, 6, 7, 8; Figs. 2–4 | `table_03.csv`, `table_05.csv` … `table_08.csv`, `figure_*.csv`, `sources.csv`, `census.json` |
+| `python -m ssc_geometry search --out DIR` | §4.3; Table 4; Supplementary S2 | `table_04.csv`, `search_prefix_costs.csv`, `search_first_adverse_ranks.csv`, `search_cutoff_sensitivity.csv`, `search.json` |
+| `python -m ssc_geometry replicas --out DIR` | §4.7; Table 9 | `table_09.csv`, `replicas_paired_bootstrap.csv`, `replicas_four_source_decomposition.csv`, `replicas.json` |
+| `python -m ssc_geometry execution --out DIR` | §4.1, 4.8; Tables 2, A.1, A.2, A.3 | `table_02.csv`, `table_A1.csv` … `table_A3.csv`, `execution_score_distributions.csv`, `execution.json` |
+| `python -m ssc_geometry paper --out DIR` | all of the above | all of the above plus `report.json` and `report.csv` |
 
-Each analysis writes JSON reports and full-precision CSV tables to its specified directory. Existing result directories are never overwritten. Retain the repository alongside the installed package: the Python package alone does not contain the research data. From another directory, use `python -m ssc_geometry --root /path/to/repository verify`.
+Every command first checks all file hashes, recomputes its statistics from the arrays (never from the reference
+files), compares them with `data/reference/`, and writes full-precision CSV tables. Output directories are created
+fresh; an existing directory is never overwritten. From another directory use `python -m ssc_geometry --root
+/path/to/repository …`. The tests run with `python -m unittest discover -s tests`.
 
-## Execution contract
+## What is where
 
-The **canonical decision census uses the unmodified public model, CUDA, batch size one, native input horizon, a reset before each forward, and the public time-summed softmax readout**. The batch-256 benchmark, CPU singleton replay and source-isolated diagnostic are separately identified conditions.
+| Directory | Contents | Manuscript |
+| --- | --- | --- |
+| `data/model/` | the frozen checkpoint (`checkpoint.pt`) | §3.2 |
+| `data/panel/` | the 100 transformed panel inputs, their labels and hashes, the clean singleton scores | §3.3 |
+| `data/benchmark/` | batch-256 validation and test predictions | Table 2 |
+| `data/neighborhood/` | all 725,070 candidate records (`candidates.npz`) and the 100 source summaries (`sources.csv`) | §4.2, Tables 3, 7, Fig. 3 |
+| `data/internal/` | six activation-change metrics at seven boundaries for every candidate; 180,740 replacement score vectors | §4.4–4.6, Tables 5, 6, 8, Fig. 4 |
+| `data/search/` | frozen gradient rankings and move scores, runner-up input gradients, margin-policy specification, cutoff sweep, witness checks | §4.3, Table 4, S2 |
+| `data/replicas/` | per-source outcomes of replicas A and B, paired cohorts, readout partition, full-validation scores, audit contract/protocol/summary | §4.7, Table 9 |
+| `data/execution/` | full-validation scores under eight execution conditions, q/k-isolation scores, 25,820 CPU/GPU candidate replays | §4.1, 4.8, Appendix A |
+| `data/reference/` | the regenerated statistics the commands are compared with, and `expected_values.json` (the manuscript cells) | — |
+| `configs/` | experiment settings, pinned upstream source hashes, reference environment | §3 |
+| `provenance/` | `manifest.json` / `SHA256SUMS.txt` (every file), the four contracts of the model runs (kept verbatim), `records.json` (file history), validation records | §3.11 |
+| `scripts/` | model-executing programs: upstream download, benchmark, full singleton audit, gradient rankings, execution controls | §3 |
+| `src/ssc_geometry/` | the package: `census`, `search`, `replicas`, `execution`, `tables` (manuscript cross-check), `statistics`, `core` (transform and move operator), `forward`, `inference`, `upstream` | — |
+| `docs/` | [data](docs/data.md) (every file and array key), [reproduce](docs/reproduce.md), [execution controls](docs/execution_controls.md), [checkpoint](docs/checkpoint.md), [release](docs/release.md), [third party](docs/third_party.md) | — |
 
-Padding changes both the readout support and valid-prefix processing. On the same GPU, padding alone changes 344 validation labels. Q/k source isolation removes the 531 original batch-order changes and reproduces padding-matched singleton labels on **9,980 of 9,981 inputs**. The residual score displacement has median 1.91e-6 but maximum **3.7136**; the maximum is not a machine-precision discrepancy.
+## Glossary
 
-CPU/GPU candidate replay covers all **25,820 originally class-changing candidates**. All 13 sensitive sources and their first canonical adverse witnesses persist on both devices. The 699,250 originally class-preserved candidates were not replayed in this device control, so additional adverse incidence outside that cohort is not estimated.
+- **Source** — one validation utterance, identified by its row index in the official SSC validation split.
+- **Panel** — the 100 sources audited (label-stratified, chosen before any outcome was known); 84 are *initially
+  correct* (clean prediction equals the label).
+- **Neighbor / candidate** — the input obtained by moving one spike count from a bin to the adjacent bin (earlier or
+  later) in the same feature; `from_bin`, `to_bin`, `feature`. *Multiplicity* is the count at the origin cell.
+- **Transition** — `transition_code` 0 class-preserved, 1 adverse (correct → wrong), 2 corrective (wrong → correct),
+  3 lateral (wrong → different wrong). Corrective and lateral changes are not errors introduced by the move.
+- **Clean score / margin** — scores are the time-summed softmax probabilities (the public readout); the margin is the
+  gap between the two largest scores.
+- **Boundary** — stem, attention 1, local 1, block 1, attention 2, local 2, block 2 (the module outputs at which
+  activations are measured and replaced).
+- **Replacement** — a forward pass in which the candidate's activation at one boundary is replaced by the clean
+  activation; "restored" means the output returns to the clean prediction.
+- **Execution condition** — native singleton (the audit path), padding-matched singleton, batch 256, reversed batch 256,
+  q/k-isolated batch 256, and the CPU singleton.
+- **Replica A / B** — two count-readout spiking networks trained with different seeds (341969035 / 554720563),
+  audited with their native 10 ms neighborhoods; never pooled with the SpikeSCR census.
 
-The checkpoint was trained using the public coupled batch path. Source isolation is a diagnostic intervention that preserves the public singleton convention; a conventional head/time permutation would define a third function for which these weights were not optimized and which was not evaluated. See [execution controls](docs/EXECUTION_CONTROLS.md) for mechanisms, paired counts, score distributions and control limits.
+## Run the model again
 
-## Model replay
-
-Create a separate inference environment following the [reproduction protocol](docs/REPRODUCIBILITY.md#configure-inference-deliberately). The recorded canonical environment uses **PyTorch 2.11.0+cu128 on CUDA**. Eight source files are pinned to upstream commit [`095f418`](https://github.com/JackieWang9811/SpikeSCR/tree/095f418f53b3b24c21caf558225c65ad674d44b1) and hash-checked before import.
+The model-executing scripts need a separate environment with PyTorch (the reference runs used
+`torch 2.11.0+cu128`), the pinned SpikeSCR source (downloaded and hash-checked by `scripts/prepare_upstream.py`) and,
+for the full validation set, the official `ssc_valid.h5`. See [docs/reproduce.md](docs/reproduce.md).
 
 ```bash
-python scripts/prepare_upstream.py
-python -m ssc_geometry checkpoint
-python scripts/run_singleton_audit.py --mode preflight --out outputs/preflight_01
-python scripts/run_singleton_audit.py --mode full --out outputs/singleton_01
+python scripts/prepare_upstream.py                                      # 8 pinned source files, hash-checked
+python -m ssc_geometry checkpoint                                       # checkpoint hashes and parameter counts
+python scripts/run_audit.py --mode preflight --out outputs/preflight    # 4 fixed probes
+python scripts/run_audit.py --mode full --out outputs/audit             # all 725,070 candidates + 180,740 replacements
+python scripts/run_benchmark.py --split validation --h5 ssc_valid.h5 --out outputs/benchmark
+python scripts/run_search_gradients.py --step gate runner-up all-target compare --panel --out outputs/gradients
+python scripts/run_execution_controls.py --step clean-gate gpu-conditions cpu-singleton isolation padding pairs candidate-replay compare --h5 ssc_valid.h5 --out outputs/execution
 ```
 
-The full command compares new model outputs with all 100 sources, 725,070 candidates and 25,820 seven-boundary replacement sets. Repeat the same command with `--resume` after interruption; verified completed source archives are reused. A complete fresh CUDA conformance report for this entire workload is **not included**. The later class-changing device replay is narrower evidence.
+Each script writes a contract (checkpoint and source hashes, environment) into its output directory, resumes after an
+interruption, and compares its outputs with the retained records. The CPU preflight of the audit and the panel-level
+steps of the two later scripts also run on a CPU; this is a smoke test, not a result. One CPU portability limit is
+known: source 4959 keeps its class but its score vector differs from the reference by 0.3866, so CPU runs are
+diagnostics, not the reference.
 
-Benchmark replay retains its batch size, order and padding; it does not substitute for the canonical audit. The [training record](docs/TRAINING.md) documents checkpoint provenance. Independently retraining the models and preparing manuscript presentation assets remain separate workflows.
+## What is not included
 
-## Data coverage
-
-| Path | Included material |
-| --- | --- |
-| [`data/model/`](data/model/), [`data/panel/`](data/panel/) | Frozen checkpoint, transformed 100-source panel and full clean scores |
-| [`data/neighborhood/`](data/neighborhood/) | Every canonical candidate record and source summary |
-| [`data/internal/`](data/internal/) | Six metrics at seven boundaries and full patched score vectors |
-| [`data/benchmark/`](data/benchmark/) | Recorded validation and test predictions |
-| [`data/search_policies/`](data/search_policies/) | All frozen policy scores/ranks, runner-up input gradients, contracts and witness verification |
-| [`data/replicas/`](data/replicas/) | Source-level count-readout records, paired cohorts and full-validation scores |
-| [`data/execution_controls/`](data/execution_controls/) | CPU/GPU full-validation scores, q/k isolation outputs, paired candidate scores and original run contracts/summaries |
-| [`data/reference/`](data/reference/) | Numerical comparison targets |
-| [`scripts/recorded/`](scripts/recorded/) | Byte-preserved experiment sources and their original execution context |
-| [`validation/`](validation/), [`checksums/`](checksums/) | Executed checks, provenance and integrity manifests |
-
-The compact search archive preserves policy scores and ranks exactly. All-target gradients and directional gains were independently checked when extracting those ranks; their full tensors are not duplicated here. The original raw hidden tensors and all unpatched census score vectors are also outside the original package. Padding-prefix ablations and three pair controls currently have recorded summaries; their full per-source diagnostic arrays are not bundled. These boundaries are detailed in the [data schema](docs/DATA_SCHEMA.md) and [provenance](docs/provenance.json).
-
-Raw SSC event files are obtained separately. The included full-validation input hashes and horizons establish the pairing of the recorded execution conditions; they are not a substitute for raw inputs when running fresh inference.
-
-## Validation
-
-[GitHub Actions](https://github.com/DrCanD/spikescr-local-event-geometry/actions/workflows/validate.yml) runs all retained-result checks, both added analysis commands and a separate four-probe real-model CPU preflight. Its passing status covers that workload. Historical checks and the source-4959 CPU score discrepancy are retained in the [validation records](validation/README.md).
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-PyTorch-dependent tests report a skip when their prerequisites are absent. The dedicated real-model CI job installs those prerequisites. Predictions and counts are checked exactly; float32 descriptive statistics and model replay have their separately documented tolerances. Hash checks establish consistency with the supplied manifest, so retain the commit identifier with any reproduction.
-
-## Related work
-
-Yan, Zhu, Tang, Cai, Liu and Wong, [*Latency and accuracy tradeoffs in Spiking Neural Networks*](https://doi.org/10.48550/arXiv.2609.35260), arXiv preprint, 2026. Their construction shows that varying a layer's delay can preserve its spike counts while changing downstream firing and producing non-monotone accuracy. The present study measures a distinct, finite input-retiming neighborhood in a trained classifier. Their hardware reconstruction also motivates making the implemented time-axis convention explicit; it does not validate the batch layout examined here.
+- The raw SSC event files (obtain `ssc_valid.h5` from the [dataset page](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/);
+  the official test set was opened once for Table 2 and is never read by any command here).
+- The SpikeSCR source (downloaded from the pinned commit by `scripts/prepare_upstream.py`).
+- The raw hidden tensors of the census and the full 35-class score vectors of unpatched candidates (their descriptors are in
+  `candidates.npz`); the full all-target gradient tensors (their move scores and rankings are in `data/search/`).
+- The weights and raw candidate maps of replicas A and B, and the program that ran their audit (its hashes are in
+  `data/replicas/audit_contract.json`); their per-source outcomes are complete.
+- The per-source arrays of the padding decomposition and the three pair controls of Appendix A (their summaries are in
+  `data/execution/summary.json`; `scripts/run_execution_controls.py` regenerates the arrays).
 
 ## Citation
 
 > İsmail Can Dikmen. *Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier.* Manuscript, 2026.
 
-Software metadata is in [`CITATION.cff`](CITATION.cff). Identify the repository commit as well as the archive version you use.
-
-The [concept DOI](https://doi.org/10.5281/zenodo.22936264) groups published versions. [Original archive DOI 10.5281/zenodo.22936265](https://doi.org/10.5281/zenodo.22936265) covers the original technical package with software version `0.1.0rc1`; Git tags `v0.1.0rc1` and `v1.0` identify the same original commit. **The later execution controls, search extensions and replica analysis on current `main` are not included in that original DOI version.** Current development metadata uses `0.2.0.dev0`; no new release or archival DOI is asserted. See [release status](docs/RELEASING.md).
+Software metadata is in [`CITATION.cff`](CITATION.cff); cite the repository commit or the archived version you used.
+Releases are archived on Zenodo under the concept DOI [10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264);
+see [docs/release.md](docs/release.md).
 
 ## Attribution and terms
 
-The study uses the [SpikeSCR implementation](https://github.com/JackieWang9811/SpikeSCR) and SSC dataset. Retain the [third-party attributions](docs/THIRD_PARTY_NOTICES.md).
-
-Original project software is licensed under [MIT](LICENSE). Project-authored research outputs, documentation and frozen model weights use [CC BY 4.0](LICENSES/CC-BY-4.0.txt), within the author's rights; transformed SSC material retains its dataset attribution. See [LICENSE_NOTICE.md](LICENSE_NOTICE.md) for file-level scope. Third-party software retains its own terms.
+The study uses the [SpikeSCR implementation](https://github.com/JackieWang9811/SpikeSCR) (Wang et al., Neural Networks 195,
+108253, 2026) and the SSC dataset (Cramer et al., IEEE TNNLS 2022); see [docs/third_party.md](docs/third_party.md).
+Project software is licensed under [MIT](LICENSE); project-authored research outputs, documentation and the trained
+checkpoint under [CC BY 4.0](LICENSES/CC-BY-4.0.txt); see [LICENSE_NOTICE.md](LICENSE_NOTICE.md) for the file-level scope.

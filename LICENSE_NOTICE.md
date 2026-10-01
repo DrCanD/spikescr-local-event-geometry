@@ -8,14 +8,14 @@ licenses that can be selected for every file.
 
 | Material | Paths | License |
 | --- | --- | --- |
-| Original project source code, scripts, tests, configuration and build/CI files | `src/`, `scripts/`, `tests/`, `configs/`, `.github/`, `pyproject.toml`, `requirements-*.txt`, `.gitattributes`, `.gitignore` | [MIT](LICENSE) |
-| Project-trained frozen model weights | `data/model/frozen_checkpoint.pt` | [CC BY 4.0](LICENSES/CC-BY-4.0.txt), for the rights held by the project author |
-| Project-authored research outputs, transformed panel, provenance, documentation, citation metadata and validation records | `data/` other than the checkpoint above, `docs/`, `validation/`, `checksums/`, `README.md`, `CITATION.cff`, this notice | [CC BY 4.0](LICENSES/CC-BY-4.0.txt), subject to the retained dataset attribution below |
+| Original project source code, scripts, tests, configuration and build/CI files | `src/`, `scripts/`, `tests/`, `configs/`, `.github/`, `pyproject.toml`, `requirements/`, `.gitattributes`, `.gitignore` | [MIT](LICENSE) |
+| Project-trained frozen model weights | `data/model/checkpoint.pt` | [CC BY 4.0](LICENSES/CC-BY-4.0.txt), for the rights held by the project author |
+| Project-authored research outputs, transformed panel, provenance, documentation, citation metadata and validation records | `data/` other than the checkpoint above, `docs/`, `provenance/`, `README.md`, `CITATION.cff`, this notice | [CC BY 4.0](LICENSES/CC-BY-4.0.txt), subject to the retained dataset attribution below |
 
 ## Attribution
 
 For the project-authored CC BY 4.0 material, credit İsmail Can Dikmen and
-*Local event geometry in a frozen spiking speech classifier*, link to this
+*Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier*, link to this
 repository and the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/),
 and indicate any changes. Retain the supplied third-party attributions when
 sharing material derived from the dataset.
@@ -35,6 +35,6 @@ the distributed panel's provenance.
 Separately downloaded SpikeSCR source and other dependencies retain their own
 terms. The project's MIT and CC BY 4.0 grants do not relicense third-party
 software or grant rights the project author does not hold. See
-[third-party notices](docs/THIRD_PARTY_NOTICES.md) for source references and scope.
+[third-party notices](docs/third_party.md) for source references and scope.
 
 The license texts in `LICENSE` and `LICENSES/` retain their original terms.
