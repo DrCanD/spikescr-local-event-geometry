@@ -3,7 +3,12 @@ message: "If you use this software or its data, cite the software (release versi
 type: software
 title: "Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier: data and code"
 version: 1.1.0
+date-released: "2026-10-01"
+doi: 10.5281/zenodo.23089436
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23089436
+    description: "Version 1.1.0: the manuscript submission package (this release)."
   - type: doi
     value: 10.5281/zenodo.22936264
     description: "Concept DOI grouping all archived versions."

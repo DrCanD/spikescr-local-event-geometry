@@ -5,8 +5,9 @@
 | Version | Tag / commit | Archive |
 | --- | --- | --- |
 | 0.1.0rc1 | `v0.1.0rc1`, `v1.0` → `a225e8b` | [10.5281/zenodo.22936265](https://doi.org/10.5281/zenodo.22936265): checkpoint, panel, census, internal metrics, replacement scores and the first reproduction tools |
-| 1.1.0 | `v1.1.0` | the manuscript submission package: this layout, the search, replica and execution-control records, and the `paper` cross-check (archive under the concept DOI [10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264)) |
+| 1.1.0 | `v1.1.0` → `ea15b24` | [10.5281/zenodo.23089436](https://doi.org/10.5281/zenodo.23089436) (2026-10-01): the manuscript submission package — this layout, the search, replica and execution-control records, and the `paper` cross-check. The archive was downloaded and checked: all 104 file hashes match `provenance/SHA256SUMS.txt`, and `paper` reproduces the same `report.json` (434 cells, 0 failures). |
 
+The concept DOI [10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264) resolves to the latest version.
 Existing tags stay fixed; a new release uses a new tag at its verified commit. `provenance/records.json` maps every
 file of the 0.1.0rc1 archive to its current name and hash, so the two archives can be compared file by file.
 

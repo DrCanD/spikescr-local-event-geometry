@@ -163,9 +163,10 @@ diagnostics, not the reference.
 
 > İsmail Can Dikmen. *Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier.* Manuscript, 2026.
 
-Software metadata is in [`CITATION.cff`](CITATION.cff); cite the repository commit or the archived version you used.
-Releases are archived on Zenodo under the concept DOI [10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264);
-see [docs/release.md](docs/release.md).
+Software metadata is in [`CITATION.cff`](CITATION.cff). Version 1.1.0 (this package, commit `ea15b24`) is archived as
+[10.5281/zenodo.23089436](https://doi.org/10.5281/zenodo.23089436); the concept DOI
+[10.5281/zenodo.22936264](https://doi.org/10.5281/zenodo.22936264) always resolves to the latest version. See
+[docs/release.md](docs/release.md).
 
 ## Attribution and terms
 
