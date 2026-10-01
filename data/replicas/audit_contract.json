@@ -2,9 +2,9 @@
   "algorithm_sha256": "5901a1bd20da89af01d4c2049c14bd5ff36f0aac0b64adc4417ebc34c515a305",
   "analysis_config": {
     "chunk_size": 500,
-    "h3_permutation_repetitions": 10000,
-    "h3_permutation_seed": 12062028,
-    "h3_permutation_seed_by_model": {
+    "margin_association_permutation_repetitions": 10000,
+    "margin_association_permutation_seed": 12062028,
+    "margin_association_permutation_seed_by_model": {
       "341969035": 12062028,
       "554720563": 12062128
     },
@@ -14,7 +14,6 @@
       554720563
     ],
     "selection_seed": 906605967,
-    "selection_seed_preimage": "EB12-MAX-v1|SSC-validation|label-stratified|2026-09-16",
     "source_bootstrap_repetitions": 10000,
     "source_bootstrap_seed": 12062027,
     "source_bootstrap_seed_by_model": {
@@ -25,9 +24,8 @@
   "audit_batch": 1,
   "checkpoints": [
     {
-      "bundle_path": "/content/drive/MyDrive/Research/Event_Geometry_of_Spiking_Computation/event_geometry_ncs_wp2b_ssc_seed_replication/frozen/NCS_WP2B_SSC_Seed_Replicas_3441eb57a9d3/replicas/SSC_seed_341969035_audit_bundle.pt",
       "bundle_sha256": "8444e84d4d69ad4c809b99a41406c864c9c6efd4dfa5639af863f25c9a6e7606",
-      "checkpoint_id": "wp2b_ssc_fixed_arch_seed_341969035",
+      "distributed_in_repository": false,
       "historical_correct": 7213,
       "model_config": {
         "architecture": "causal_conv_hard_reset_rsnn_temporal_rate_v1",
@@ -57,14 +55,14 @@
         "readout_windows": 4,
         "reset_mode": "subtractive"
       },
+      "replica": "A",
       "seed": 341969035,
       "state_dict_sha256": "1225401429d8eda8e1b387f9f35954878edc1077fa8845f06735205fd9cee9d4",
       "trainable_parameters_original": 1627811
     },
     {
-      "bundle_path": "/content/drive/MyDrive/Research/Event_Geometry_of_Spiking_Computation/event_geometry_ncs_wp2b_ssc_seed_replication/frozen/NCS_WP2B_SSC_Seed_Replicas_3441eb57a9d3/replicas/SSC_seed_554720563_audit_bundle.pt",
       "bundle_sha256": "889d4b46dc5e15312cba27c68da5301f83f06cdbe4fbdf5503c4f3fe346a38e8",
-      "checkpoint_id": "wp2b_ssc_fixed_arch_seed_554720563",
+      "distributed_in_repository": false,
       "historical_correct": 7241,
       "model_config": {
         "architecture": "causal_conv_hard_reset_rsnn_temporal_rate_v1",
@@ -94,14 +92,17 @@
         "readout_windows": 4,
         "reset_mode": "subtractive"
       },
+      "replica": "B",
       "seed": 554720563,
       "state_dict_sha256": "adaac8491c042dbe713926ae2b8f4f7aa5a1f76c9c1f481aca03d25c06726a50",
       "trainable_parameters_original": 1627811
     }
   ],
+  "contract_hash_rule": "sha256 of the sorted, compact JSON serialisation of this file",
   "dataset": {
-    "path": "/content/drive/MyDrive/Research/TIB_Master/cache/ssc/ssc_valid.h5",
+    "name": "ssc_valid.h5 (official SSC validation split, HDF5)",
     "sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210",
+    "source": "https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/",
     "split": "official_validation"
   },
   "environment": {
@@ -811,42 +812,39 @@
         "source_index": 6046
       }
     ],
-    "selection": "ground-truth-label-stratified SRSWOR; no prediction, margin, EB9, or EB11 outcome used",
+    "selection": "ground-truth-label-stratified SRSWOR; no prediction, margin, or earlier-audit outcome used",
     "selection_seed": 906605967,
-    "selection_seed_derivation": "first 32 bits (8 hex digits) of SHA256(preimage), big-endian",
-    "selection_seed_preimage": "EB12-MAX-v1|SSC-validation|label-stratified|2026-09-16",
-    "source_ids_sha256": "654de8c82cf8ea3e363f35449aa17968c43c2343e34f40862f7687833414af26",
-    "version": "EB12-MAX-prospective-multiseed-integer-readout-v1.0"
+    "source_ids_sha256": "654de8c82cf8ea3e363f35449aa17968c43c2343e34f40862f7687833414af26"
   },
   "protocol": {
     "decision_rules": {
-      "H1": "PASS iff the complete panel has zero hierarchy, null-replay, post-hoc-gap, tie-reconstruction, and directional-partition violations in both seeds; any candidate mismatch aborts",
-      "H2": "supported iff final_trace_changed_count_preserved is greater than zero in both seeds",
-      "H3": "supported iff both pooled source-level Spearman rho values are negative and both one-sided within-label permutation p-values pass Holm correction at alpha=0.05",
-      "H4": "descriptive paired clean-correct adverse-vulnerability agreement; no pass/fail threshold",
-      "H5": "PASS iff tie-aware gap reconstruction has zero mismatch; enforced fail-loud per candidate",
-      "familywise_alpha": 0.05
+      "familywise_alpha": 0.05,
+      "final_trace_collapse": "supported iff final_trace_changed_count_preserved is greater than zero in both seeds",
+      "hierarchy_integrity_gate": "PASS iff the complete panel has zero hierarchy, null-replay, post-hoc-gap, tie-reconstruction, and directional-partition violations in both seeds; any candidate mismatch aborts",
+      "margin_adverse_association": "supported iff both pooled source-level Spearman rho values are negative and both one-sided within-label permutation p-values pass Holm correction at alpha=0.05",
+      "paired_adverse_vulnerability": "descriptive paired clean-correct adverse-vulnerability agreement; no pass/fail threshold",
+      "tie_aware_reconstruction_gate": "PASS iff tie-aware gap reconstruction has zero mismatch; enforced fail-loud per candidate"
     },
     "design": "label-stratified sample without replacement from all 9981 SSC validation sources",
-    "inference": "source-level summaries; within-label source bootstrap; within-label H3 permutation; Wilson intervals and paired source tests are descriptive",
-    "models": "two preregistered frozen integer-readout replicas",
-    "multiple_testing": "Holm correction across the two seed-level H3 permutation tests only",
+    "inference": "source-level summaries; within-label source bootstrap; within-label margin-association permutation; Wilson intervals and paired source tests are descriptive",
+    "models": "two frozen count-readout replicas (protocol fixed before the audit)",
+    "multiple_testing": "Holm correction across the two seed-level margin-association permutation tests only",
     "neighborhood": "all unique one-count moves to an adjacent native 10 ms bin; channel and 100-bin horizon preserved",
     "primary_hypotheses": [
-      "H1 integrity gate: the exact trace-to-final-trace-to-count-to-class hierarchy, null replay, post-hoc gap bound, directional partition, and tie-aware reconstruction all pass in both seeds",
-      "H2: non-zero final-layer-trace changes erased by the integer readout occur in both seeds",
-      "H3: among clean-correct sources, clean top-two margin is negatively associated with exact adverse-T3 rate in each seed"
+      "Integrity gate: the exact trace-to-final-trace-to-count-to-class hierarchy, null replay, post-hoc gap bound, directional partition, and tie-aware reconstruction all pass in both seeds",
+      "Final-trace collapse: non-zero final-layer-trace changes erased by the integer readout occur in both seeds",
+      "Margin-adverse association: among clean-correct sources, clean top-two margin is negatively associated with exact adverse-T3 rate in each seed"
     ],
     "secondary_hypotheses": [
-      "H4: source vulnerability and directional T3 taxonomy are stable enough to report paired seed agreement",
-      "H5: the post-perturbation tie-aware gap identity reconstructs every class transition exactly"
+      "Paired adverse vulnerability: source vulnerability and directional T3 taxonomy are stable enough to report paired seed agreement",
+      "Tie-aware reconstruction gate: the post-perturbation tie-aware gap identity reconstructs every class transition exactly"
     ],
     "selection_is_outcome_independent": true,
     "statistical_unit": "source example; candidates are nested measurements, never iid replicates",
     "test_policy": "this protocol uses ssc_valid.h5 only; ssc_test.h5 is not searched, opened, hashed, or evaluated"
   },
   "readout": "global+four-window exact integer final-layer spike counts",
+  "schema": "replica-audit-contract/1",
   "source_core_sha256": "7cf3df82c56f3a7281462b044edce8da9b93567955949c5ec81f8a99559d2f11",
-  "training_executed": false,
-  "version": "EB12-MAX-prospective-multiseed-integer-readout-v1.0"
+  "training_executed": false
 }

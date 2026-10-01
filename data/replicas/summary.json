@@ -1,25 +1,25 @@
 {
   "claim_limits": [
-    "Preregistered scope is two frozen replicas on one outcome-independent SSC validation panel.",
+    "Scope is two frozen replicas on one outcome-independent SSC validation panel.",
     "Candidate observations are nested within sources; inferential summaries use sources as units.",
     "Exactness is restricted to the finite adjacent-bin, same-channel, fixed-horizon neighborhood and recorded numerical contract.",
     "Unique-raster and event-multiplicity-weighted denominators remain separate.",
     "The historical validation replay deltas are retained and are not silently corrected.",
-    "No official SSC test result is produced by EB12-MAX.",
+    "No official SSC test result is produced by the replica audit.",
     "A null or discordant scientific result remains reportable when integrity gates pass.",
     "Partial summaries describe verified completed sources only and are not the frozen-panel estimate.",
     "Resume requires the unchanged executable source/configuration and the same recorded numerical environment/hardware contract; a changed contract starts a separate run."
   ],
   "completed_at": "2026-09-17T06:19:49.343309+00:00",
-  "contract_sha256": "849abb4a79a3ca23735bfe4493fc6a4a5630db28353cdc7ffa93c60e2515f6e5",
+  "contract_sha256": "88a2d64a96d59b03001203d2df9c321a33e79f145eceb96070a94ee5a710127b",
   "current_invocation_new_candidates": 2595410,
   "current_invocation_seconds": 71356.290770228,
-  "hypothesis_decisions": {
-    "H1_hierarchy_integrity_gate": "PASS",
-    "H2_final_trace_collapse": "SUPPORTED",
-    "H3_margin_adverse_association": "SUPPORTED",
-    "H4_paired_adverse_vulnerability": "DESCRIPTIVE_COMPLETE",
-    "H5_tie_aware_reconstruction_gate": "PASS"
+  "decisions": {
+    "final_trace_collapse": "SUPPORTED",
+    "hierarchy_integrity_gate": "PASS",
+    "margin_adverse_association": "SUPPORTED",
+    "paired_adverse_vulnerability": "DESCRIPTIVE_COMPLETE",
+    "tie_aware_reconstruction_gate": "PASS"
   },
   "integrity": {
     "candidates_verified": 2595410,
@@ -62,6 +62,7 @@
     "verified_prefix_pass": true
   },
   "official_ssc_test_accessed": false,
+  "original_contract_sha256": "849abb4a79a3ca23735bfe4493fc6a4a5630db28353cdc7ffa93c60e2515f6e5",
   "paired_seeds": {
     "all_source_class_instability": {
       "both_vulnerable": 1,
@@ -112,6 +113,7 @@
     }
   },
   "samples_planned": 100,
+  "schema": "replica-audit-summary/1",
   "seed_results": {
     "341969035": {
       "clean_correct_sources": 73,
@@ -317,8 +319,8 @@
       ],
       "final_trace_changed_count_preserved_sources": 100,
       "final_trace_changed_count_preserved_witness": "witnesses/final_trace_changed_count_preserved.json",
-      "h3_eligible_clean_correct_nonempty_sources": 73,
-      "h3_excluded_clean_correct_zero_neighborhood_sources": 0,
+      "margin_association_eligible_clean_correct_nonempty_sources": 73,
+      "margin_association_excluded_clean_correct_zero_neighborhood_sources": 0,
       "source_bootstrap_mean_rate": {
         "T0": {
           "ci95": [
@@ -576,8 +578,8 @@
       ],
       "final_trace_changed_count_preserved_sources": 100,
       "final_trace_changed_count_preserved_witness": "witnesses/final_trace_changed_count_preserved.json",
-      "h3_eligible_clean_correct_nonempty_sources": 75,
-      "h3_excluded_clean_correct_zero_neighborhood_sources": 0,
+      "margin_association_eligible_clean_correct_nonempty_sources": 75,
+      "margin_association_excluded_clean_correct_zero_neighborhood_sources": 0,
       "source_bootstrap_mean_rate": {
         "T0": {
           "ci95": [
@@ -636,7 +638,7 @@
     341969035,
     554720563
   ],
-  "status": "COMPLETE_PREREGISTERED_AUDIT",
+  "status": "COMPLETE",
   "training_executed": false,
   "validation": {
     "341969035": {
@@ -669,6 +671,5 @@
       "status": "SOURCE_VERIFIED_HISTORICAL_ACCURACY_DELTA",
       "validation_batch": 384
     }
-  },
-  "version": "EB12-MAX-prospective-multiseed-integer-readout-v1.0"
+  }
 }

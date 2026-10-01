@@ -1,0 +1,55 @@
+{
+  "algorithm_sha256": "5901a1bd20da89af01d4c2049c14bd5ff36f0aac0b64adc4417ebc34c515a305",
+  "analysis_config": {
+    "chunk_size": 500,
+    "margin_association_permutation_repetitions": 10000,
+    "margin_association_permutation_seed": 12062028,
+    "margin_association_permutation_seed_by_model": {
+      "341969035": 12062028,
+      "554720563": 12062128
+    },
+    "panel_size": 100,
+    "seeds": [
+      341969035,
+      554720563
+    ],
+    "selection_seed": 906605967,
+    "source_bootstrap_repetitions": 10000,
+    "source_bootstrap_seed": 12062027,
+    "source_bootstrap_seed_by_model": {
+      "341969035": 12062027,
+      "554720563": 12062127
+    }
+  },
+  "fixed_before_first_perturbation": true,
+  "implementation_sha256": "73cf1daf6f33d8973b50ac474e5e536319990dfa21bfc88090c212021df3a512",
+  "panel_sha256": "41585e6558dc7e7ba341bb34d76a56ec0631783500f967c22a931688408a2dbe",
+  "protocol": {
+    "decision_rules": {
+      "familywise_alpha": 0.05,
+      "final_trace_collapse": "supported iff final_trace_changed_count_preserved is greater than zero in both seeds",
+      "hierarchy_integrity_gate": "PASS iff the complete panel has zero hierarchy, null-replay, post-hoc-gap, tie-reconstruction, and directional-partition violations in both seeds; any candidate mismatch aborts",
+      "margin_adverse_association": "supported iff both pooled source-level Spearman rho values are negative and both one-sided within-label permutation p-values pass Holm correction at alpha=0.05",
+      "paired_adverse_vulnerability": "descriptive paired clean-correct adverse-vulnerability agreement; no pass/fail threshold",
+      "tie_aware_reconstruction_gate": "PASS iff tie-aware gap reconstruction has zero mismatch; enforced fail-loud per candidate"
+    },
+    "design": "label-stratified sample without replacement from all 9981 SSC validation sources",
+    "inference": "source-level summaries; within-label source bootstrap; within-label margin-association permutation; Wilson intervals and paired source tests are descriptive",
+    "models": "two frozen count-readout replicas (protocol fixed before the audit)",
+    "multiple_testing": "Holm correction across the two seed-level margin-association permutation tests only",
+    "neighborhood": "all unique one-count moves to an adjacent native 10 ms bin; channel and 100-bin horizon preserved",
+    "primary_hypotheses": [
+      "Integrity gate: the exact trace-to-final-trace-to-count-to-class hierarchy, null replay, post-hoc gap bound, directional partition, and tie-aware reconstruction all pass in both seeds",
+      "Final-trace collapse: non-zero final-layer-trace changes erased by the integer readout occur in both seeds",
+      "Margin-adverse association: among clean-correct sources, clean top-two margin is negatively associated with exact adverse-T3 rate in each seed"
+    ],
+    "secondary_hypotheses": [
+      "Paired adverse vulnerability: source vulnerability and directional T3 taxonomy are stable enough to report paired seed agreement",
+      "Tie-aware reconstruction gate: the post-perturbation tie-aware gap identity reconstructs every class transition exactly"
+    ],
+    "selection_is_outcome_independent": true,
+    "statistical_unit": "source example; candidates are nested measurements, never iid replicates",
+    "test_policy": "this protocol uses ssc_valid.h5 only; ssc_test.h5 is not searched, opened, hashed, or evaluated"
+  },
+  "schema": "replica-audit-protocol/1"
+}
