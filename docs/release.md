@@ -18,10 +18,12 @@ file of the 0.1.0rc1 archive to its current name and hash, so the two archives c
    on a clean clone: 0 missing/modified/unexpected files, all tests passing, `report.json` with 0 failed cells.
    Run the same on a second clone at a different path and confirm that `report.json` is byte-identical.
 3. Both GitHub Actions jobs green on the release commit (analysis job and CPU model preflight).
-4. `pyproject.toml`, `src/ssc_geometry/__init__.py` and `CITATION.cff` carry the same version; the citation file
-   names the manuscript.
-5. Tag (`git tag -a v1.1.0`), publish the GitHub release, let Zenodo archive it under the concept DOI, then write the
-   version DOI into `CITATION.cff` and the README badge in a follow-up commit.
+4. `pyproject.toml`, `src/ssc_geometry/__init__.py`, `CITATION.cff` and `.zenodo.json` carry the same version. Zenodo
+   reads `.zenodo.json` for the archive's metadata (title, author with ORCID and affiliation, description, license,
+   keywords); `CITATION.cff` serves the GitHub citation box.
+5. Tag (`git tag -a v1.1.0`) and publish the GitHub release (not a draft). The repository's GitHub–Zenodo link archives
+   every published release automatically under the concept DOI, usually within minutes; nothing is uploaded by hand.
+   Then write the version DOI into `CITATION.cff` and `docs/release.md` in a follow-up commit.
 6. In the manuscript's data-availability statement cite the version DOI, the concept DOI and the commit.
 
 ## What a release does not contain

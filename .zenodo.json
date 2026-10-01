@@ -1,0 +1,26 @@
+{
+  "title": "Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier: data and code",
+  "version": "1.1.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Dikmen, İsmail Can",
+      "affiliation": "İstinye University, Department of Electrical and Electronics Engineering, İstanbul, Türkiye",
+      "orcid": "0000-0002-7747-7777"
+    }
+  ],
+  "description": "<p>Data and code for a fixed-checkpoint audit of local decision geometry in a SpikeSCR classifier on Spiking Speech Commands. The repository holds the frozen checkpoint, the 100-source audit panel, the complete outcome map of 725,070 adjacent-bin neighbors, activation-change metrics at seven boundaries, 180,740 clean-activation replacement score vectors, the search-policy records, the outcomes of two count-readout replicas and the execution-control records, together with a Python package that regenerates every table of the manuscript from these files and compares 434 printed values with their regenerated counterparts (<code>python -m ssc_geometry paper</code>; no GPU, no model inference).</p><p>Project software is licensed under MIT; project-authored research outputs, documentation and the trained checkpoint under CC BY 4.0, within the author's rights. Dataset attribution (Spiking Speech Commands, Cramer et al. 2022) and the terms of the SpikeSCR implementation (Wang et al. 2026) remain in force; see LICENSE_NOTICE.md in the archive. The raw SSC event files, the SpikeSCR source, the replica weights and the raw hidden tensors of the census are not included; the README section \"What is not included\" lists them.</p>",
+  "keywords": [
+    "spiking neural networks",
+    "speech recognition",
+    "Spiking Speech Commands",
+    "SpikeSCR",
+    "local decision geometry",
+    "activation replacement",
+    "execution controls",
+    "reproducible research"
+  ]
+}
