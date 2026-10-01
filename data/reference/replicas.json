@@ -1,0 +1,223 @@
+{
+  "comparison": {
+    "B_adverse_total": 15773,
+    "adverse_sensitive_of_initially_correct": {
+      "A": [
+        6,
+        73
+      ],
+      "B": [
+        5,
+        75
+      ]
+    },
+    "bootstrap_repetitions": 20000,
+    "bootstrap_seed": 20260929,
+    "class_change_ratio_B_over_A": 5.209315375982043,
+    "common_clean_correct_A_source_equal_adverse_rate": 0.0004270691899918496,
+    "common_clean_correct_B_source_equal_adverse_rate": 1.0132107088577998e-05,
+    "common_clean_correct_adverse": {
+      "A": 248,
+      "B": 13
+    },
+    "common_clean_correct_difference_percentage_points": -0.04169370829032716,
+    "common_clean_correct_sources": 67,
+    "four_source_ids": [
+      914,
+      4499,
+      7289,
+      8134
+    ],
+    "four_sources_B_adverse": 15760,
+    "four_sources_T3": {
+      "A": 369,
+      "B": 15760
+    },
+    "other_sources": 96,
+    "other_sources_T3": {
+      "A": 3195,
+      "B": 2806
+    },
+    "paired_bootstrap": {
+      "A_correct_B_wrong": {
+        "T3_rate_difference_B_minus_A_percentage_points": -0.2920003005332721,
+        "T3_rate_difference_ci95": [
+          -0.2920003005332721,
+          -0.2920003005332721
+        ],
+        "adverse_rate_difference_B_minus_A_percentage_points": -0.6241710362914518,
+        "adverse_rate_difference_ci95": [
+          -0.6241710362914518,
+          -0.6241710362914518
+        ],
+        "label_strata": 6,
+        "sources": 6
+      },
+      "A_wrong_B_correct": {
+        "T3_rate_difference_B_minus_A_percentage_points": 16.738153439194164,
+        "T3_rate_difference_ci95": [
+          15.665354293372665,
+          17.810952585015663
+        ],
+        "adverse_rate_difference_B_minus_A_percentage_points": 17.06853520423147,
+        "adverse_rate_difference_ci95": [
+          15.679159941589644,
+          18.457910466873294
+        ],
+        "label_strata": 7,
+        "sources": 8
+      },
+      "both_correct": {
+        "T3_rate_difference_B_minus_A_percentage_points": -0.04169370829032716,
+        "T3_rate_difference_ci95": [
+          -0.09228819349144025,
+          0.0002567782171274653
+        ],
+        "adverse_rate_difference_B_minus_A_percentage_points": -0.04169370829032716,
+        "adverse_rate_difference_ci95": [
+          -0.09228819349144025,
+          0.0002567782171274653
+        ],
+        "label_strata": 32,
+        "sources": 67
+      },
+      "both_wrong": {
+        "T3_rate_difference_B_minus_A_percentage_points": -0.5472252259992255,
+        "T3_rate_difference_ci95": [
+          -1.938340130274369,
+          0.8438896782759177
+        ],
+        "adverse_rate_difference_B_minus_A_percentage_points": 0.0,
+        "adverse_rate_difference_ci95": [
+          0.0,
+          0.0
+        ],
+        "label_strata": 15,
+        "sources": 19
+      },
+      "full_panel": {
+        "T3_rate_difference_B_minus_A_percentage_points": 1.1896246796091647,
+        "T3_rate_difference_ci95": [
+          0.02301199320250298,
+          2.4506760190982626
+        ],
+        "adverse_rate_difference_B_minus_A_percentage_points": 1.3000977696065112,
+        "adverse_rate_difference_ci95": [
+          0.18433968597873548,
+          2.559341476724264
+        ],
+        "label_strata": 35,
+        "sources": 100
+      }
+    },
+    "validation": {
+      "A": {
+        "accuracy": 0.7227732692115019,
+        "correct": 7214,
+        "samples": 9981,
+        "seed": 341969035
+      },
+      "B": {
+        "accuracy": 0.725278028253682,
+        "correct": 7239,
+        "samples": 9981,
+        "seed": 554720563
+      }
+    },
+    "validation_accuracy_difference_B_minus_A_percentage_points": 0.25047590421801713
+  },
+  "contracts": {
+    "replica_audit": "88a2d64a96d59b03001203d2df9c321a33e79f145eceb96070a94ee5a710127b",
+    "replica_audit_original": "849abb4a79a3ca23735bfe4493fc6a4a5630db28353cdc7ffa93c60e2515f6e5"
+  },
+  "decisions": {
+    "final_trace_collapse": "SUPPORTED",
+    "hierarchy_integrity_gate": "PASS",
+    "margin_adverse_association": "SUPPORTED",
+    "paired_adverse_vulnerability": "DESCRIPTIVE_COMPLETE",
+    "tie_aware_reconstruction_gate": "PASS"
+  },
+  "new_model_inference": false,
+  "replicas": {
+    "A": {
+      "T0": 174198,
+      "T1": 97293,
+      "T2": 1022650,
+      "T3": 3564,
+      "adverse": 790,
+      "adverse_sensitive_sources": 6,
+      "corrective": 376,
+      "earlier_only_fraction_of_trace_changes": 0.007224699089547284,
+      "earlier_only_trace_changes": 8117,
+      "final_layer_fraction_of_trace_changes": 0.07937289220271881,
+      "final_layer_trace_changed_counts_preserved": 89176,
+      "initially_correct_sources": 73,
+      "lateral": 2398,
+      "robust_correct_sources": 67,
+      "seed": 341969035,
+      "sources_with_final_layer_changes": 100,
+      "trace_changed_neighbors": 1123507
+    },
+    "B": {
+      "T0": 168422,
+      "T1": 77753,
+      "T2": 1032964,
+      "T3": 18566,
+      "adverse": 15773,
+      "adverse_sensitive_sources": 5,
+      "corrective": 25,
+      "earlier_only_fraction_of_trace_changes": 0.004757886198587954,
+      "earlier_only_trace_changes": 5373,
+      "final_layer_fraction_of_trace_changes": 0.06409376569026541,
+      "final_layer_trace_changed_counts_preserved": 72380,
+      "initially_correct_sources": 75,
+      "lateral": 2768,
+      "robust_correct_sources": 70,
+      "seed": 554720563,
+      "sources_with_final_layer_changes": 100,
+      "trace_changed_neighbors": 1129283
+    }
+  },
+  "table_09": [
+    {
+      "outcome": "T0: trace unchanged",
+      "replica_A": 174198,
+      "replica_B": 168422
+    },
+    {
+      "outcome": "T1: trace changed, counts preserved",
+      "replica_A": 97293,
+      "replica_B": 77753
+    },
+    {
+      "outcome": "T2: counts changed, class preserved",
+      "replica_A": 1022650,
+      "replica_B": 1032964
+    },
+    {
+      "outcome": "T3: class changed",
+      "replica_A": 3564,
+      "replica_B": 18566
+    },
+    {
+      "outcome": "Final-layer trace changed, counts preserved",
+      "replica_A": 89176,
+      "replica_B": 72380
+    },
+    {
+      "outcome": "Adverse neighbors (subset of T3)",
+      "replica_A": 790,
+      "replica_B": 15773
+    },
+    {
+      "outcome": "Initially correct sources (of 100)",
+      "replica_A": 73,
+      "replica_B": 75
+    },
+    {
+      "outcome": "Correct and robust sources (of 100)",
+      "replica_A": 67,
+      "replica_B": 70
+    }
+  ]
+}

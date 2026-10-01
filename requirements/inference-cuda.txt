@@ -1,0 +1,7 @@
+# Reference inference environment (CUDA). Install the PyTorch build torch==2.11.0+cu128 separately,
+# as described in docs/reproduce.md; the full transitive set of the original run was not recorded.
+-r analysis.txt
+spikingjelly==0.0.0.0.14
+rotary-embedding-torch==0.8.4
+einops==0.8.0
+h5py

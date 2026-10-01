@@ -1,4 +1,4 @@
-name: Validate analysis and real-model preflight
+name: Regenerate the manuscript tables and run the CPU model preflight
 on:
   push:
   pull_request:
@@ -6,9 +6,12 @@ on:
 permissions:
   contents: read
 jobs:
-  recorded-results:
+  tables:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
     env:
       PYTHONHASHSEED: "0"
       PYTHONPATH: src
@@ -18,16 +21,28 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: "3.13"
-      - run: python -m pip install -r requirements-analysis.txt
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -r requirements/analysis.txt
+      - run: python scripts/update_manifest.py --check
       - run: python -m ssc_geometry verify
       - run: python -m unittest discover -s tests -v
-      - run: python -m ssc_geometry reproduce --out outputs/ci_regeneration
-      - run: python -m ssc_geometry execution-controls --out outputs/ci_execution_controls
-      - run: python -m ssc_geometry extended-analyses --out outputs/ci_extended_analyses
-  real-model-preflight:
+      - run: python -m ssc_geometry paper --out outputs/ci_paper
+      - name: Every manuscript cell must pass
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('outputs/ci_paper/report.json').read_text())
+          print(report['cells_checked'], 'cells checked,', report['cells_failed'], 'failed')
+          assert report['status'] == 'PASS' and report['cells_failed'] == 0, report['failed_ids']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-tables-py${{ matrix.python-version }}
+          path: outputs/ci_paper
+  model-preflight-cpu:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       PYTHONHASHSEED: "0"
       PYTHONPATH: src
@@ -42,21 +57,23 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.11.0+cpu torchvision==0.26.0+cpu
-      - run: python -m pip install -r requirements-inference-cpu.txt
+      - run: python -m pip install -r requirements/inference-cpu.txt
       - run: python -m pip check
       - run: python -m ssc_geometry verify
       - run: python scripts/prepare_upstream.py
-      - run: python -m unittest discover -s tests -p test_model_loading.py -v
-      - run: python scripts/run_singleton_audit.py --mode preflight --device cpu --allow-nonreference-environment --out outputs/ci_preflight
-      - run: python scripts/run_singleton_audit.py --mode preflight --device cpu --allow-nonreference-environment --out outputs/ci_preflight --resume
-      - name: Check preflight coverage and resume
+      - run: python -m unittest discover -s tests -p "test_model.py" -v
+      - run: python scripts/run_audit.py --mode preflight --device cpu --allow-nonreference-environment --out outputs/ci_preflight
+      - run: python scripts/run_audit.py --mode preflight --device cpu --allow-nonreference-environment --out outputs/ci_preflight --resume
+      - name: Preflight coverage and resume
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          report=json.loads(Path('outputs/ci_preflight/conformance_report.json').read_text())
-          assert report['status']=='PASS'
-          assert (report['sources'],report['candidates'],report['patched_candidates'])==(4,4,4)
-          assert report['new_forward_passes_this_invocation']==0
+          report = json.loads(Path('outputs/ci_preflight/conformance_report.json').read_text())
+          assert report['status'] == 'PASS'
+          assert (report['sources'], report['candidates'], report['patched_candidates']) == (4, 4, 4)
+          assert report['new_forward_passes_this_invocation'] == 0
           assert report['complete_canonical_panel'] is False
           PY
+      - run: python scripts/run_search_gradients.py --step gate runner-up compare --panel --device cpu --sources 2 --out outputs/ci_gradients
+      - run: python scripts/run_execution_controls.py --step clean-gate candidate-replay compare --panel --gpu cpu --candidate-limit 6 --out outputs/ci_execution

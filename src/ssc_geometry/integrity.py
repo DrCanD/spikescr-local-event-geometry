@@ -4,6 +4,7 @@ import json
 import re
 from pathlib import Path, PurePosixPath
 from .io import sha256_file, read_json
+from . import paths
 
 
 def checked_path(root: Path, relative: str) -> Path:
@@ -21,7 +22,7 @@ def checked_path(root: Path, relative: str) -> Path:
 
 
 def verify_integrity(root: Path) -> dict:
-    manifest=read_json(root/'checksums/manifest.json')
+    manifest=read_json(root/paths.MANIFEST)
     if manifest.get('schema_version')!=1 or not isinstance(manifest.get('files'),dict):
         raise ValueError('Invalid integrity manifest')
     missing=[];modified=[]
@@ -32,11 +33,11 @@ def verify_integrity(root: Path) -> dict:
         elif sha256_file(path)!=expected:modified.append(relative)
     # Untracked files in executable/config/reference directories must not be imported unnoticed.
     unexpected=[]
-    for directory in ('src','scripts','configs','data','tests','.github'):
-        for path in (root/directory).rglob('*'):
+    for directory in paths.MANIFEST_DIRECTORIES:
+        for path in sorted((root/directory).rglob('*')):
             if not path.is_file() or '__pycache__' in path.parts or path.suffix=='.pyc' or any(part.endswith('.egg-info') for part in path.parts):continue
             relative=path.relative_to(root).as_posix()
-            if relative not in manifest['files']:unexpected.append(relative)
+            if relative not in manifest['files'] and relative not in (paths.MANIFEST, paths.SHA256SUMS):unexpected.append(relative)
     report=dict(status='PASS' if not(missing or modified or unexpected) else 'FAIL',
                 checked_files=len(manifest['files']),missing=missing,modified=modified,unexpected=unexpected,
                 trust_note='Checksums detect corruption against the included manifest, not authenticity against an independent trusted publisher.')
@@ -48,8 +49,8 @@ def verify_checkpoint(root: Path) -> dict:
     import hashlib
     import numpy as np
     import torch
-    config=read_json(root/'configs/experiment.json')
-    path=root/'data/model/frozen_checkpoint.pt'
+    config=read_json(root/paths.EXPERIMENT_CONFIG)
+    path=root/paths.CHECKPOINT
     if sha256_file(path)!=config['checkpoint_sha256']:raise ValueError('Checkpoint file hash mismatch')
     blob=torch.load(path,map_location='cpu',weights_only=True)
     if blob['epoch']!=config['checkpoint_epoch_zero_based']:raise ValueError('Checkpoint epoch mismatch')
@@ -71,11 +72,11 @@ def verify_raw_validation(root: Path, path: Path) -> dict:
     import numpy as np
     from .io import load_npz, read_numeric_csv
     from .core import transform_events
-    from ._kernel import literal_event_transform
-    config=read_json(root/'configs/experiment.json')
+    from .core import literal_event_transform
+    config=read_json(root/paths.EXPERIMENT_CONFIG)
     if sha256_file(path)!=config['validation_h5_sha256']:
         raise ValueError('Not the hash-verified official validation HDF5. Nothing was read as HDF5.')
-    panel=load_npz(root/'data/panel/inputs.npz'); rows=read_numeric_csv(root/'data/panel/manifest.csv')
+    panel=load_npz(root/paths.PANEL_INPUTS); rows=read_numeric_csv(root/paths.PANEL_SOURCES)
     with h5py.File(path,'r') as h:
         if len(h['labels'])!=9981:raise ValueError('Wrong validation cardinality')
         for row in rows:

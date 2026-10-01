@@ -1,0 +1,76 @@
+{
+  "allocation": "Capped proportional allocation in real numbers, then floor and assign remaining units by largest fractional remainders, ties ascending source_index. A saturated hard-focus policy assigns overflow uniformly to remaining uncapped sources.",
+  "candidate_sampling": "Uniform distinct candidates without replacement independently within each source, using the allocated integer count",
+  "cost": "Number of hypothetical candidate forward evaluations; common clean-source scores are already available. No new model inference occurs in this computation.",
+  "curve_budgets": [
+    84,
+    168,
+    420,
+    840,
+    1680,
+    4200,
+    8400,
+    16800,
+    42000,
+    84000,
+    168000,
+    336000,
+    628171
+  ],
+  "cutoff_sensitivity": {
+    "allocation": "Identical capped proportional allocation and largest-remainder rounding to the original retained-map analysis; source-ID tie break; uniform overflow only once focus capacity is exhausted.",
+    "new_inference": 0,
+    "outcomes": "Used only after allocation to compute exact finite-population detection expectations.",
+    "percent_thresholds": [
+      10,
+      25,
+      50
+    ],
+    "population": "All 84 initially correct sources; no exclusion based on adverse outcomes.",
+    "rank_tie_break": "ascending source_index",
+    "rankings": [
+      "raw_margin",
+      "margin_per_horizon"
+    ],
+    "sampling": "Uniform without replacement within each allocated source.",
+    "selected_source_count": "ceil(percent * 84 / 100): 9, 21, 42",
+    "timing": "Specified before this numerical sweep, after the parent audit and prior quartile analysis; retrospective sensitivity only.",
+    "total_candidate_query_budgets": [
+      840,
+      8400,
+      84000
+    ]
+  },
+  "headline_budgets": [
+    840,
+    8400,
+    84000
+  ],
+  "interpretation": "Fixed-panel retrospective policy comparison; no held-out policy generalization or empirical runtime/energy claim",
+  "metrics": [
+    "expected vulnerable-source discoveries out of 13",
+    "probability of finding all13 vulnerable sources",
+    "expected adverse candidates sampled",
+    "expected fraction of total adverse mass in discovered sources"
+  ],
+  "no_tuning": "No scheme coefficient, threshold, or budget is chosen by maximizing measured outcomes; no new policy is added after seeing the sweep",
+  "outcome_use": "Only after allocation, to compute exact finite-population hypergeometric coverage; never used in weights, ranking, caps, redistribution, or budgets",
+  "population": "84 initially correct sources of the canonical singleton census (data/neighborhood/sources.csv, clean_correct = True)",
+  "primary_comparison": "half_uniform_half_quartile versus uniform at equal total candidate budgets",
+  "ranking_inputs": [
+    "raw clean top-two margin",
+    "clean top-two margin divided by source horizon_steps"
+  ],
+  "ranking_tie_break": "ascending source_index",
+  "schema": "search-policies/1",
+  "schemes": {
+    "half_uniform_half_linear_rank": "50 percent weight on uniform84 plus 50 percent weight proportional to 85-rank (rank1 is lowest margin)",
+    "half_uniform_half_quartile": "50 percent weight on uniform84 plus 50 percent weight on uniform lowest21",
+    "lowest_half": "Equal positive weights on the 42 lowest-margin sources; all other initial weights zero",
+    "lowest_quartile": "Equal positive weights on the 21 lowest-margin sources; all other initial weights zero",
+    "uniform": "Equal source weights across all 84 sources"
+  },
+  "sensitivity_comparisons": "hard quartile, hard half, linear-rank mixture; raw versus horizon-normalized clean-margin rank",
+  "source_table": "data/neighborhood/sources.csv",
+  "status": "Fixed before this numerical sweep; retrospective to previously observed audit data"
+}

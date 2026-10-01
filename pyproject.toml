@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spikescr-local-event-geometry"
-version = "0.2.0.dev0"
-description = "Auditable finite-neighborhood analysis of a frozen SpikeSCR speech classifier"
+version = "1.1.0"
+description = "Regenerates every table of the manuscript on local decision geometry of a frozen SpikeSCR speech classifier from the released records"
 license = {file = "LICENSE"}
 requires-python = ">=3.11,<3.14"
 authors = [{name = "Ismail Can Dikmen"}]

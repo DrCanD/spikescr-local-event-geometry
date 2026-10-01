@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 from typing import Any
 import numpy as np
+from . import paths
 
 
 def repository_root(root: str | Path | None = None) -> Path:
@@ -14,7 +15,7 @@ def repository_root(root: str | Path | None = None) -> Path:
         candidate = Path(root).expanduser().resolve()
     else:
         candidate = Path(__file__).resolve().parents[2]
-    if not (candidate / 'configs/experiment.json').is_file():
+    if not (candidate / paths.EXPERIMENT_CONFIG).is_file():
         raise FileNotFoundError('Repository data not found. Supply --root with the unpacked repository path.')
     return candidate
 
@@ -86,7 +87,7 @@ def write_csv(path: str | Path, rows: list[dict]) -> None:
 def assert_output_safe(root: Path, path: str | Path) -> Path:
     """Reject any output that could overwrite immutable repository contents."""
     root=root.resolve();result=Path(path).expanduser().resolve()
-    protected=('data','configs','src','tests','checksums','docs','validation','scripts','.git','.github')
+    protected=paths.PROTECTED_DIRECTORIES
     if result==root or result in root.parents:
         raise ValueError('Output cannot be the repository or its parent')
     for part in protected:

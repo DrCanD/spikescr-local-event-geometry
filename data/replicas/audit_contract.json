@@ -1,0 +1,850 @@
+{
+  "algorithm_sha256": "5901a1bd20da89af01d4c2049c14bd5ff36f0aac0b64adc4417ebc34c515a305",
+  "analysis_config": {
+    "chunk_size": 500,
+    "margin_association_permutation_repetitions": 10000,
+    "margin_association_permutation_seed": 12062028,
+    "margin_association_permutation_seed_by_model": {
+      "341969035": 12062028,
+      "554720563": 12062128
+    },
+    "panel_size": 100,
+    "seeds": [
+      341969035,
+      554720563
+    ],
+    "selection_seed": 906605967,
+    "source_bootstrap_repetitions": 10000,
+    "source_bootstrap_seed": 12062027,
+    "source_bootstrap_seed_by_model": {
+      "341969035": 12062027,
+      "554720563": 12062127
+    }
+  },
+  "audit_batch": 1,
+  "checkpoints": [
+    {
+      "bundle_sha256": "8444e84d4d69ad4c809b99a41406c864c9c6efd4dfa5639af863f25c9a6e7606",
+      "distributed_in_repository": false,
+      "historical_correct": 7213,
+      "model_config": {
+        "architecture": "causal_conv_hard_reset_rsnn_temporal_rate_v1",
+        "branch_channels": [
+          192,
+          192
+        ],
+        "branch_dilations": [
+          1,
+          4
+        ],
+        "branch_kernel_sizes": [
+          5,
+          5
+        ],
+        "classes": 35,
+        "core_hidden_sizes": [
+          320
+        ],
+        "core_recurrent": [
+          true
+        ],
+        "dt_ms": 10,
+        "feature_definition": "global_plus_equal_window_counts_divided_by_total_valid_duration_seconds",
+        "include_global_rate": true,
+        "input_channels": 700,
+        "readout_windows": 4,
+        "reset_mode": "subtractive"
+      },
+      "replica": "A",
+      "seed": 341969035,
+      "state_dict_sha256": "1225401429d8eda8e1b387f9f35954878edc1077fa8845f06735205fd9cee9d4",
+      "trainable_parameters_original": 1627811
+    },
+    {
+      "bundle_sha256": "889d4b46dc5e15312cba27c68da5301f83f06cdbe4fbdf5503c4f3fe346a38e8",
+      "distributed_in_repository": false,
+      "historical_correct": 7241,
+      "model_config": {
+        "architecture": "causal_conv_hard_reset_rsnn_temporal_rate_v1",
+        "branch_channels": [
+          192,
+          192
+        ],
+        "branch_dilations": [
+          1,
+          4
+        ],
+        "branch_kernel_sizes": [
+          5,
+          5
+        ],
+        "classes": 35,
+        "core_hidden_sizes": [
+          320
+        ],
+        "core_recurrent": [
+          true
+        ],
+        "dt_ms": 10,
+        "feature_definition": "global_plus_equal_window_counts_divided_by_total_valid_duration_seconds",
+        "include_global_rate": true,
+        "input_channels": 700,
+        "readout_windows": 4,
+        "reset_mode": "subtractive"
+      },
+      "replica": "B",
+      "seed": 554720563,
+      "state_dict_sha256": "adaac8491c042dbe713926ae2b8f4f7aa5a1f76c9c1f481aca03d25c06726a50",
+      "trainable_parameters_original": 1627811
+    }
+  ],
+  "contract_hash_rule": "sha256 of the sorted, compact JSON serialisation of this file",
+  "dataset": {
+    "name": "ssc_valid.h5 (official SSC validation split, HDF5)",
+    "sha256": "6365c36ff8c680c4b0caf27ca52faa59e14359db5810b528f40dd80e2bcb9210",
+    "source": "https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/",
+    "split": "official_validation"
+  },
+  "environment": {
+    "amp": false,
+    "audit_batch": 1,
+    "capability": [
+      12,
+      0
+    ],
+    "cublas_workspace": ":4096:8",
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "device_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "dtype": "float32",
+    "h5py": "3.16.0",
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "tf32": false,
+    "torch": "2.11.0+cu128",
+    "validation_batch": 384
+  },
+  "implementation_sha256": "73cf1daf6f33d8973b50ac474e5e536319990dfa21bfc88090c212021df3a512",
+  "official_ssc_test_accessed": false,
+  "panel": {
+    "class_population_sizes": {
+      "0": 384,
+      "1": 351,
+      "10": 373,
+      "11": 146,
+      "12": 363,
+      "13": 397,
+      "14": 377,
+      "15": 195,
+      "16": 195,
+      "17": 139,
+      "18": 350,
+      "19": 182,
+      "2": 345,
+      "20": 204,
+      "21": 350,
+      "22": 352,
+      "23": 132,
+      "24": 193,
+      "25": 406,
+      "26": 197,
+      "27": 372,
+      "28": 219,
+      "29": 213,
+      "3": 356,
+      "30": 159,
+      "31": 128,
+      "32": 153,
+      "33": 180,
+      "34": 363,
+      "4": 373,
+      "5": 367,
+      "6": 378,
+      "7": 387,
+      "8": 346,
+      "9": 356
+    },
+    "class_quotas": {
+      "0": 3,
+      "1": 3,
+      "10": 3,
+      "11": 2,
+      "12": 3,
+      "13": 3,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 2,
+      "18": 3,
+      "19": 3,
+      "2": 3,
+      "20": 3,
+      "21": 3,
+      "22": 3,
+      "23": 3,
+      "24": 2,
+      "25": 2,
+      "26": 3,
+      "27": 3,
+      "28": 3,
+      "29": 3,
+      "3": 3,
+      "30": 3,
+      "31": 2,
+      "32": 3,
+      "33": 3,
+      "34": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3,
+      "7": 3,
+      "8": 3,
+      "9": 3
+    },
+    "created_before_model_outcomes": true,
+    "descriptive_rate_estimand": "quota-weighted label-stratified panel mean; not prevalence-poststratified to all 9981 sources",
+    "labels_sha256": "e9bc239463b654b4c3d8afd4836354830c657e8ae3a64814682d6e5aefcdc8d6",
+    "panel_sha256": "41585e6558dc7e7ba341bb34d76a56ec0631783500f967c22a931688408a2dbe",
+    "panel_size": 100,
+    "population": "all official SSC validation sources",
+    "population_size": 9981,
+    "records": [
+      {
+        "audit_rank": 0,
+        "label": 22,
+        "position": 7043,
+        "source_index": 7043
+      },
+      {
+        "audit_rank": 1,
+        "label": 12,
+        "position": 4284,
+        "source_index": 4284
+      },
+      {
+        "audit_rank": 2,
+        "label": 32,
+        "position": 9407,
+        "source_index": 9407
+      },
+      {
+        "audit_rank": 3,
+        "label": 14,
+        "position": 5264,
+        "source_index": 5264
+      },
+      {
+        "audit_rank": 4,
+        "label": 23,
+        "position": 7289,
+        "source_index": 7289
+      },
+      {
+        "audit_rank": 5,
+        "label": 23,
+        "position": 7340,
+        "source_index": 7340
+      },
+      {
+        "audit_rank": 6,
+        "label": 0,
+        "position": 314,
+        "source_index": 314
+      },
+      {
+        "audit_rank": 7,
+        "label": 30,
+        "position": 8998,
+        "source_index": 8998
+      },
+      {
+        "audit_rank": 8,
+        "label": 9,
+        "position": 3424,
+        "source_index": 3424
+      },
+      {
+        "audit_rank": 9,
+        "label": 4,
+        "position": 1755,
+        "source_index": 1755
+      },
+      {
+        "audit_rank": 10,
+        "label": 4,
+        "position": 1627,
+        "source_index": 1627
+      },
+      {
+        "audit_rank": 11,
+        "label": 5,
+        "position": 1986,
+        "source_index": 1986
+      },
+      {
+        "audit_rank": 12,
+        "label": 14,
+        "position": 4959,
+        "source_index": 4959
+      },
+      {
+        "audit_rank": 13,
+        "label": 26,
+        "position": 8189,
+        "source_index": 8189
+      },
+      {
+        "audit_rank": 14,
+        "label": 19,
+        "position": 6316,
+        "source_index": 6316
+      },
+      {
+        "audit_rank": 15,
+        "label": 26,
+        "position": 8134,
+        "source_index": 8134
+      },
+      {
+        "audit_rank": 16,
+        "label": 24,
+        "position": 7419,
+        "source_index": 7419
+      },
+      {
+        "audit_rank": 17,
+        "label": 2,
+        "position": 813,
+        "source_index": 813
+      },
+      {
+        "audit_rank": 18,
+        "label": 7,
+        "position": 2554,
+        "source_index": 2554
+      },
+      {
+        "audit_rank": 19,
+        "label": 2,
+        "position": 914,
+        "source_index": 914
+      },
+      {
+        "audit_rank": 20,
+        "label": 12,
+        "position": 4499,
+        "source_index": 4499
+      },
+      {
+        "audit_rank": 21,
+        "label": 16,
+        "position": 5675,
+        "source_index": 5675
+      },
+      {
+        "audit_rank": 22,
+        "label": 25,
+        "position": 7886,
+        "source_index": 7886
+      },
+      {
+        "audit_rank": 23,
+        "label": 33,
+        "position": 9588,
+        "source_index": 9588
+      },
+      {
+        "audit_rank": 24,
+        "label": 15,
+        "position": 5356,
+        "source_index": 5356
+      },
+      {
+        "audit_rank": 25,
+        "label": 27,
+        "position": 8247,
+        "source_index": 8247
+      },
+      {
+        "audit_rank": 26,
+        "label": 21,
+        "position": 6763,
+        "source_index": 6763
+      },
+      {
+        "audit_rank": 27,
+        "label": 34,
+        "position": 9763,
+        "source_index": 9763
+      },
+      {
+        "audit_rank": 28,
+        "label": 8,
+        "position": 3277,
+        "source_index": 3277
+      },
+      {
+        "audit_rank": 29,
+        "label": 16,
+        "position": 5614,
+        "source_index": 5614
+      },
+      {
+        "audit_rank": 30,
+        "label": 21,
+        "position": 6776,
+        "source_index": 6776
+      },
+      {
+        "audit_rank": 31,
+        "label": 28,
+        "position": 8681,
+        "source_index": 8681
+      },
+      {
+        "audit_rank": 32,
+        "label": 20,
+        "position": 6440,
+        "source_index": 6440
+      },
+      {
+        "audit_rank": 33,
+        "label": 32,
+        "position": 9325,
+        "source_index": 9325
+      },
+      {
+        "audit_rank": 34,
+        "label": 6,
+        "position": 2304,
+        "source_index": 2304
+      },
+      {
+        "audit_rank": 35,
+        "label": 13,
+        "position": 4737,
+        "source_index": 4737
+      },
+      {
+        "audit_rank": 36,
+        "label": 18,
+        "position": 5974,
+        "source_index": 5974
+      },
+      {
+        "audit_rank": 37,
+        "label": 29,
+        "position": 8835,
+        "source_index": 8835
+      },
+      {
+        "audit_rank": 38,
+        "label": 0,
+        "position": 18,
+        "source_index": 18
+      },
+      {
+        "audit_rank": 39,
+        "label": 8,
+        "position": 3083,
+        "source_index": 3083
+      },
+      {
+        "audit_rank": 40,
+        "label": 0,
+        "position": 90,
+        "source_index": 90
+      },
+      {
+        "audit_rank": 41,
+        "label": 5,
+        "position": 2140,
+        "source_index": 2140
+      },
+      {
+        "audit_rank": 42,
+        "label": 33,
+        "position": 9497,
+        "source_index": 9497
+      },
+      {
+        "audit_rank": 43,
+        "label": 6,
+        "position": 2501,
+        "source_index": 2501
+      },
+      {
+        "audit_rank": 44,
+        "label": 9,
+        "position": 3505,
+        "source_index": 3505
+      },
+      {
+        "audit_rank": 45,
+        "label": 13,
+        "position": 4757,
+        "source_index": 4757
+      },
+      {
+        "audit_rank": 46,
+        "label": 15,
+        "position": 5337,
+        "source_index": 5337
+      },
+      {
+        "audit_rank": 47,
+        "label": 3,
+        "position": 1252,
+        "source_index": 1252
+      },
+      {
+        "audit_rank": 48,
+        "label": 34,
+        "position": 9829,
+        "source_index": 9829
+      },
+      {
+        "audit_rank": 49,
+        "label": 18,
+        "position": 6002,
+        "source_index": 6002
+      },
+      {
+        "audit_rank": 50,
+        "label": 4,
+        "position": 1534,
+        "source_index": 1534
+      },
+      {
+        "audit_rank": 51,
+        "label": 27,
+        "position": 8525,
+        "source_index": 8525
+      },
+      {
+        "audit_rank": 52,
+        "label": 8,
+        "position": 3223,
+        "source_index": 3223
+      },
+      {
+        "audit_rank": 53,
+        "label": 9,
+        "position": 3403,
+        "source_index": 3403
+      },
+      {
+        "audit_rank": 54,
+        "label": 15,
+        "position": 5439,
+        "source_index": 5439
+      },
+      {
+        "audit_rank": 55,
+        "label": 3,
+        "position": 1199,
+        "source_index": 1199
+      },
+      {
+        "audit_rank": 56,
+        "label": 20,
+        "position": 6432,
+        "source_index": 6432
+      },
+      {
+        "audit_rank": 57,
+        "label": 11,
+        "position": 4095,
+        "source_index": 4095
+      },
+      {
+        "audit_rank": 58,
+        "label": 6,
+        "position": 2444,
+        "source_index": 2444
+      },
+      {
+        "audit_rank": 59,
+        "label": 22,
+        "position": 7175,
+        "source_index": 7175
+      },
+      {
+        "audit_rank": 60,
+        "label": 1,
+        "position": 597,
+        "source_index": 597
+      },
+      {
+        "audit_rank": 61,
+        "label": 1,
+        "position": 495,
+        "source_index": 495
+      },
+      {
+        "audit_rank": 62,
+        "label": 22,
+        "position": 7164,
+        "source_index": 7164
+      },
+      {
+        "audit_rank": 63,
+        "label": 1,
+        "position": 522,
+        "source_index": 522
+      },
+      {
+        "audit_rank": 64,
+        "label": 33,
+        "position": 9549,
+        "source_index": 9549
+      },
+      {
+        "audit_rank": 65,
+        "label": 29,
+        "position": 8888,
+        "source_index": 8888
+      },
+      {
+        "audit_rank": 66,
+        "label": 14,
+        "position": 4983,
+        "source_index": 4983
+      },
+      {
+        "audit_rank": 67,
+        "label": 13,
+        "position": 4655,
+        "source_index": 4655
+      },
+      {
+        "audit_rank": 68,
+        "label": 31,
+        "position": 9282,
+        "source_index": 9282
+      },
+      {
+        "audit_rank": 69,
+        "label": 10,
+        "position": 3657,
+        "source_index": 3657
+      },
+      {
+        "audit_rank": 70,
+        "label": 16,
+        "position": 5662,
+        "source_index": 5662
+      },
+      {
+        "audit_rank": 71,
+        "label": 10,
+        "position": 3770,
+        "source_index": 3770
+      },
+      {
+        "audit_rank": 72,
+        "label": 17,
+        "position": 5793,
+        "source_index": 5793
+      },
+      {
+        "audit_rank": 73,
+        "label": 32,
+        "position": 9389,
+        "source_index": 9389
+      },
+      {
+        "audit_rank": 74,
+        "label": 24,
+        "position": 7504,
+        "source_index": 7504
+      },
+      {
+        "audit_rank": 75,
+        "label": 20,
+        "position": 6419,
+        "source_index": 6419
+      },
+      {
+        "audit_rank": 76,
+        "label": 23,
+        "position": 7267,
+        "source_index": 7267
+      },
+      {
+        "audit_rank": 77,
+        "label": 30,
+        "position": 9033,
+        "source_index": 9033
+      },
+      {
+        "audit_rank": 78,
+        "label": 17,
+        "position": 5690,
+        "source_index": 5690
+      },
+      {
+        "audit_rank": 79,
+        "label": 29,
+        "position": 8836,
+        "source_index": 8836
+      },
+      {
+        "audit_rank": 80,
+        "label": 2,
+        "position": 901,
+        "source_index": 901
+      },
+      {
+        "audit_rank": 81,
+        "label": 3,
+        "position": 1386,
+        "source_index": 1386
+      },
+      {
+        "audit_rank": 82,
+        "label": 12,
+        "position": 4422,
+        "source_index": 4422
+      },
+      {
+        "audit_rank": 83,
+        "label": 5,
+        "position": 2091,
+        "source_index": 2091
+      },
+      {
+        "audit_rank": 84,
+        "label": 34,
+        "position": 9735,
+        "source_index": 9735
+      },
+      {
+        "audit_rank": 85,
+        "label": 27,
+        "position": 8547,
+        "source_index": 8547
+      },
+      {
+        "audit_rank": 86,
+        "label": 11,
+        "position": 4050,
+        "source_index": 4050
+      },
+      {
+        "audit_rank": 87,
+        "label": 25,
+        "position": 7941,
+        "source_index": 7941
+      },
+      {
+        "audit_rank": 88,
+        "label": 10,
+        "position": 3658,
+        "source_index": 3658
+      },
+      {
+        "audit_rank": 89,
+        "label": 7,
+        "position": 2588,
+        "source_index": 2588
+      },
+      {
+        "audit_rank": 90,
+        "label": 19,
+        "position": 6260,
+        "source_index": 6260
+      },
+      {
+        "audit_rank": 91,
+        "label": 21,
+        "position": 6713,
+        "source_index": 6713
+      },
+      {
+        "audit_rank": 92,
+        "label": 26,
+        "position": 8061,
+        "source_index": 8061
+      },
+      {
+        "audit_rank": 93,
+        "label": 31,
+        "position": 9184,
+        "source_index": 9184
+      },
+      {
+        "audit_rank": 94,
+        "label": 7,
+        "position": 2601,
+        "source_index": 2601
+      },
+      {
+        "audit_rank": 95,
+        "label": 28,
+        "position": 8606,
+        "source_index": 8606
+      },
+      {
+        "audit_rank": 96,
+        "label": 30,
+        "position": 9078,
+        "source_index": 9078
+      },
+      {
+        "audit_rank": 97,
+        "label": 19,
+        "position": 6254,
+        "source_index": 6254
+      },
+      {
+        "audit_rank": 98,
+        "label": 28,
+        "position": 8575,
+        "source_index": 8575
+      },
+      {
+        "audit_rank": 99,
+        "label": 18,
+        "position": 6046,
+        "source_index": 6046
+      }
+    ],
+    "selection": "ground-truth-label-stratified SRSWOR; no prediction, margin, or earlier-audit outcome used",
+    "selection_seed": 906605967,
+    "source_ids_sha256": "654de8c82cf8ea3e363f35449aa17968c43c2343e34f40862f7687833414af26"
+  },
+  "protocol": {
+    "decision_rules": {
+      "familywise_alpha": 0.05,
+      "final_trace_collapse": "supported iff final_trace_changed_count_preserved is greater than zero in both seeds",
+      "hierarchy_integrity_gate": "PASS iff the complete panel has zero hierarchy, null-replay, post-hoc-gap, tie-reconstruction, and directional-partition violations in both seeds; any candidate mismatch aborts",
+      "margin_adverse_association": "supported iff both pooled source-level Spearman rho values are negative and both one-sided within-label permutation p-values pass Holm correction at alpha=0.05",
+      "paired_adverse_vulnerability": "descriptive paired clean-correct adverse-vulnerability agreement; no pass/fail threshold",
+      "tie_aware_reconstruction_gate": "PASS iff tie-aware gap reconstruction has zero mismatch; enforced fail-loud per candidate"
+    },
+    "design": "label-stratified sample without replacement from all 9981 SSC validation sources",
+    "inference": "source-level summaries; within-label source bootstrap; within-label margin-association permutation; Wilson intervals and paired source tests are descriptive",
+    "models": "two frozen count-readout replicas (protocol fixed before the audit)",
+    "multiple_testing": "Holm correction across the two seed-level margin-association permutation tests only",
+    "neighborhood": "all unique one-count moves to an adjacent native 10 ms bin; channel and 100-bin horizon preserved",
+    "primary_hypotheses": [
+      "Integrity gate: the exact trace-to-final-trace-to-count-to-class hierarchy, null replay, post-hoc gap bound, directional partition, and tie-aware reconstruction all pass in both seeds",
+      "Final-trace collapse: non-zero final-layer-trace changes erased by the integer readout occur in both seeds",
+      "Margin-adverse association: among clean-correct sources, clean top-two margin is negatively associated with exact adverse-T3 rate in each seed"
+    ],
+    "secondary_hypotheses": [
+      "Paired adverse vulnerability: source vulnerability and directional T3 taxonomy are stable enough to report paired seed agreement",
+      "Tie-aware reconstruction gate: the post-perturbation tie-aware gap identity reconstructs every class transition exactly"
+    ],
+    "selection_is_outcome_independent": true,
+    "statistical_unit": "source example; candidates are nested measurements, never iid replicates",
+    "test_policy": "this protocol uses ssc_valid.h5 only; ssc_test.h5 is not searched, opened, hashed, or evaluated"
+  },
+  "readout": "global+four-window exact integer final-layer spike counts",
+  "schema": "replica-audit-contract/1",
+  "source_core_sha256": "7cf3df82c56f3a7281462b044edce8da9b93567955949c5ec81f8a99559d2f11",
+  "training_executed": false
+}

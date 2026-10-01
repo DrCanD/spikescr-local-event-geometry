@@ -1,2 +1,2 @@
-"""Reproducible local event geometry for a frozen SpikeSCR classifier."""
-__version__ = "0.2.0.dev0"
+"""Local decision geometry of a frozen spiking speech classifier: regenerate every manuscript table from the released records."""
+__version__ = "1.1.0"
