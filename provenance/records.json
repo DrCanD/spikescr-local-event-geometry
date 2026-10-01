@@ -28,6 +28,7 @@
   ],
   "canonical_decision_census": "Unmodified public CUDA singleton, native horizon, reset before each forward; public time-summed softmax readout.",
   "clean_score_derivation": "Only clean scores were read from the benchmark and preliminary-neighborhood archive. These were retained by the later canonical reconstruction. Preliminary candidate predictions are not distributed or used.",
+  "code_and_documentation": "src/, tests/, scripts/ (except the two superseding scripts listed under executed_sources), docs/, README.md, CITATION.cff and the CI workflow were rewritten for version 1.1.0; their history is in git, not in this file.",
   "executed_sources": [
     {
       "note": "Executed as a cloud-notebook script with machine-specific paths; not redistributed. The superseding script implements the same procedure with repository-relative paths.",
@@ -55,6 +56,7 @@
     }
   ],
   "new_model_inference_during_repository_update": false,
+  "original_commit": "6ec194d8661d24f701be9495bedb5494c5b1850b",
   "original_contract_hashes": {
     "benchmark": "494477e74e54359286e85cb85e105a308156694efb174602da0cf957eb320bdc",
     "internal": "ca4efc03802f1de36e4ffcddde165e75b600111187c57527bcc39380448e4404",
@@ -80,6 +82,58 @@
   ],
   "panel_input_derivation": "Transformed from the hash-verified official validation HDF5 with the recorded 5 ms, 5-channel integration. Each source was independently transformed with a literal loop; every candidate specification was compared to the canonical candidate record.",
   "purpose": "Audit trail of the repository restructuring: which files were renamed byte-for-byte, which record files were rewritten (and how), which earlier-release files were removed, and which recorded contracts are kept verbatim because their hash is embedded in the recorded output arrays.",
+  "reference_files": {
+    "files": [
+      {
+        "original_path": "data/reference/benchmark_metrics.json",
+        "original_sha256": "cc151739b093ebdca8315b7f3d23c14814cce98543a9d2690c0f2cf458deb756",
+        "path": "data/reference/benchmark.json",
+        "sha256": "cc151739b093ebdca8315b7f3d23c14814cce98543a9d2690c0f2cf458deb756"
+      },
+      {
+        "original_path": "data/reference/neighborhood_totals.json",
+        "original_sha256": "fd69641ec2ab3b5a7cb4c18de0732c1f2c4c4f7ddb42bd3697d253dadc8c55f3",
+        "path": "data/reference/neighborhood.json",
+        "sha256": "fd69641ec2ab3b5a7cb4c18de0732c1f2c4c4f7ddb42bd3697d253dadc8c55f3"
+      },
+      {
+        "original_path": "data/reference/geometry_statistics.json",
+        "original_sha256": "944d2ef06899cc4d3febb61a856dbce3c489ebb3561a178a8b18b98517f83ffe",
+        "path": "data/reference/geometry.json",
+        "sha256": "944d2ef06899cc4d3febb61a856dbce3c489ebb3561a178a8b18b98517f83ffe"
+      },
+      {
+        "original_path": "data/reference/internal_statistics.json",
+        "original_sha256": "c6b42c8e6d29c3ae8f6717c0d61203a6396a621270a7db7163e0272afe0f399c",
+        "path": "data/reference/internal.json",
+        "sha256": "c6b42c8e6d29c3ae8f6717c0d61203a6396a621270a7db7163e0272afe0f399c"
+      },
+      {
+        "original_path": "data/reference/extended_analysis_statistics.json",
+        "original_sha256": "4a3c69aef170b9e8009368da7b2e3e09a4ad402c485aa14002488b8d0f1f016c",
+        "path": [
+          "data/reference/search.json",
+          "data/reference/replicas.json"
+        ],
+        "sha256": [
+          "2e2c955d885e2d2c38e5ae52d0f5979912f1bb05da843a65f249814ac1f236da",
+          "f8bfddaea5f9e58dc9fb7c93ae37693b230be0af87beb144befd1af4c0bf3ac7"
+        ]
+      },
+      {
+        "original_path": "data/reference/execution_control_statistics.json",
+        "original_sha256": "75066486dbf3f58990ebd40159d6991f62b51ff19cffe78ddb1d4ab4ad8d2ef5",
+        "path": "data/reference/execution.json",
+        "sha256": "f019aa6429b1b2e00d72de888aa9a1daed001cf0760b05558ad13887c5a7ab1e"
+      },
+      {
+        "note": "new: the manuscript cells checked by the paper command",
+        "path": "data/reference/expected_values.json",
+        "sha256": "ffc841215b9421d85c05eca6d2e7594708cf1a9f18f69b2808c33d47f61cf7e4"
+      }
+    ],
+    "note": "Regenerated comparison targets. Renamed, and for search/replicas/execution restructured by the current code; every leaf of the previous files is preserved with an identical value (checked during the restructuring), new leaves were added."
+  },
   "removed": [
     {
       "git_blob": "fe836e08cd13a6b3e77439eefbc0e06d469d02cc",
@@ -149,244 +203,324 @@
   ],
   "renamed": [
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "keys reference_torch / reference_wheel_versions (previously prefixed recorded_); values unchanged",
       "original_path": "configs/inference_environment.json",
+      "original_sha256": "77180ff38c84feb258bf49cac056d3d4f3ae179faf71ef7e4c80e7d8674c0c1b",
       "path": "configs/environment.json",
-      "sha256": "77180ff38c84feb258bf49cac056d3d4f3ae179faf71ef7e4c80e7d8674c0c1b"
+      "sha256": "e9d6a479b03737d7a9669e332fbdec0316771750cfc8845d8f997ae84c9fd034"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "configs/upstream_blobs.json",
+      "original_sha256": "2cf9e213ebd17da1baf7cc489e08c2a612c26121b5c9c953d3b0416997350586",
       "path": "configs/upstream.json",
       "sha256": "2cf9e213ebd17da1baf7cc489e08c2a612c26121b5c9c953d3b0416997350586"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/benchmark/test_predictions.npz",
+      "original_sha256": "cf06ab18926ce65f3a27569fc2a0c3d36faad73b241dc0b42040f0068d70d631",
       "path": "data/benchmark/test_batch256.npz",
       "sha256": "cf06ab18926ce65f3a27569fc2a0c3d36faad73b241dc0b42040f0068d70d631"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/benchmark/validation_predictions.npz",
+      "original_sha256": "030c83698d9db28e476ddbb9ce4f1c480328bb3f01513db9795191fef5345d46",
       "path": "data/benchmark/validation_batch256.npz",
       "sha256": "030c83698d9db28e476ddbb9ce4f1c480328bb3f01513db9795191fef5345d46"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/paired_candidate_predictions.npz",
+      "original_sha256": "d5125af500d6e94ab68a9194a6f065be72441ac21f91f440e361c9975a2b8530",
       "path": "data/execution/candidate_replay.npz",
       "sha256": "d5125af500d6e94ab68a9194a6f065be72441ac21f91f440e361c9975a2b8530"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/qk_isolation_validation.npz",
+      "original_sha256": "199ae0a38723650720e5e8536b8833fe175f689e7c317dc44848fe8ab9dc0219",
       "path": "data/execution/qk_isolation.npz",
       "sha256": "199ae0a38723650720e5e8536b8833fe175f689e7c317dc44848fe8ab9dc0219"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/cpu_validation_predictions.npz",
+      "original_sha256": "5de1bfbf42cac29811eee58a6b2b334100322b390cdb0d538345ba77bb094bde",
       "path": "data/execution/validation_cpu_singleton.npz",
       "sha256": "5de1bfbf42cac29811eee58a6b2b334100322b390cdb0d538345ba77bb094bde"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/gpu_validation_predictions.npz",
+      "original_sha256": "7eed2566623c81553c5c86a5e6508d3761e630a176157db881c881e54de9215a",
       "path": "data/execution/validation_gpu_conditions.npz",
       "sha256": "7eed2566623c81553c5c86a5e6508d3761e630a176157db881c881e54de9215a"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/model/frozen_checkpoint.pt",
+      "original_sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d",
       "path": "data/model/checkpoint.pt",
       "sha256": "8ce4d237f8c1179db46f6e96028f5dd84400b0db441b0e086a4a8195c121234d"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/neighborhood/candidate_records.npz",
+      "original_sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222",
       "path": "data/neighborhood/candidates.npz",
       "sha256": "56dc58f2c99b54ac0ef413d6609ea94024b86f1a5f591ce101d56fe323b7f222"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/neighborhood/source_geometry.csv",
+      "original_sha256": "24fc8d9263ca1f3dac8705ee08ea9f044158675eecf3f16ec5d257bb12d6963b",
       "path": "data/neighborhood/sources.csv",
       "sha256": "24fc8d9263ca1f3dac8705ee08ea9f044158675eecf3f16ec5d257bb12d6963b"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/panel/manifest.csv",
+      "original_sha256": "a3ef90544dba92d1dc87b51199105fa7195ee5190755ff1fc8c0aacdcf7d0573",
       "path": "data/panel/sources.csv",
       "sha256": "a3ef90544dba92d1dc87b51199105fa7195ee5190755ff1fc8c0aacdcf7d0573"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/replicas/paired_source_data.csv",
+      "original_sha256": "3f283c92a15529b57141407af644613fe7441fc77e5d8bfbcd232d642c8cd2a3",
       "path": "data/replicas/paired_sources.csv",
       "sha256": "3f283c92a15529b57141407af644613fe7441fc77e5d8bfbcd232d642c8cd2a3"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/replicas/recorded_pooling_decomposition.csv",
+      "original_sha256": "f34667a070a76624a23a05ecdc3d27b969cdfcd5cd17fa45139aa3dfd1fa352e",
       "path": "data/replicas/readout_partition.csv",
       "sha256": "f34667a070a76624a23a05ecdc3d27b969cdfcd5cd17fa45139aa3dfd1fa352e"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/replicas/source_results.csv",
+      "original_sha256": "af0479783abade238788da6548bf912d8d52cf8e389bf9d2c676bb1a271b0e59",
       "path": "data/replicas/source_outcomes.csv",
       "sha256": "af0479783abade238788da6548bf912d8d52cf8e389bf9d2c676bb1a271b0e59"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/replicas/validation_replica_A.npz",
+      "original_sha256": "d5e2b72a0a2cc1e0768ee893b8a5456f4ebb35851777b76b1bc0433059f825f2",
       "path": "data/replicas/validation_A.npz",
       "sha256": "d5e2b72a0a2cc1e0768ee893b8a5456f4ebb35851777b76b1bc0433059f825f2"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/replicas/validation_replica_B.npz",
+      "original_sha256": "fced3e5b2dbafa96972ac58239cb6e800346637ff39cddb02ed47f6362e3cc56",
       "path": "data/replicas/validation_B.npz",
       "sha256": "fced3e5b2dbafa96972ac58239cb6e800346637ff39cddb02ed47f6362e3cc56"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/candidate_rankings.npz",
+      "original_sha256": "e6cf51694ee3e50e86bd61db57a5d4c2ccb10d84ecec7768a7bdb22e2a50022d",
       "path": "data/search/candidate_ranks.npz",
       "sha256": "e6cf51694ee3e50e86bd61db57a5d4c2ccb10d84ecec7768a7bdb22e2a50022d"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/candidate_policy_scores.npz",
+      "original_sha256": "5d27b4f54990976fdb022cfcb58960eed247b80fa31856940978bb845887de68",
       "path": "data/search/candidate_scores.npz",
       "sha256": "5d27b4f54990976fdb022cfcb58960eed247b80fa31856940978bb845887de68"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/recorded_threshold_sensitivity.csv",
+      "original_sha256": "5e6b9245b4a0fad7bb758bb39953061d2e6b95005cd9b535d50532848d65eef5",
       "path": "data/search/cutoff_sensitivity.csv",
       "sha256": "5e6b9245b4a0fad7bb758bb39953061d2e6b95005cd9b535d50532848d65eef5"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/runner_up_input_gradients.npz",
+      "original_sha256": "15afaf1b10b8f06a536672cec5d0a6ec2fb4855798becfddf9024f4cd36c9b38",
       "path": "data/search/runner_up_gradients.npz",
       "sha256": "15afaf1b10b8f06a536672cec5d0a6ec2fb4855798becfddf9024f4cd36c9b38"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "prose rewritten for this version",
       "original_path": "docs/TRAINING.md",
+      "original_sha256": "e3e8b9f3d83673fe20e3119a2f18341cd9544820d62b2e1d41984a0ef97ceb11",
       "path": "docs/checkpoint.md",
-      "sha256": "e3e8b9f3d83673fe20e3119a2f18341cd9544820d62b2e1d41984a0ef97ceb11"
+      "sha256": "2668343bf5dbd89f86b5b76172d3292df63a07c4487f0eccf6fad53368d71ffa"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "prose updated for this version",
       "original_path": "docs/THIRD_PARTY_NOTICES.md",
+      "original_sha256": "a57d7857b7593ec7e3ac20ae6a75a403d6b3f840287fe0b5cc7d8788a60d2a21",
       "path": "docs/third_party.md",
-      "sha256": "a57d7857b7593ec7e3ac20ae6a75a403d6b3f840287fe0b5cc7d8788a60d2a21"
+      "sha256": "a98133765778cdb41fe64278095b8a0dc56b3b38629f8dd0c54646ba3b8dac7e"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "regenerated by scripts/update_manifest.py for every release; lists all other files, so it carries no hash of itself",
       "original_path": "checksums/SHA256SUMS.txt",
+      "original_sha256": "041d5ab1226353d0d043853fcc31737b6e553396be8756b18733b76d34451878",
       "path": "provenance/SHA256SUMS.txt",
-      "sha256": "041d5ab1226353d0d043853fcc31737b6e553396be8756b18733b76d34451878"
+      "sha256": null
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/gpu_execution_contract.json",
+      "original_sha256": "3d9b8c9b7754462957ce06bfa36c0409bfa0a3538e44989c86813d9b14c22d61",
       "path": "provenance/contracts/execution_gpu_conditions.json",
       "sha256": "3d9b8c9b7754462957ce06bfa36c0409bfa0a3538e44989c86813d9b14c22d61"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/execution_controls/mechanism_device_contract.json",
+      "original_sha256": "e27018de79fdbc19d3b9ca2ad28d0897cad735c687cbe0937274144c74a4b5f8",
       "path": "provenance/contracts/execution_isolation_and_replay.json",
       "sha256": "e27018de79fdbc19d3b9ca2ad28d0897cad735c687cbe0937274144c74a4b5f8"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/multitarget_contract.json",
+      "original_sha256": "18a1e2216c1c3783665e98b8976110b4e3b547f621f85a15e76fa6820720470a",
       "path": "provenance/contracts/gradient_all_target.json",
       "sha256": "18a1e2216c1c3783665e98b8976110b4e3b547f621f85a15e76fa6820720470a"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "data/search_policies/runner_up_contract.json",
+      "original_sha256": "c32c29701a36ecb48bb331e3b385f896764b82422807d3b9ca43b64c7013c35d",
       "path": "provenance/contracts/gradient_runner_up.json",
       "sha256": "c32c29701a36ecb48bb331e3b385f896764b82422807d3b9ca43b64c7013c35d"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "regenerated by scripts/update_manifest.py for every release; lists all other files, so it carries no hash of itself",
       "original_path": "checksums/manifest.json",
+      "original_sha256": "8042f8f8dcee978de99f6940a5b7ccd672e6db2adb673085b106de40d4454d9d",
       "path": "provenance/manifest.json",
-      "sha256": "8042f8f8dcee978de99f6940a5b7ccd672e6db2adb673085b106de40d4454d9d"
+      "sha256": null
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "key reference_torch_and_cuda_mode_matched (previously prefixed recorded_); values unchanged",
       "original_path": "validation/cpu_portability_probe.json",
+      "original_sha256": "07134ffecbe2728b91d4a6309d4e9239b685a15a1f55ec8647c8c9a6fa035e96",
       "path": "provenance/validation/cpu_portability.json",
-      "sha256": "07134ffecbe2728b91d4a6309d4e9239b685a15a1f55ec8647c8c9a6fa035e96"
+      "sha256": "3206e3f93518cc6abf06041462f3a2d501c988945fe5af453bec7e44c3432d93"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "validation/analysis_environment.json",
+      "original_sha256": "ef9678e220b49233084da85829f3bbf48aa89bc6091067d3278f68f870573ee5",
       "path": "provenance/validation/environment.json",
       "sha256": "ef9678e220b49233084da85829f3bbf48aa89bc6091067d3278f68f870573ee5"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "key reference_torch_and_cuda_mode_matched (previously prefixed recorded_); values unchanged",
       "original_path": "validation/model_preflight_cpu.json",
+      "original_sha256": "1e946ba98651b28fff4767546521d41512667f5905a5fd9a469b47d61191764c",
       "path": "provenance/validation/model_preflight_cpu.json",
-      "sha256": "1e946ba98651b28fff4767546521d41512667f5905a5fd9a469b47d61191764c"
+      "sha256": "c9cb4a040351f9f35a257f3041345f22105e7c6969e1b4e8837f65e6560af64f"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "validation/numerical_agreement.json",
+      "original_sha256": "f2582cb193897f34700648b9f971be3c22905ccc7b5a2df40a1a1ea8e08b68bb",
       "path": "provenance/validation/numerical_agreement.json",
       "sha256": "f2582cb193897f34700648b9f971be3c22905ccc7b5a2df40a1a1ea8e08b68bb"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "validation/upstream_source.json",
+      "original_sha256": "797e8336679b551afccf7cf1d749ab44f07dda5eef6e1e99405532987d70cadb",
       "path": "provenance/validation/upstream_source.json",
       "sha256": "797e8336679b551afccf7cf1d749ab44f07dda5eef6e1e99405532987d70cadb"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "comments and relative include paths rewritten for the requirements/ directory",
       "original_path": "requirements-analysis.txt",
+      "original_sha256": "4426ce1c0cab383a0e868273250ed300ed319c4488e9a77740f1aab60c2dcaa3",
       "path": "requirements/analysis.txt",
-      "sha256": "4426ce1c0cab383a0e868273250ed300ed319c4488e9a77740f1aab60c2dcaa3"
+      "sha256": "a7b2cb098643b1d23b7af9b88c865a3bbcb6404faea22bb1234436a4c007830a"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "comments and relative include paths rewritten for the requirements/ directory",
       "original_path": "requirements-inference-cpu.txt",
+      "original_sha256": "b29ca5aed8f4676509650db64f8d67d95f44d698b33a4950938e51f3a049df60",
       "path": "requirements/inference-cpu.txt",
-      "sha256": "b29ca5aed8f4676509650db64f8d67d95f44d698b33a4950938e51f3a049df60"
+      "sha256": "701ab5012360523b8ffc21db86bfbe59baaac4e47b5fc086a79940e7aa7d8c4f"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "comments and relative include paths rewritten for the requirements/ directory",
       "original_path": "requirements-pinned-wheels.txt",
+      "original_sha256": "088d2c03686b4c6c7c65a388c2f04c523d7963a7ad0e9360b65fce4ccada3df1",
       "path": "requirements/inference-cuda-pinned.txt",
-      "sha256": "088d2c03686b4c6c7c65a388c2f04c523d7963a7ad0e9360b65fce4ccada3df1"
+      "sha256": "110ecd89b5d8a28108b8c1ee5123db0f0a2f3e49989609699752255863cd2692"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "comments and relative include paths rewritten for the requirements/ directory",
       "original_path": "requirements-inference.txt",
+      "original_sha256": "f6c7f25954238d90a5a1ab924672fb5343ff313e16d899a4e6611217e62f971c",
       "path": "requirements/inference-cuda.txt",
-      "sha256": "f6c7f25954238d90a5a1ab924672fb5343ff313e16d899a4e6611217e62f971c"
+      "sha256": "e98d06a8ae3ee874b7fec43fd28677302fac105d082935416137c0e633622bf0"
     },
     {
+      "byte_identical": true,
       "note": "byte-identical rename",
       "original_path": "scripts/run_singleton_audit.py",
+      "original_sha256": "4ed2d02d9ef4a16375bf5f6b47e24a69e284021ea70d0be76be8e7580a5a0f7d",
       "path": "scripts/run_audit.py",
       "sha256": "4ed2d02d9ef4a16375bf5f6b47e24a69e284021ea70d0be76be8e7580a5a0f7d"
     },
     {
-      "note": "byte-identical rename",
+      "byte_identical": false,
+      "edit": "imports updated to the current package layout; procedure unchanged",
       "original_path": "scripts/replay_benchmark.py",
+      "original_sha256": "f3531f56d0ef0ee1d93fd2c081f86cb08bc00f061d677cf1af9ae666b247ef9e",
       "path": "scripts/run_benchmark.py",
-      "sha256": "f3531f56d0ef0ee1d93fd2c081f86cb08bc00f061d677cf1af9ae666b247ef9e"
+      "sha256": "38d1327fccb2d0859c8522a00e0fb933dcc94fba82989f03ec2bcca2c2fadf36"
     }
   ],
   "renamed_metadata": "Descriptive names and new file checksums do not replace the original recorded contract or artifact hashes.",
@@ -412,11 +546,11 @@
       "sha256": "e3467e8dab55201301ed19fdb60723c19a3897b68eea9a6b95c0d951031d78ae"
     },
     {
-      "edit": "Renamed hypothesis keys and texts, dropped the internal version label, status COMPLETE; contract_sha256 points to the rewritten contract (original hash kept in original_contract_sha256).",
+      "edit": "Renamed hypothesis keys and texts, dropped the internal version label, status COMPLETE; contract_sha256 points to the rewritten contract (original hash kept in original_contract_sha256). Later: the claim-limit sentence on validation replay differences reworded; status and numbers unchanged.",
       "original_path": "data/replicas/recorded_summary.json",
       "original_sha256": "597d5fccd29cc77d3c5debe369fb9db699700951197b9b4fee90ddeab8dc2ea2",
       "path": "data/replicas/summary.json",
-      "sha256": "dec8650c0a9215aa00a3c3778d5927342d296d360917fddf792e0cfd6a22561c"
+      "sha256": "3fdef24f78e27da887422ffaff4a30d75dbe3e28d919cbf44f2fd90e719bbf63"
     },
     {
       "edit": "Internal file labels replaced by roles; content unchanged.",
@@ -459,7 +593,7 @@
       "sha256": "153fdf9d45423cb94d0bbc5917b25b1f78389593d9f8b7089cb819275600cb66"
     },
     {
-      "edit": "Merged under one schema; content unchanged.",
+      "edit": "Merged under one schema; content unchanged. Later: key cpu_vs_gpu_singleton_full_validation (previously an internal label); values unchanged.",
       "original_path": [
         "data/execution_controls/gpu_execution_summary.json",
         "data/execution_controls/mechanism_device_summary.json"
@@ -469,7 +603,7 @@
         "cdacfc462822cf92da6fc480f8ac6ced080a20980394ef91912c1ecb07f5929b"
       ],
       "path": "data/execution/summary.json",
-      "sha256": "7b47587a1d1b77fa271d75d26048d85e5ab3b7a9ebf744430ecc86506b61edc5"
+      "sha256": "472e6141dc787855c1a5cacc1d446ab43484350c1a1b17c6a1596d03d9a0f0fb"
     }
   ],
   "schema": "provenance-records/1",
