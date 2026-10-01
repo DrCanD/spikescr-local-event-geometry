@@ -606,7 +606,7 @@
       "selected_from_historical_padding_changes": 344,
       "unchanged_positive_padding_controls": 64
     },
-    "recorded_A_C": {
+    "cpu_vs_gpu_singleton_full_validation": {
       "CPU_GPU_label_changes": 2,
       "CPU_GPU_score_difference_per_native_bin": {
         "above_1e-3": 101,

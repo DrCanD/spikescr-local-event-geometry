@@ -23,7 +23,7 @@
   "dtype": "float32",
   "amp": false,
   "tf32": false,
-  "recorded_torch_version": "2.11.0+cu128",
+  "reference_torch_version": "2.11.0+cu128",
   "source_score_atol": 1e-05,
   "candidate_score_atol": 1e-05,
   "reference_trace_comparison": "Replay requires identical class outcomes and bounded numerical differences; all deviations are reported.",

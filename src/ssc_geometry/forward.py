@@ -161,3 +161,97 @@ def singleton_trace_metrics(candidate: Tensor, clean: Tensor) -> np.ndarray:
     if not torch.isfinite(metrics).all():
         raise FloatingPointError("Non-finite exact-singleton trace metric")
     return metrics[0].detach().cpu().numpy().astype(np.float32)
+
+
+# ---------------------------------------------------------------- batched scores and the q/k source-isolation wrapper
+def batch_scores(model: nn.Module, inputs: np.ndarray, lengths, device, prefix: int | None = None):
+    """Public readout for a zero-padded [B,T,140] batch with a valid-length mask.
+
+    Returns the time-summed softmax scores [B,35] (float32). With ``prefix`` (singleton only) the
+    scores are also split into the valid-prefix sum and the added-bin sum (manuscript Eq. A.1).
+    """
+    reset_spiking_state(model)
+    try:
+        inputs = np.ascontiguousarray(inputs, dtype=np.float32)
+        value = torch.from_numpy(inputs).to(device)
+        length_tensor = torch.as_tensor(np.ascontiguousarray(lengths), device=device)
+        with torch.no_grad():
+            probability = torch.softmax(model(value, attention_mask_from_lengths(length_tensor, inputs.shape[1])).float(), dim=2)
+            full = probability.sum(dim=0).cpu().numpy().astype(np.float32)
+            if prefix is not None:
+                if len(inputs) != 1:
+                    raise ValueError('Prefix decomposition is singleton only')
+                head = probability[:prefix].sum(dim=0).cpu().numpy().astype(np.float32)
+                extra = probability[prefix:].sum(dim=0).cpu().numpy().astype(np.float32)
+                return full[0], head[0], extra[0]
+        if full.shape != (len(inputs), 35) or not np.isfinite(full).all():
+            raise ValueError('Invalid score output')
+        return full
+    finally:
+        reset_spiking_state(model)
+
+
+class qk_isolation:
+    """Context manager: give every source its own LIF sequence at q_lif2/k_lif2 (manuscript Eq. A.2).
+
+    The public code reshapes the contiguous [B,h,T,d] queries/keys to [T,B,N] before the LIF nodes,
+    which mixes sources along each membrane lane in a batch. Inside this context the two nodes
+    receive independent per-source sequences and return the caller's layout. Singleton inputs call
+    the original forward unchanged, so B=1 scores are a bypass invariant. ``which`` selects the
+    branches: 'qk' (both), 'q' or 'k'.
+    """
+
+    def __init__(self, model: nn.Module, which: str = 'qk'):
+        self.model, self.which, self.saved = model, which, []
+
+    def __enter__(self):
+        import types
+        for _name, attention in self.model.named_modules():
+            if attention.__class__.__name__ != 'MS_SSA':
+                continue
+            heads = int(attention.num_heads)
+            for branch in ('q', 'k'):
+                if branch not in self.which:
+                    continue
+                node = getattr(attention, branch + '_lif2')
+                original = node.forward
+
+                def isolated(_self, x, original=original, heads=heads):
+                    if x.ndim != 3:
+                        raise ValueError('Unexpected q/k LIF input rank')
+                    T, B, N = x.shape
+                    if B == 1:
+                        return original(x)
+                    if N % heads:
+                        raise ValueError('Head dimension mismatch')
+                    independent = x.reshape(B, heads, T, N // heads).reshape(B, T, N).permute(1, 0, 2).contiguous()
+                    y = original(independent)
+                    return y.permute(1, 0, 2).contiguous().reshape(B, heads, T, N // heads).reshape(T, B, N)
+
+                self.saved.append((node, original))
+                node.forward = types.MethodType(isolated, node)
+        if len(self.saved) != (4 if self.which == 'qk' else 2):
+            self.__exit__(None, None, None)
+            raise ValueError('Expected two attention blocks with their q/k LIF nodes')
+        return self
+
+    def __exit__(self, *exc):
+        for node, original in self.saved:
+            node.forward = original
+        self.saved = []
+        return False
+
+
+def lane_ownership(T: int, B: int, N: int) -> dict:
+    """How many distinct sources each of the B*N membrane lanes receives after the public reshape."""
+    offset = np.arange(B * N, dtype=np.int64)
+    previous = offset // (T * N)
+    changes = np.zeros(B * N, dtype=np.int32)
+    for t in range(1, T):
+        owner = (t * B * N + offset) // (T * N)
+        changes += owner != previous
+        previous = owner
+    counts = changes + 1
+    return {'T': T, 'B': B, 'N': N, 'membrane_lanes': B * N, 'original_sources_per_lane_min': int(counts.min()),
+            'original_sources_per_lane_max': int(counts.max()), 'fraction_lanes_containing_multiple_sources': float(np.mean(counts > 1)),
+            'intervened_logical_sources_per_lane': 1}

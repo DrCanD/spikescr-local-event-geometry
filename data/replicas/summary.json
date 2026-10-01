@@ -4,7 +4,7 @@
     "Candidate observations are nested within sources; inferential summaries use sources as units.",
     "Exactness is restricted to the finite adjacent-bin, same-channel, fixed-horizon neighborhood and recorded numerical contract.",
     "Unique-raster and event-multiplicity-weighted denominators remain separate.",
-    "The historical validation replay deltas are retained and are not silently corrected.",
+    "Differences between the replay and the training-time validation accuracy are retained and are not silently corrected.",
     "No official SSC test result is produced by the replica audit.",
     "A null or discordant scientific result remains reportable when integrity gates pass.",
     "Partial summaries describe verified completed sources only and are not the frozen-panel estimate.",

@@ -79,71 +79,71 @@
     }
   ],
   "panel_input_derivation": "Transformed from the hash-verified official validation HDF5 with the recorded 5 ms, 5-channel integration. Each source was independently transformed with a literal loop; every candidate specification was compared to the canonical candidate record.",
-  "purpose": "Audit trail of the repository restructuring: which files were renamed byte-for-byte, which record files were rewritten (and how), which historical files were removed, and which recorded contracts are kept verbatim because their hash is embedded in the recorded output arrays.",
+  "purpose": "Audit trail of the repository restructuring: which files were renamed byte-for-byte, which record files were rewritten (and how), which earlier-release files were removed, and which recorded contracts are kept verbatim because their hash is embedded in the recorded output arrays.",
   "removed": [
     {
       "git_blob": "fe836e08cd13a6b3e77439eefbc0e06d469d02cc",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/README.md"
     },
     {
       "git_blob": "5796a4216986bb566197578689f069679057acba",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/checkpoint_validation.json"
     },
     {
       "git_blob": "29d0b0029a10a6b660cccfa20efeced87a09c53b",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/execution_controls_recomputation.json"
     },
     {
       "git_blob": "d51bf8739d90da00cc928560b710f0493a541f98",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/extended_analyses_recomputation.json"
     },
     {
       "git_blob": "2d903b01920bb979e926f7445ad5d52a4b5b431b",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/kernel_extraction.json"
     },
     {
       "git_blob": "e7ffff97953fa6fcb6fc709bf9626e720aa40e6b",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/maintenance_status.json"
     },
     {
       "git_blob": "926bfae2ba8eeb7d197e406b0f5332ea9572e72c",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/maintenance_tests.log"
     },
     {
       "git_blob": "67ab28e73c532a8efdd53b79150d439e603ffd60",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/panel_preparation.json"
     },
     {
       "git_blob": "62e66bf76ba06f86b375fcbb06e993e3f39c22e5",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/raw_validation_check.json"
     },
     {
       "git_blob": "c15daf3e450855bcc67b07a330e95fb651e38e08",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/source_audit.json"
     },
     {
       "git_blob": "17057df2cf5c80e77a901a1660da4beeb5264ba6",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/statistical_regeneration.json"
     },
     {
       "git_blob": "24c7d1e8d9be63daf49db19949c753d53a63de84",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/status.json"
     },
     {
       "git_blob": "f66fa70295a260cf2ae6cf0e0ebcaf75db469e5d",
-      "note": "historical packaging or maintenance record not referenced by the manuscript",
+      "note": "packaging or maintenance record of earlier releases, not referenced by the manuscript",
       "original_path": "validation/tests_primary.log"
     }
   ],

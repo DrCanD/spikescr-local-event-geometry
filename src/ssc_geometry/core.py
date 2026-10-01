@@ -1,5 +1,6 @@
 """Input, perturbation and transition contracts used by the released audit."""
 from __future__ import annotations
+import math
 import numbers
 import numpy as np
 

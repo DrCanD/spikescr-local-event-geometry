@@ -201,7 +201,7 @@ def analyze(root: Path, progress=print) -> dict:
     require(iso['B_full_validation']['isolated_order_changed_labels'] == next(c['changed_labels'] for c in contrasts if c['a'] == 'GPU_qk_isolated_batch256'),
             'Recorded isolation order invariance differs')
     pd = iso['padding_decomposition']
-    recorded_only = dict(
+    summary_values = dict(
         padding_decomposition=dict(diagnostic_sources=pd['diagnostic_sources'], changed_sources=pd['selected_from_historical_padding_changes'],
                                    unchanged_positive_padding_controls=pd['unchanged_positive_padding_controls'],
                                    restored_by_excluding_extra_bins=pd['new_padding_changes_restored_by_excluding_extra_bins'],
@@ -225,7 +225,7 @@ def analyze(root: Path, progress=print) -> dict:
     return dict(schema_version=2, validation_sources=9981, canonical_panel=panel,
                 contracts=dict(gpu_conditions=conditions_hash, isolation_and_replay=isolation_hash, gradient_runner_up=runner_up_hash),
                 conditions=metrics, table_02=table_02, paired_validation_contrasts=contrasts, padding_gap_counts=bins,
-                class_changing_device_replay=device_report, recorded_summaries=recorded_only, new_model_inference=False, official_test_access=False)
+                class_changing_device_replay=device_report, summary_values=summary_values, new_model_inference=False, official_test_access=False)
 
 
 def run(root: Path, out: Path, progress=print) -> dict:

@@ -28,7 +28,7 @@
       "trainable_parameters": 3302400
     },
     "python": "3.12.14",
-    "recorded_torch_and_cuda_mode_matched": false,
+    "reference_torch_and_cuda_mode_matched": false,
     "runtime": {
       "cublas_workspace_config": ":4096:8",
       "cuda_build": null,

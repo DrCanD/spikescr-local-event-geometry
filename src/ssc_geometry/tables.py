@@ -65,7 +65,7 @@ def cross_check(root: Path, results: dict, out: Path) -> dict:
     failures = [c for c in cells if c['status'] != 'PASS']
     report = dict(status='PASS' if not failures else 'FAIL', manuscript=spec['manuscript'], cells_checked=len(cells),
                   cells_failed=len(failures), failed_ids=[c['id'] for c in failures],
-                  rule='counts exact; printed decimals within half a unit of the last digit; recorded cells are read from summaries, not recomputed',
+                  rule='counts exact; printed decimals within half a unit of the last digit; cells of kind summary are read from data/execution/summary.json, not recomputed',
                   cells=cells)
     write_json(out / 'report.json', report)
     write_csv(out / 'report.csv', [dict(id=c['id'], location=c['location'], expected=c['value'], computed=c.get('computed'),

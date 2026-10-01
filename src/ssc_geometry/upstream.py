@@ -74,7 +74,7 @@ def load_model(root: Path, source: Path, device_name: str, allow_nonreference: b
         installed=importlib.metadata.version(package);versions[package]=installed
         if installed!=version:raise RuntimeError(f'{package} version {installed} does not match {version}')
     device=torch.device(device_name)
-    version_matches=str(torch.__version__)==cfg['recorded_torch_version']
+    version_matches=str(torch.__version__)==cfg['reference_torch_version']
     reference_runtime=version_matches and device.type=='cuda'
     if not reference_runtime and not allow_nonreference:
         raise RuntimeError('Reference audit requires the recorded torch build on CUDA. A CPU or other-version portability run requires --allow-nonreference-environment and is not a canonical validation.')
@@ -129,7 +129,7 @@ def load_model(root: Path, source: Path, device_name: str, allow_nonreference: b
         stages.append({'stage':name,'module':module,'module_name':path,'module_class':cls})
     environment={'torch':str(torch.__version__),'numpy':np.__version__,'python':sys.version.split()[0],
         'device_type':device.type,'device_name':torch.cuda.get_device_name(device) if device.type=='cuda' else 'CPU',
-        'recorded_torch_and_cuda_mode_matched':reference_runtime,'packages':versions,'upstream':source_report,
+        'reference_torch_and_cuda_mode_matched':reference_runtime,'packages':versions,'upstream':source_report,
         'checkpoint':checkpoint_report,'parameter_counts':parameter_counts,'full_original_environment_known':False,
         'runtime':{'platform':platform.platform(),'python_full':sys.version,
             'cuda_build':torch.version.cuda,'cudnn':torch.backends.cudnn.version(),

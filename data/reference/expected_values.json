@@ -1,7 +1,7 @@
 {
   "schema": "manuscript-values/1",
   "manuscript": "Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier (submission manuscript, 2026-10-01)",
-  "rule": "value = printed number; decimals = digits printed after the decimal point (absent for exact counts); scale multiplies the regenerated value before comparison; kind=recorded marks values read from a recorded summary rather than recomputed from arrays",
+  "rule": "value = printed number; decimals = digits printed after the decimal point (absent for exact counts); scale multiplies the regenerated value before comparison; kind=summary marks values read from data/execution/summary.json rather than recomputed from arrays",
   "cells": [
     {
       "id": "table_02/0/correct",
@@ -2887,81 +2887,81 @@
     {
       "id": "text_A2/diagnostic_sources",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.diagnostic_sources",
+      "path": "execution.summary_values.padding_decomposition.diagnostic_sources",
       "value": 408,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/changed_sources",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.changed_sources",
+      "path": "execution.summary_values.padding_decomposition.changed_sources",
       "value": 344,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/unchanged_controls",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.unchanged_positive_padding_controls",
+      "path": "execution.summary_values.padding_decomposition.unchanged_positive_padding_controls",
       "value": 64,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/labels_reproduced",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.native_and_padded_labels_reproduced",
+      "path": "execution.summary_values.padding_decomposition.native_and_padded_labels_reproduced",
       "value": true,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/restored_by_excluding_extra_bins",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.restored_by_excluding_extra_bins",
+      "path": "execution.summary_values.padding_decomposition.restored_by_excluding_extra_bins",
       "value": 26,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/prefix_only_changed",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.prefix_only_labels_different_from_native",
+      "path": "execution.summary_values.padding_decomposition.prefix_only_labels_different_from_native",
       "value": 318,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A2/native_plus_extra_changed",
       "location": "Appendix A.2",
-      "path": "execution.recorded_summaries.padding_decomposition.native_plus_observed_extra_changes_label",
+      "path": "execution.summary_values.padding_decomposition.native_plus_observed_extra_changes_label",
       "value": 43,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A3/pairs",
       "location": "Appendix A.3",
-      "path": "execution.recorded_summaries.pair_controls.pairs",
+      "path": "execution.summary_values.pair_controls.pairs",
       "value": 3,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A3/joint_isolation_removes_order_differences",
       "location": "Appendix A.3",
-      "path": "execution.recorded_summaries.pair_controls.joint_isolation_max_order_score_difference",
+      "path": "execution.summary_values.pair_controls.joint_isolation_max_order_score_difference",
       "value": 0.0,
       "decimals": 8,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A3/joint_isolation_max_versus_padded_singleton",
       "location": "Appendix A.3",
-      "path": "execution.recorded_summaries.pair_controls.joint_isolation_max_versus_padded_singleton",
+      "path": "execution.summary_values.pair_controls.joint_isolation_max_versus_padded_singleton",
       "value": 1.91e-06,
       "decimals": 8,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A3/original_q_k_pairs_nonzero",
       "location": "Appendix A.3",
-      "path": "execution.recorded_summaries.pair_controls.nonzero_order_difference_in_every_original_q_or_k_pair",
+      "path": "execution.summary_values.pair_controls.nonzero_order_difference_in_every_original_q_or_k_pair",
       "value": true,
-      "kind": "recorded"
+      "kind": "summary"
     },
     {
       "id": "text_A3/isolated_order_exact_zero",

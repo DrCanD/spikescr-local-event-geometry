@@ -284,6 +284,9 @@ def final_block_descriptives(bundle: dict) -> dict:
     for code, name in enumerate(GROUPS):
         selected = codes == code
         per_source_means = [float(values[selected & (sources == sid)].mean()) for sid in np.unique(sources[selected])]
+        if not selected.any():
+            rows.append(dict(outcome=name, candidates=0, sources=0, pooled_median=None, pooled_q1=None, pooled_q3=None, pooled_mean=None, equal_source_mean=None))
+            continue
         q1, median, q3 = np.percentile(values[selected], [25, 50, 75])
         rows.append(dict(outcome=name, candidates=int(selected.sum()), sources=len(per_source_means),
                          pooled_median=float(median), pooled_q1=float(q1), pooled_q3=float(q3),
