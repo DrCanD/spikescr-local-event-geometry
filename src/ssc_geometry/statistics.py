@@ -1,13 +1,216 @@
-"""Recorded statistical aggregation, with descriptive interface names.
+"""Statistical procedures of the audit: rank statistics, source-level bootstrap and sign-flip tests,
+false-discovery-rate control, candidate-geometry aggregates and internal-activation contrasts.
 
-The numerical aggregation body and random-number streams are unchanged.
-Reference artifacts are not read by this module.
-"""
+The random-number streams and aggregation bodies are those of the original analysis."""
 from __future__ import annotations
 import math
-from typing import Any
+from typing import Any, Sequence
 import numpy as np
-from ._kernel import weighted_mean, source_signflip_test, source_bootstrap_mean_ci, benjamini_hochberg
+
+def rank_average(values: np.ndarray) -> np.ndarray:
+    order = np.argsort(values, kind="mergesort")
+    ranks = np.empty(len(values), dtype=np.float64)
+    sorted_values = values[order]
+    start = 0
+    while start < len(values):
+        stop = start + 1
+        while stop < len(values) and sorted_values[stop] == sorted_values[start]:
+            stop += 1
+        ranks[order[start:stop]] = 0.5 * (start + stop - 1) + 1.0
+        start = stop
+    return ranks
+
+def spearman_rho(x: np.ndarray, y: np.ndarray) -> float:
+    if len(x) < 3:
+        return float("nan")
+    rx, ry = rank_average(np.asarray(x, dtype=np.float64)), rank_average(np.asarray(y, dtype=np.float64))
+    if float(rx.std()) == 0.0 or float(ry.std()) == 0.0:
+        return float("nan")
+    return float(np.corrcoef(rx, ry)[0, 1])
+
+def gini_nonnegative(values: np.ndarray) -> float:
+    x = np.asarray(values, dtype=np.float64)
+    if len(x) == 0 or np.any(x < 0) or float(x.sum()) == 0.0:
+        return 0.0
+    x = np.sort(x)
+    ranks = np.arange(1, len(x) + 1, dtype=np.float64)
+    return float((2.0 * np.sum(ranks * x) / (len(x) * x.sum())) - (len(x) + 1) / len(x))
+
+def source_bootstrap_mean_ci(
+    values: np.ndarray, repetitions: int, seed: int
+) -> tuple[float, list[float]]:
+    values = np.asarray(values, dtype=np.float64)
+    values = values[np.isfinite(values)]
+    if len(values) == 0:
+        return float("nan"), [float("nan"), float("nan")]
+    rng = np.random.default_rng(seed)
+    draws = rng.integers(0, len(values), size=(int(repetitions), len(values)))
+    means = values[draws].mean(axis=1)
+    return float(values.mean()), np.percentile(means, [2.5, 97.5]).astype(float).tolist()
+
+def source_signflip_test(
+    contrasts: np.ndarray, repetitions: int, seed: int
+) -> dict[str, Any]:
+    contrasts = np.asarray(contrasts, dtype=np.float64)
+    contrasts = contrasts[np.isfinite(contrasts)]
+    observed, ci = source_bootstrap_mean_ci(contrasts, repetitions, seed + 1)
+    if len(contrasts) == 0:
+        return {
+            "n_sources": 0,
+            "mean_contrast": None,
+            "source_bootstrap95": [None, None],
+            "two_sided_signflip_p": None,
+        }
+    rng = np.random.default_rng(seed)
+    null = np.empty(int(repetitions), dtype=np.float64)
+    for start in range(0, int(repetitions), 1000):
+        stop = min(int(repetitions), start + 1000)
+        signs = rng.choice(np.asarray([-1.0, 1.0]), size=(stop - start, len(contrasts)))
+        null[start:stop] = (signs * contrasts[None, :]).mean(axis=1)
+    p = float((1 + np.sum(np.abs(null) >= abs(observed))) / (1 + len(null)))
+    return {
+        "n_sources": int(len(contrasts)),
+        "mean_contrast": observed,
+        "source_bootstrap95": ci,
+        "two_sided_signflip_p": p,
+        "repetitions": int(repetitions),
+        "seed": int(seed),
+    }
+
+def benjamini_hochberg(p_values: Sequence[float | None]) -> list[float | None]:
+    finite = [
+        (index, float(value))
+        for index, value in enumerate(p_values)
+        if value is not None and math.isfinite(float(value))
+    ]
+    result: list[float | None] = [None] * len(p_values)
+    if not finite:
+        return result
+    finite.sort(key=lambda item: item[1])
+    count = len(finite)
+    adjusted = np.empty(count, dtype=np.float64)
+    running = 1.0
+    for reverse_rank in range(count - 1, -1, -1):
+        _, p_value = finite[reverse_rank]
+        rank = reverse_rank + 1
+        running = min(running, p_value * count / rank)
+        adjusted[reverse_rank] = min(1.0, running)
+    for (original_index, _), q_value in zip(finite, adjusted):
+        result[original_index] = float(q_value)
+    return result
+
+def weighted_mean(values: np.ndarray, weights: np.ndarray) -> float:
+    values = np.asarray(values, dtype=np.float64)
+    weights = np.asarray(weights, dtype=np.float64)
+    if len(values) == 0 or float(weights.sum()) <= 0.0:
+        return float("nan")
+    return float(np.sum(values * weights) / np.sum(weights))
+
+
+# ---------------------------------------------------------------- candidate geometry aggregates
+GEOMETRY_OPTIONS={'time_bins': 20, 'feature_bins': 14, 'source_bootstrap_repetitions': 10000, 'source_signflip_repetitions': 10000, 'seed': 17062027, 'source_level_contrasts': ['previous-minus-next adjacent-bin class-change rate', 'late-minus-early time-tertile class-change rate', 'high-minus-low feature-quartile class-change rate'], 'multiple_testing': 'Benjamini-Hochberg FDR across the three source-level geometry contrasts', 'candidate_outputs': ['transition type and multiplicity', 'normalized time and feature coordinates', 'top-1, clean-class, and true-class margins', 'score L2, Linf, and cosine displacement from clean', '35-by-35 class-transition matrices', 'direction-by-time-by-feature transition maps'], 'transition_codes': {'class_preserved': 0, 'adverse': 1, 'corrective': 2, 'lateral': 3}}
+
+def geometry_aggregates(
+    candidate: dict[str, np.ndarray], source_rows: list[dict[str, Any]]
+) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
+    time_bins = int(GEOMETRY_OPTIONS["time_bins"])
+    feature_bins = int(GEOMETRY_OPTIONS["feature_bins"])
+    time_id = np.minimum((candidate["time_normalized"] * time_bins).astype(np.int64), time_bins - 1)
+    feature_id = np.minimum(
+        (candidate["feature"].astype(np.int64) * feature_bins // 140), feature_bins - 1
+    )
+    direction_id = (candidate["direction"] > 0).astype(np.int64)
+    transition = candidate["transition_code"].astype(np.int64)
+    shape = (2, time_bins, feature_bins, 4)
+    unique_grid = np.zeros(shape, dtype=np.int64)
+    weighted_grid = np.zeros(shape, dtype=np.int64)
+    np.add.at(unique_grid, (direction_id, time_id, feature_id, transition), 1)
+    np.add.at(
+        weighted_grid,
+        (direction_id, time_id, feature_id, transition),
+        candidate["multiplicity"].astype(np.int64),
+    )
+    transition_unique = np.zeros((35, 35), dtype=np.int64)
+    transition_weighted = np.zeros((35, 35), dtype=np.int64)
+    np.add.at(
+        transition_unique,
+        (candidate["clean_prediction"], candidate["candidate_prediction"]),
+        1,
+    )
+    np.add.at(
+        transition_weighted,
+        (candidate["clean_prediction"], candidate["candidate_prediction"]),
+        candidate["multiplicity"].astype(np.int64),
+    )
+    contrasts = np.asarray(
+        [row["previous_minus_next_class_change_rate"] for row in source_rows],
+        dtype=np.float64,
+    )
+    asymmetry = source_signflip_test(
+        contrasts,
+        int(GEOMETRY_OPTIONS["source_signflip_repetitions"]),
+        int(GEOMETRY_OPTIONS["seed"]),
+    )
+    late_minus_early = source_signflip_test(
+        np.asarray(
+            [
+                row["time_tertile_3_class_change_rate"]
+                - row["time_tertile_1_class_change_rate"]
+                for row in source_rows
+            ],
+            dtype=np.float64,
+        ),
+        int(GEOMETRY_OPTIONS["source_signflip_repetitions"]),
+        int(GEOMETRY_OPTIONS["seed"]) + 10,
+    )
+    high_minus_low_feature = source_signflip_test(
+        np.asarray(
+            [
+                row["feature_quartile_4_class_change_rate"]
+                - row["feature_quartile_1_class_change_rate"]
+                for row in source_rows
+            ],
+            dtype=np.float64,
+        ),
+        int(GEOMETRY_OPTIONS["source_signflip_repetitions"]),
+        int(GEOMETRY_OPTIONS["seed"]) + 20,
+    )
+    geometry_tests = [asymmetry, late_minus_early, high_minus_low_feature]
+    geometry_q = benjamini_hochberg(
+        [test.get("two_sided_signflip_p") for test in geometry_tests]
+    )
+    for test, q_value in zip(geometry_tests, geometry_q):
+        test["fdr_bh_q_across_geometry_contrasts"] = q_value
+    adverse = np.asarray(
+        [row["adverse_unique"] for row in source_rows if row["clean_correct"]],
+        dtype=np.float64,
+    )
+    total_adverse = float(adverse.sum())
+    shares = adverse / total_adverse if total_adverse else np.zeros_like(adverse)
+    concentration = {
+        "gini": gini_nonnegative(adverse),
+        "herfindahl": float(np.sum(shares ** 2)),
+        "effective_number_of_sources": float(1.0 / np.sum(shares ** 2)) if np.sum(shares ** 2) else 0.0,
+    }
+    aggregates = {
+        "time_feature_direction_transition_unique": unique_grid,
+        "time_feature_direction_transition_event_weighted": weighted_grid,
+        "class_transition_unique": transition_unique,
+        "class_transition_event_weighted": transition_weighted,
+        "time_bin_edges_normalized": np.linspace(0.0, 1.0, time_bins + 1, dtype=np.float32),
+        "feature_bin_edges": np.arange(feature_bins + 1, dtype=np.int16) * (140 // feature_bins),
+    }
+    summary = {
+        "directional_asymmetry_previous_minus_next": asymmetry,
+        "temporal_gradient_late_minus_early_tertile": late_minus_early,
+        "feature_gradient_high_minus_low_quartile": high_minus_low_feature,
+        "adverse_source_concentration": concentration,
+    }
+    return aggregates, summary
+
+
+# ---------------------------------------------------------------- internal activation statistics
+
 OPTIONS = {"primary_internal_metric": "relative_l2_change", "independent_unit": 'source utterance; candidate moves are nested', "statistical_seed": 19062027, "source_signflip_repetitions": 10000, "source_bootstrap_repetitions": 10000, "positive_control_stages": ["stem", "block_1", "block_2"]}
 
 def recompute_internal(geometry, archive, clean_scores):

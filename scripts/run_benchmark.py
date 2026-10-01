@@ -8,6 +8,7 @@ import argparse,json,sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from ssc_geometry.io import read_json,load_npz,write_json,sha256_file,fresh_output
+from ssc_geometry import paths
 from ssc_geometry.integrity import verify_integrity
 
 
@@ -23,16 +24,16 @@ def main():
     a=p.parse_args();verify_integrity(ROOT)
     if a.split=='test' and not a.allow_official_test_replay:
         raise ValueError('Official test replay requires --allow-official-test-replay; the default does not access it.')
-    config=read_json(ROOT/'configs/experiment.json')
+    config=read_json(ROOT/paths.EXPERIMENT_CONFIG)
     expected=config['validation_h5_sha256'] if a.split=='validation' else config['official_test_h5_sha256']
     if sha256_file(a.h5)!=expected:raise ValueError('Raw input file does not match the recorded split hash')
     out=fresh_output(ROOT,a.out)
     try:
         import h5py,numpy as np,torch
         from ssc_geometry.core import transform_events
-        from ssc_geometry.analysis import benchmark_metrics
+        from ssc_geometry.census import benchmark_metrics
         from ssc_geometry.upstream import load_model
-        from ssc_geometry import _forward_kernel as fk
+        from ssc_geometry import forward as fk
         model,device,_,env=load_model(ROOT,a.upstream,a.device,a.allow_nonreference_environment)
         write_json(out/'environment.json',env)
         scores=[]; labels=[]; lengths=[]
@@ -52,7 +53,7 @@ def main():
                     scores.append(value.cpu().numpy())
                 finally:fk.reset_spiking_state(model)
         score=np.concatenate(scores);label=np.asarray(labels);prediction=score.argmax(axis=1)
-        ref=load_npz(ROOT/f'data/benchmark/{a.split}_predictions.npz')
+        ref=load_npz(ROOT/paths.BENCHMARK[a.split])
         differences=int(np.count_nonzero(prediction!=ref['predictions']))
         if not np.array_equal(label,ref['labels']):raise ValueError('Benchmark labels/order mismatch')
         score_diff=float(np.max(np.abs(score-ref['scores']))) if 'scores' in ref else None

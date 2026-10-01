@@ -2,7 +2,6 @@
 from __future__ import annotations
 import numbers
 import numpy as np
-from ._kernel import exact_event_transform, candidate_specification
 
 
 def validate_input(x: np.ndarray) -> np.ndarray:
@@ -61,3 +60,86 @@ def classify_transitions(labels: np.ndarray, clean: np.ndarray, candidate: np.nd
     out[changed & (clean != labels) & (candidate == labels)] = 2
     out[changed & (clean != labels) & (candidate != labels)] = 3
     return out
+
+
+# ---------------------------------------------------------------- event transform and candidate operator
+def exact_event_transform(
+    times_seconds: np.ndarray,
+    units: np.ndarray,
+    input_channels: int,
+    spatial_bin: int,
+    time_step_ms: int,
+) -> tuple[np.ndarray, dict[str, int]]:
+    times = np.asarray(times_seconds, dtype=np.float64)
+    units = np.asarray(units, dtype=np.int64)
+    if times.size != units.size:
+        raise RuntimeError("times/units length mismatch")
+    if units.size and (int(units.min()) < 0 or int(units.max()) >= input_channels):
+        raise RuntimeError(f"Unit ID outside verified range 0..{input_channels - 1}")
+    features = input_channels // spatial_bin
+    if times.size == 0:
+        return np.zeros((1, features), dtype=np.uint16), {
+            "events": 0,
+            "unit_min": input_channels,
+            "unit_max": -1,
+        }
+    if np.any(np.diff(times) < 0):
+        raise RuntimeError("Non-monotonic event times")
+    times_ms = (times - times[0]) * 1000.0
+    frames_num = max(1, int(math.ceil(float(times_ms[-1]) / float(time_step_ms))))
+    frame_ids = np.floor_divide(times_ms, time_step_ms).astype(np.int64)
+    frame_ids = np.minimum(frame_ids, frames_num - 1)
+    feature_ids = units // spatial_bin
+    flat = frame_ids * features + feature_ids
+    counts = np.bincount(flat, minlength=frames_num * features).reshape(frames_num, features)
+    if int(counts.max(initial=0)) > np.iinfo(np.uint16).max:
+        raise OverflowError("SSC frame count exceeded uint16 range")
+    return counts.astype(np.uint16, copy=False), {
+        "events": int(units.size),
+        "unit_min": int(units.min()),
+        "unit_max": int(units.max()),
+    }
+
+def literal_event_transform(
+    times_seconds: np.ndarray,
+    units: np.ndarray,
+    input_channels: int,
+    spatial_bin: int,
+    time_step_ms: int,
+) -> np.ndarray:
+    times = np.asarray(times_seconds, dtype=np.float64)
+    units = np.asarray(units, dtype=np.int64)
+    features = input_channels // spatial_bin
+    if times.size == 0:
+        return np.zeros((1, features), dtype=np.uint16)
+    times_ms = (times - times[0]) * 1000.0
+    frames_num = max(1, int(math.ceil(float(times_ms[-1]) / float(time_step_ms))))
+    output = np.zeros((frames_num, features), dtype=np.uint32)
+    frame_ids = np.floor_divide(times_ms, time_step_ms).astype(np.int64)
+    for i in range(units.size):
+        frame = min(int(frame_ids[i]), frames_num - 1)
+        output[frame, int(units[i]) // spatial_bin] += 1
+    return output.astype(np.uint16)
+
+def candidate_specification(x: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    x = np.asarray(x)
+    if x.ndim != 2 or x.shape[1] != 140:
+        raise ValueError(f"Expected [T,140] transformed source, got {x.shape}")
+    positive_t, positive_f = np.nonzero(x > 0)
+    from_t: list[int] = []
+    to_t: list[int] = []
+    features: list[int] = []
+    multiplicity: list[int] = []
+    horizon = int(x.shape[0])
+    for t, feature in zip(positive_t.tolist(), positive_f.tolist()):
+        count = int(x[t, feature])
+        if t > 0:
+            from_t.append(t); to_t.append(t - 1); features.append(feature); multiplicity.append(count)
+        if t + 1 < horizon:
+            from_t.append(t); to_t.append(t + 1); features.append(feature); multiplicity.append(count)
+    return (
+        np.asarray(from_t, dtype=np.int32),
+        np.asarray(to_t, dtype=np.int32),
+        np.asarray(features, dtype=np.int16),
+        np.asarray(multiplicity, dtype=np.int32),
+    )

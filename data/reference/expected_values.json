@@ -1,0 +1,3039 @@
+{
+  "schema": "manuscript-values/1",
+  "manuscript": "Aggregate accuracy conceals concentrated temporal vulnerability in a spiking speech classifier (submission manuscript, 2026-10-01)",
+  "rule": "value = printed number; decimals = digits printed after the decimal point (absent for exact counts); scale multiplies the regenerated value before comparison; kind=recorded marks values read from a recorded summary rather than recomputed from arrays",
+  "cells": [
+    {
+      "id": "table_02/0/correct",
+      "location": "Table 2",
+      "path": "execution.table_02[0].correct",
+      "value": 8617
+    },
+    {
+      "id": "table_02/0/samples",
+      "location": "Table 2",
+      "path": "execution.table_02[0].samples",
+      "value": 9981
+    },
+    {
+      "id": "table_02/0/accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[0].accuracy",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/0/balanced_accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[0].balanced_accuracy",
+      "value": 85.2682,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/0/macro_f1",
+      "location": "Table 2",
+      "path": "execution.table_02[0].macro_f1",
+      "value": 85.7325,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/1/correct",
+      "location": "Table 2",
+      "path": "execution.table_02[1].correct",
+      "value": 8592
+    },
+    {
+      "id": "table_02/1/samples",
+      "location": "Table 2",
+      "path": "execution.table_02[1].samples",
+      "value": 9981
+    },
+    {
+      "id": "table_02/1/accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[1].accuracy",
+      "value": 86.0836,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/1/balanced_accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[1].balanced_accuracy",
+      "value": 84.8246,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/1/macro_f1",
+      "location": "Table 2",
+      "path": "execution.table_02[1].macro_f1",
+      "value": 85.429,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/2/correct",
+      "location": "Table 2",
+      "path": "execution.table_02[2].correct",
+      "value": 8591
+    },
+    {
+      "id": "table_02/2/samples",
+      "location": "Table 2",
+      "path": "execution.table_02[2].samples",
+      "value": 9981
+    },
+    {
+      "id": "table_02/2/accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[2].accuracy",
+      "value": 86.0735,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/2/balanced_accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[2].balanced_accuracy",
+      "value": 84.803,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/2/macro_f1",
+      "location": "Table 2",
+      "path": "execution.table_02[2].macro_f1",
+      "value": 85.4092,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/3/correct",
+      "location": "Table 2",
+      "path": "execution.table_02[3].correct",
+      "value": 17247
+    },
+    {
+      "id": "table_02/3/samples",
+      "location": "Table 2",
+      "path": "execution.table_02[3].samples",
+      "value": 20382
+    },
+    {
+      "id": "table_02/3/accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[3].accuracy",
+      "value": 84.6188,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/3/balanced_accuracy",
+      "location": "Table 2",
+      "path": "execution.table_02[3].balanced_accuracy",
+      "value": 83.7526,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_02/3/macro_f1",
+      "location": "Table 2",
+      "path": "execution.table_02[3].macro_f1",
+      "value": 84.0844,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_1/batch256_vs_cpu/changed_labels",
+      "location": "§4.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=CPU_singleton].changed_labels",
+      "value": 617
+    },
+    {
+      "id": "text_4_1/batch256_vs_cpu/changed_percent",
+      "location": "§4.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=CPU_singleton].changed_fraction",
+      "value": 6.18,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_1/batch256_vs_cpu/correct_to_wrong",
+      "location": "§4.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=CPU_singleton].correct_to_wrong",
+      "value": 224
+    },
+    {
+      "id": "text_4_1/batch256_vs_cpu/wrong_to_correct",
+      "location": "§4.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=CPU_singleton].wrong_to_correct",
+      "value": 198
+    },
+    {
+      "id": "text_4_1/batch256_vs_cpu/wrong_to_different_wrong",
+      "location": "§4.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=CPU_singleton].wrong_to_different_wrong",
+      "value": 195
+    },
+    {
+      "id": "text_4_1/panel/correct_singleton",
+      "location": "§4.1",
+      "path": "execution.canonical_panel.correct_singleton",
+      "value": 84
+    },
+    {
+      "id": "text_4_1/panel/correct_batch256",
+      "location": "§4.1",
+      "path": "execution.canonical_panel.correct_batch256",
+      "value": 85
+    },
+    {
+      "id": "text_4_1/panel/labels_differing",
+      "location": "§4.1",
+      "path": "execution.canonical_panel.labels_differing_singleton_vs_batch256",
+      "value": 8
+    },
+    {
+      "id": "text_4_1/panel/adverse_sensitive_clean_incorrect_batch256",
+      "location": "§4.1",
+      "path": "execution.canonical_panel.adverse_sensitive_sources_clean_incorrect_under_batch256",
+      "value": 2
+    },
+    {
+      "id": "text_4_1/panel/singleton_scores_bitwise_equal",
+      "location": "§4.1",
+      "path": "execution.canonical_panel.score_vectors_bitwise_equal",
+      "value": true
+    },
+    {
+      "id": "table_03/class_preserved/unique",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_preserved_unique",
+      "value": 699250
+    },
+    {
+      "id": "table_03/class_preserved/unique_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_preserved_unique",
+      "value": 96.439,
+      "decimals": 4,
+      "scale": 0.00013791771828926863
+    },
+    {
+      "id": "table_03/class_preserved/event_weighted",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_preserved_event_weighted",
+      "value": 1601188
+    },
+    {
+      "id": "table_03/class_preserved/event_weighted_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_preserved_event_weighted",
+      "value": 96.5061,
+      "decimals": 4,
+      "scale": 6.0271535320927844e-05
+    },
+    {
+      "id": "table_03/class_changed/unique",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_changed_unique",
+      "value": 25820
+    },
+    {
+      "id": "table_03/class_changed/unique_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_changed_unique",
+      "value": 3.561,
+      "decimals": 4,
+      "scale": 0.00013791771828926863
+    },
+    {
+      "id": "table_03/class_changed/event_weighted",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_changed_event_weighted",
+      "value": 57970
+    },
+    {
+      "id": "table_03/class_changed/event_weighted_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.class_changed_event_weighted",
+      "value": 3.4939,
+      "decimals": 4,
+      "scale": 6.0271535320927844e-05
+    },
+    {
+      "id": "table_03/adverse/unique",
+      "location": "Table 3",
+      "path": "census.outcome_partition.adverse_unique",
+      "value": 5157
+    },
+    {
+      "id": "table_03/adverse/unique_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.adverse_unique",
+      "value": 0.7112,
+      "decimals": 4,
+      "scale": 0.00013791771828926863
+    },
+    {
+      "id": "table_03/adverse/event_weighted",
+      "location": "Table 3",
+      "path": "census.outcome_partition.adverse_event_weighted",
+      "value": 10424
+    },
+    {
+      "id": "table_03/adverse/event_weighted_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.adverse_event_weighted",
+      "value": 0.6283,
+      "decimals": 4,
+      "scale": 6.0271535320927844e-05
+    },
+    {
+      "id": "table_03/corrective/unique",
+      "location": "Table 3",
+      "path": "census.outcome_partition.corrective_unique",
+      "value": 9031
+    },
+    {
+      "id": "table_03/corrective/unique_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.corrective_unique",
+      "value": 1.2455,
+      "decimals": 4,
+      "scale": 0.00013791771828926863
+    },
+    {
+      "id": "table_03/corrective/event_weighted",
+      "location": "Table 3",
+      "path": "census.outcome_partition.corrective_event_weighted",
+      "value": 20106
+    },
+    {
+      "id": "table_03/corrective/event_weighted_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.corrective_event_weighted",
+      "value": 1.2118,
+      "decimals": 4,
+      "scale": 6.0271535320927844e-05
+    },
+    {
+      "id": "table_03/lateral/unique",
+      "location": "Table 3",
+      "path": "census.outcome_partition.lateral_unique",
+      "value": 11632
+    },
+    {
+      "id": "table_03/lateral/unique_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.lateral_unique",
+      "value": 1.6043,
+      "decimals": 4,
+      "scale": 0.00013791771828926863
+    },
+    {
+      "id": "table_03/lateral/event_weighted",
+      "location": "Table 3",
+      "path": "census.outcome_partition.lateral_event_weighted",
+      "value": 27440
+    },
+    {
+      "id": "table_03/lateral/event_weighted_percent",
+      "location": "Table 3",
+      "path": "census.outcome_partition.lateral_event_weighted",
+      "value": 1.6539,
+      "decimals": 4,
+      "scale": 6.0271535320927844e-05
+    },
+    {
+      "id": "table_03/unique_candidates",
+      "location": "Table 3",
+      "path": "census.outcome_partition.unique_candidates",
+      "value": 725070
+    },
+    {
+      "id": "table_03/event_weighted_candidates",
+      "location": "Table 3",
+      "path": "census.outcome_partition.event_weighted_candidates",
+      "value": 1659158
+    },
+    {
+      "id": "text_4_2/any_change_sources",
+      "location": "§4.2",
+      "path": "census.panel.any_change_sources",
+      "value": 25
+    },
+    {
+      "id": "text_4_2/clean_correct_sources",
+      "location": "§4.2",
+      "path": "census.panel.clean_correct_sources",
+      "value": 84
+    },
+    {
+      "id": "text_4_2/adverse_sensitive_sources",
+      "location": "§4.2",
+      "path": "census.panel.adverse_sensitive_sources",
+      "value": 13
+    },
+    {
+      "id": "text_4_2/adverse_source_incidence_percent",
+      "location": "§4.2",
+      "path": "census.panel.adverse_source_incidence",
+      "value": 15.48,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/corrective_sources",
+      "location": "§4.2",
+      "path": "census.panel.corrective_sources",
+      "value": 9
+    },
+    {
+      "id": "text_4_2/lateral_sources",
+      "location": "§4.2",
+      "path": "census.panel.lateral_sources",
+      "value": 8
+    },
+    {
+      "id": "text_4_2/mean_adverse_rate_percent",
+      "location": "§4.2",
+      "path": "census.panel.mean_adverse_rate",
+      "value": 0.9596,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/adverse_rate_ci95_percent",
+      "location": "§4.2",
+      "path": "census.panel.adverse_rate_ci95",
+      "value": [
+        0.2532,
+        1.6978
+      ],
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/cumulative_share_top2",
+      "location": "§4.2, Fig. 3B",
+      "path": "census.panel.cumulative_adverse_share[1]",
+      "value": 68.47,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/cumulative_share_top5",
+      "location": "§4.2, Fig. 3B",
+      "path": "census.panel.cumulative_adverse_share[4]",
+      "value": 93.21,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/cumulative_share_top6",
+      "location": "§4.2",
+      "path": "census.panel.cumulative_adverse_share[5]",
+      "value": 95.77,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/cumulative_share_top8",
+      "location": "§4.2, Fig. 3B",
+      "path": "census.panel.cumulative_adverse_share[7]",
+      "value": 99.2,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_2/spearman_rho",
+      "location": "§4.2, Fig. 3A",
+      "path": "census.panel.spearman_rho",
+      "value": -0.5688,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_2/within_label_permutation_p",
+      "location": "§4.2",
+      "path": "census.panel.within_label_one_sided_p",
+      "value": 0.0001,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_2/preceding_minus_following_mean",
+      "location": "§4.2",
+      "path": "census.geometry.directional_asymmetry_previous_minus_next.mean_contrast",
+      "value": 0.00057,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_2/preceding_minus_following_q",
+      "location": "§4.2",
+      "path": "census.geometry.directional_asymmetry_previous_minus_next.fdr_bh_q_across_geometry_contrasts",
+      "value": 0.0616,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_2/feature_quartile_mean",
+      "location": "§4.2",
+      "path": "census.geometry.feature_gradient_high_minus_low_quartile.mean_contrast",
+      "value": -0.00554,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_2/feature_quartile_q",
+      "location": "§4.2",
+      "path": "census.geometry.feature_gradient_high_minus_low_quartile.fdr_bh_q_across_geometry_contrasts",
+      "value": 0.0616,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_2/time_tertile_mean",
+      "location": "§4.2",
+      "path": "census.geometry.temporal_gradient_late_minus_early_tertile.mean_contrast",
+      "value": -0.00051,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_2/time_tertile_q",
+      "location": "§4.2",
+      "path": "census.geometry.temporal_gradient_late_minus_early_tertile.fdr_bh_q_across_geometry_contrasts",
+      "value": 0.7979,
+      "decimals": 4
+    },
+    {
+      "id": "figure_02/lateral_share_of_class_changes_unique",
+      "location": "Fig. 2",
+      "path": "census.outcome_partition.lateral_unique",
+      "value": 45.1,
+      "decimals": 1,
+      "scale": 0.0038729666924864447
+    },
+    {
+      "id": "figure_02/lateral_share_of_class_changes_event_weighted",
+      "location": "Fig. 2",
+      "path": "census.outcome_partition.lateral_event_weighted",
+      "value": 47.3,
+      "decimals": 1,
+      "scale": 0.0017250301880282904
+    },
+    {
+      "id": "text_4_3/equal_source_clean_accuracy",
+      "location": "§4.3",
+      "path": "census.accuracy_decomposition.equal_source_clean_accuracy",
+      "value": 84.0,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/equal_source_neighbor_accuracy",
+      "location": "§4.3",
+      "path": "census.accuracy_decomposition.equal_source_neighbor_accuracy",
+      "value": 84.5418,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/unique_candidate_clean_accuracy",
+      "location": "§4.3",
+      "path": "census.accuracy_decomposition.unique_candidate_clean_accuracy",
+      "value": 86.6359,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/unique_candidate_neighbor_accuracy",
+      "location": "§4.3",
+      "path": "census.accuracy_decomposition.unique_candidate_neighbor_accuracy",
+      "value": 87.1702,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/unique_candidate_gain_pp",
+      "location": "§4.3",
+      "path": "census.accuracy_decomposition.unique_candidate_gain_percentage_points",
+      "value": 0.5343,
+      "decimals": 4
+    },
+    {
+      "id": "table_04/840/uniform",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=840].expected_detected_sources",
+      "value": 3.71,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/840/lowest_10_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_10_percent,total_candidate_queries=840].expected_detected_sources",
+      "value": 5.21,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/840/lowest_25_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_25_percent,total_candidate_queries=840].expected_detected_sources",
+      "value": 6.03,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/840/lowest_50_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_50_percent,total_candidate_queries=840].expected_detected_sources",
+      "value": 4.84,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/840/half_uniform_half_quartile",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=half_uniform_half_quartile,total_candidate_queries=840].expected_detected_sources",
+      "value": 5.22,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/840/runner_up",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=runner_up,total_candidate_queries=840].actual_discovered_sources",
+      "value": 4
+    },
+    {
+      "id": "table_04/840/max_directional_gain",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_directional_gain,total_candidate_queries=840].actual_discovered_sources",
+      "value": 4
+    },
+    {
+      "id": "table_04/840/max_predicted_target_margin",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_predicted_target_margin,total_candidate_queries=840].actual_discovered_sources",
+      "value": 4
+    },
+    {
+      "id": "table_04/8400/uniform",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=8400].expected_detected_sources",
+      "value": 7.61,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/8400/lowest_10_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_10_percent,total_candidate_queries=8400].expected_detected_sources",
+      "value": 6.25,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/8400/lowest_25_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_25_percent,total_candidate_queries=8400].expected_detected_sources",
+      "value": 9.42,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/8400/lowest_50_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_50_percent,total_candidate_queries=8400].expected_detected_sources",
+      "value": 8.62,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/8400/half_uniform_half_quartile",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=half_uniform_half_quartile,total_candidate_queries=8400].expected_detected_sources",
+      "value": 8.91,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/8400/runner_up",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=runner_up,total_candidate_queries=8400].actual_discovered_sources",
+      "value": 7
+    },
+    {
+      "id": "table_04/8400/max_directional_gain",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_directional_gain,total_candidate_queries=8400].actual_discovered_sources",
+      "value": 7
+    },
+    {
+      "id": "table_04/8400/max_predicted_target_margin",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_predicted_target_margin,total_candidate_queries=8400].actual_discovered_sources",
+      "value": 8
+    },
+    {
+      "id": "table_04/84000/uniform",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=84000].expected_detected_sources",
+      "value": 10.3,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/84000/lowest_10_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_10_percent,total_candidate_queries=84000].expected_detected_sources",
+      "value": 11.28,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/84000/lowest_25_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_25_percent,total_candidate_queries=84000].expected_detected_sources",
+      "value": 11.05,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/84000/lowest_50_percent",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_50_percent,total_candidate_queries=84000].expected_detected_sources",
+      "value": 10.54,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/84000/half_uniform_half_quartile",
+      "location": "Table 4",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=half_uniform_half_quartile,total_candidate_queries=84000].expected_detected_sources",
+      "value": 10.75,
+      "decimals": 2
+    },
+    {
+      "id": "table_04/84000/runner_up",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=runner_up,total_candidate_queries=84000].actual_discovered_sources",
+      "value": 11
+    },
+    {
+      "id": "table_04/84000/max_directional_gain",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_directional_gain,total_candidate_queries=84000].actual_discovered_sources",
+      "value": 10
+    },
+    {
+      "id": "table_04/84000/max_predicted_target_margin",
+      "location": "Table 4",
+      "path": "search.deterministic_discovery[policy=max_predicted_target_margin,total_candidate_queries=84000].actual_discovered_sources",
+      "value": 11
+    },
+    {
+      "id": "text_4_3/vulnerable_in_quartile",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=8400].vulnerable_sources_in_lowest_quartile",
+      "value": 12
+    },
+    {
+      "id": "text_4_3/source_1627_rank_raw",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=8400].source1627_rank",
+      "value": 44
+    },
+    {
+      "id": "text_4_3/source_1627_rank_per_horizon",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=margin_per_horizon,policy=uniform,total_candidate_queries=8400].source1627_rank",
+      "value": 42
+    },
+    {
+      "id": "text_4_3/source_1627_quartile_queries_8400",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_25_percent,total_candidate_queries=8400].source1627_queries",
+      "value": 0
+    },
+    {
+      "id": "text_4_3/source_1627_quartile_queries_840",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=lowest_25_percent,total_candidate_queries=840].source1627_queries",
+      "value": 0
+    },
+    {
+      "id": "text_4_3/source_1627_adverse",
+      "location": "§4.3",
+      "path": "census.panel.ranked_adverse_counts[12]",
+      "value": 1,
+      "note": "source 1627 is the 13th-ranked adverse-sensitive source"
+    },
+    {
+      "id": "text_4_3/source_1627_neighborhood",
+      "location": "§4.3",
+      "path": "search.first_adverse_ranks[policy=runner_up,source_index=1627].capacity",
+      "value": 6941
+    },
+    {
+      "id": "text_4_3/normalized_half_focus_84000_expected",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=margin_per_horizon,policy=lowest_50_percent,total_candidate_queries=84000].expected_detected_sources",
+      "value": 10.83,
+      "decimals": 2
+    },
+    {
+      "id": "text_4_3/normalized_half_focus_84000_all13_percent",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=margin_per_horizon,policy=lowest_50_percent,total_candidate_queries=84000].probability_detect_all13",
+      "value": 2.15,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/normalized_half_focus_includes_all13",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=margin_per_horizon,policy=lowest_50_percent,total_candidate_queries=84000].vulnerable_sources_in_lowest_half",
+      "value": 13
+    },
+    {
+      "id": "text_4_3/runner_up_first_rank_1627",
+      "location": "§4.3",
+      "path": "search.first_adverse_ranks[policy=runner_up,source_index=1627].first_adverse_rank",
+      "value": 781
+    },
+    {
+      "id": "text_4_3/runner_up_first_rank_9282",
+      "location": "§4.3",
+      "path": "search.first_adverse_ranks[policy=runner_up,source_index=9282].first_adverse_rank",
+      "value": 4509
+    },
+    {
+      "id": "text_4_3/runner_up_first_rank_1534",
+      "location": "§4.3",
+      "path": "search.first_adverse_ranks[policy=runner_up,source_index=1534].first_adverse_rank",
+      "value": 5612
+    },
+    {
+      "id": "text_4_3/runner_up/prefix",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=runner_up].posthoc_prefix_per_source",
+      "value": 5612
+    },
+    {
+      "id": "text_4_3/runner_up/capped_queries",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=runner_up].capped_queries",
+      "value": 461380
+    },
+    {
+      "id": "text_4_3/runner_up/fraction_percent",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=runner_up].fraction_of_exhaustive",
+      "value": 73.45,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/runner_up/shorter_neighborhoods",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=runner_up].sources_with_shorter_neighborhood",
+      "value": 14
+    },
+    {
+      "id": "text_4_3/max_directional_gain/capped_queries",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=max_directional_gain].capped_queries",
+      "value": 598437
+    },
+    {
+      "id": "text_4_3/max_directional_gain/fraction_percent",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=max_directional_gain].fraction_of_exhaustive",
+      "value": 95.27,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/max_predicted_target_margin/capped_queries",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=max_predicted_target_margin].capped_queries",
+      "value": 461870
+    },
+    {
+      "id": "text_4_3/max_predicted_target_margin/fraction_percent",
+      "location": "§4.3",
+      "path": "search.posthoc_full_discovery_prefixes[policy=max_predicted_target_margin].fraction_of_exhaustive",
+      "value": 73.53,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_3/exhaustive_candidate_queries",
+      "location": "§4.3",
+      "path": "search.exhaustive_candidate_queries",
+      "value": 628171
+    },
+    {
+      "id": "text_4_3/uniform_100_per_source",
+      "location": "§4.3",
+      "path": "search.finite_sampling_coverage[ranking=raw_margin,policy=uniform,total_candidate_queries=8400].expected_detected_sources",
+      "value": 7.61,
+      "decimals": 2
+    },
+    {
+      "id": "text_4_4/preserved_nonzero",
+      "location": "§4.4",
+      "path": "census.final_block.preserved_nonzero",
+      "value": 617941
+    },
+    {
+      "id": "text_4_4/preserved_nonzero_percent",
+      "location": "§4.4",
+      "path": "census.final_block.preserved_nonzero_fraction",
+      "value": 88.372,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_4/preserved_pooled_mean",
+      "location": "§4.4",
+      "path": "census.final_block.table[outcome=class_preserved].pooled_mean",
+      "value": 0.5752,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/class_changing_all_nonzero",
+      "location": "§4.4",
+      "path": "census.final_block.class_changing_all_nonzero",
+      "value": true
+    },
+    {
+      "id": "text_4_4/within_source_median",
+      "location": "§4.4",
+      "path": "census.final_block.within_source_median_of_preserved_medians",
+      "value": 0.6549,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/within_source_q1",
+      "location": "§4.4",
+      "path": "census.final_block.within_source_preserved_median_q1",
+      "value": 0.6322,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/within_source_q3",
+      "location": "§4.4",
+      "path": "census.final_block.within_source_preserved_median_q3",
+      "value": 0.6728,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/class_preserved/candidates",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].candidates",
+      "value": 699250
+    },
+    {
+      "id": "table_05/class_preserved/sources",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].sources",
+      "value": 100
+    },
+    {
+      "id": "table_05/class_preserved/pooled_median",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].pooled_median",
+      "value": 0.6464,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/class_preserved/q1",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].pooled_q1",
+      "value": 0.613,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/class_preserved/q3",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].pooled_q3",
+      "value": 0.6726,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/class_preserved/equal_source_mean",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=class_preserved].equal_source_mean",
+      "value": 0.5719,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/adverse/candidates",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].candidates",
+      "value": 5157
+    },
+    {
+      "id": "table_05/adverse/sources",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].sources",
+      "value": 13
+    },
+    {
+      "id": "table_05/adverse/pooled_median",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].pooled_median",
+      "value": 0.7039,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/adverse/q1",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].pooled_q1",
+      "value": 0.6822,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/adverse/q3",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].pooled_q3",
+      "value": 0.7191,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/adverse/equal_source_mean",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=adverse].equal_source_mean",
+      "value": 0.7007,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/corrective/candidates",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].candidates",
+      "value": 9031
+    },
+    {
+      "id": "table_05/corrective/sources",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].sources",
+      "value": 9
+    },
+    {
+      "id": "table_05/corrective/pooled_median",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].pooled_median",
+      "value": 0.6635,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/corrective/q1",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].pooled_q1",
+      "value": 0.6464,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/corrective/q3",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].pooled_q3",
+      "value": 0.6793,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/corrective/equal_source_mean",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=corrective].equal_source_mean",
+      "value": 0.6751,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/lateral/candidates",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].candidates",
+      "value": 11632
+    },
+    {
+      "id": "table_05/lateral/sources",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].sources",
+      "value": 8
+    },
+    {
+      "id": "table_05/lateral/pooled_median",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].pooled_median",
+      "value": 0.6567,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/lateral/q1",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].pooled_q1",
+      "value": 0.6397,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/lateral/q3",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].pooled_q3",
+      "value": 0.6774,
+      "decimals": 4
+    },
+    {
+      "id": "table_05/lateral/equal_source_mean",
+      "location": "Table 5",
+      "path": "census.final_block.table[outcome=lateral].equal_source_mean",
+      "value": 0.6683,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.stem.mean_contrast",
+      "value": 0.0168,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.stem.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0018,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.stem.mean_contrast",
+      "value": 0.02,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.stem.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.023,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.stem.mean_contrast",
+      "value": 0.0098,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/stem/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.stem.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.1749,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.attention_1.mean_contrast",
+      "value": 0.1815,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.attention_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.attention_1.mean_contrast",
+      "value": 0.1562,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.attention_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0072,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.attention_1.mean_contrast",
+      "value": 0.1535,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_1/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.attention_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0182,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.local_1.mean_contrast",
+      "value": 0.1246,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.local_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.local_1.mean_contrast",
+      "value": 0.1179,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.local_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0072,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.local_1.mean_contrast",
+      "value": 0.1408,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_1/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.local_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0092,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_1.mean_contrast",
+      "value": 0.0844,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_1.mean_contrast",
+      "value": 0.0758,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0072,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_1.mean_contrast",
+      "value": 0.0827,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_1/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_1.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0113,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.attention_2.mean_contrast",
+      "value": 0.1528,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.attention_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.attention_2.mean_contrast",
+      "value": 0.1583,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.attention_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0081,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.attention_2.mean_contrast",
+      "value": 0.2164,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/attention_2/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.attention_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0092,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.local_2.mean_contrast",
+      "value": 0.1356,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.local_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.local_2.mean_contrast",
+      "value": 0.1436,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.local_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0072,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.local_2.mean_contrast",
+      "value": 0.1941,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/local_2/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.local_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0102,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/adverse/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_2.mean_contrast",
+      "value": 0.1046,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/adverse/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0014,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/corrective/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_2.mean_contrast",
+      "value": 0.1051,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/corrective/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0072,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/lateral/mean",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_2.mean_contrast",
+      "value": 0.1404,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/block_2/lateral/q",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_2.fdr_bh_q_within_transition_vs_preserved_family",
+      "value": 0.0107,
+      "decimals": 4
+    },
+    {
+      "id": "table_06/adverse/sources",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_2.n_sources",
+      "value": 13
+    },
+    {
+      "id": "table_06/corrective/sources",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_2.n_sources",
+      "value": 9
+    },
+    {
+      "id": "table_06/lateral/sources",
+      "location": "Table 6",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_2.n_sources",
+      "value": 8
+    },
+    {
+      "id": "text_4_4/adverse/block_2_ci95",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.adverse.block_2.source_bootstrap95",
+      "value": [
+        0.086,
+        0.1235
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/corrective/block_2_ci95",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.corrective.block_2.source_bootstrap95",
+      "value": [
+        0.0815,
+        0.1315
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/lateral/block_2_ci95",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.transition_vs_preserved.lateral.block_2.source_bootstrap95",
+      "value": [
+        0.0651,
+        0.2668
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/class_preserved/block_1/mean",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.class_preserved.block_1.attention_minus_local_trace_divergence.mean_contrast",
+      "value": -0.0477,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/class_preserved/block_1/q",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.class_preserved.block_1.attention_minus_local_trace_divergence.fdr_bh_q_within_global_vs_local_trace_family",
+      "value": 0.0004,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_4/global_vs_local/class_preserved/block_2/mean",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.class_preserved.block_2.attention_minus_local_trace_divergence.mean_contrast",
+      "value": 0.1281,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/class_preserved/block_2/q",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.class_preserved.block_2.attention_minus_local_trace_divergence.fdr_bh_q_within_global_vs_local_trace_family",
+      "value": 0.0004,
+      "decimals": 5
+    },
+    {
+      "id": "text_4_4/global_vs_local/adverse/block_2/mean",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_trace_divergence.mean_contrast",
+      "value": 0.1194,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/adverse/block_2/q",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_trace_divergence.fdr_bh_q_within_global_vs_local_trace_family",
+      "value": 0.0069,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/corrective/block_2/mean",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.corrective.block_2.attention_minus_local_trace_divergence.mean_contrast",
+      "value": 0.1085,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/corrective/block_2/q",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.corrective.block_2.attention_minus_local_trace_divergence.fdr_bh_q_within_global_vs_local_trace_family",
+      "value": 0.0195,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/lateral/block_2/mean",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.lateral.block_2.attention_minus_local_trace_divergence.mean_contrast",
+      "value": 0.0968,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_4/global_vs_local/lateral/block_2/q",
+      "location": "§4.4",
+      "path": "census.internal.source_level_inference.global_vs_local.lateral.block_2.attention_minus_local_trace_divergence.fdr_bh_q_within_global_vs_local_trace_family",
+      "value": 0.0166,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/all_neighbors/score_l2",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=all_neighbors].score_l2",
+      "value": 0.441,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/all_neighbors/absolute_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=all_neighbors].absolute_margin",
+      "value": 0.3447,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/all_neighbors/signed_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=all_neighbors].signed_margin",
+      "value": 0.0032,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/all_neighbors/sources",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=all_neighbors].sources",
+      "value": 100
+    },
+    {
+      "id": "table_07/nonzero_internal_response/score_l2",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=nonzero_internal_response].score_l2",
+      "value": 0.2212,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/nonzero_internal_response/absolute_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=nonzero_internal_response].absolute_margin",
+      "value": 0.0544,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/nonzero_internal_response/signed_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=nonzero_internal_response].signed_margin",
+      "value": 0.0078,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/nonzero_internal_response/sources",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=nonzero_internal_response].sources",
+      "value": 100
+    },
+    {
+      "id": "table_07/preserved_nonzero_response/score_l2",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=preserved_nonzero_response].score_l2",
+      "value": 0.2206,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/preserved_nonzero_response/absolute_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=preserved_nonzero_response].absolute_margin",
+      "value": 0.0566,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/preserved_nonzero_response/signed_margin",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=preserved_nonzero_response].signed_margin",
+      "value": 0.0138,
+      "decimals": 4
+    },
+    {
+      "id": "table_07/preserved_nonzero_response/sources",
+      "location": "Table 7",
+      "path": "census.internal_output_correlations.table[candidates=preserved_nonzero_response].sources",
+      "value": 100
+    },
+    {
+      "id": "text_4_5/exact_zero_excluded",
+      "location": "§4.5",
+      "path": "census.internal_output_correlations.excluded_exact_zero_candidates",
+      "value": 81309
+    },
+    {
+      "id": "table_08/attention_1/candidate_pooled_percent",
+      "location": "Table 8",
+      "path": "census.internal.clean_activation_patch.adverse.attention_1.restored_clean_prediction_rate_unique",
+      "value": 77.18,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/attention_1/equal_source_mean_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.attention_1.mean_restored_clean_prediction_rate",
+      "value": 92.93,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/attention_1/ci95_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.attention_1.source_bootstrap95_restored_clean_prediction_rate",
+      "value": [
+        86.45,
+        98.24
+      ],
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_1/candidate_pooled_percent",
+      "location": "Table 8",
+      "path": "census.internal.clean_activation_patch.adverse.local_1.restored_clean_prediction_rate_unique",
+      "value": 71.22,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_1/equal_source_mean_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.local_1.mean_restored_clean_prediction_rate",
+      "value": 92.31,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_1/ci95_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.local_1.source_bootstrap95_restored_clean_prediction_rate",
+      "value": [
+        83.6,
+        99.29
+      ],
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/attention_2/candidate_pooled_percent",
+      "location": "Table 8",
+      "path": "census.internal.clean_activation_patch.adverse.attention_2.restored_clean_prediction_rate_unique",
+      "value": 77.64,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/attention_2/equal_source_mean_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.attention_2.mean_restored_clean_prediction_rate",
+      "value": 91.26,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/attention_2/ci95_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.attention_2.source_bootstrap95_restored_clean_prediction_rate",
+      "value": [
+        83.56,
+        97.82
+      ],
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_2/candidate_pooled_percent",
+      "location": "Table 8",
+      "path": "census.internal.clean_activation_patch.adverse.local_2.restored_clean_prediction_rate_unique",
+      "value": 41.17,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_2/equal_source_mean_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.local_2.mean_restored_clean_prediction_rate",
+      "value": 78.51,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_08/local_2/ci95_percent",
+      "location": "Table 8",
+      "path": "census.internal.source_level_inference.patch_restoration.adverse.local_2.source_bootstrap95_restored_clean_prediction_rate",
+      "value": [
+        61.79,
+        92.76
+      ],
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/positive_control/stem",
+      "location": "§4.6",
+      "path": "census.internal.positive_controls.stem.prediction_restoration_rate",
+      "value": 100,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/positive_control/block_1",
+      "location": "§4.6",
+      "path": "census.internal.positive_controls.block_1.prediction_restoration_rate",
+      "value": 100,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/positive_control/block_2",
+      "location": "§4.6",
+      "path": "census.internal.positive_controls.block_2.prediction_restoration_rate",
+      "value": 100,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/adverse_block_2_patch_contrast_mean",
+      "location": "§4.6",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_clean_prediction_restoration.mean_contrast",
+      "value": 0.1276,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_6/adverse_block_2_patch_contrast_ci95",
+      "location": "§4.6",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_clean_prediction_restoration.source_bootstrap95",
+      "value": [
+        0.021,
+        0.258
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_6/adverse_block_2_patch_contrast_p",
+      "location": "§4.6",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_clean_prediction_restoration.two_sided_signflip_p",
+      "value": 0.0486,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_6/adverse_block_2_patch_contrast_q",
+      "location": "§4.6",
+      "path": "census.internal.source_level_inference.global_vs_local.adverse.block_2.attention_minus_local_clean_prediction_restoration.fdr_bh_q_within_global_vs_local_patch_family",
+      "value": 0.2916,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_6/corrective/clean_restoration_min_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.corrective.clean_prediction_restoration_min",
+      "value": 67.7,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/corrective/clean_restoration_max_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.corrective.clean_prediction_restoration_max",
+      "value": 78.63,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/corrective/truth_restoration_min_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.corrective.ground_truth_restoration_min",
+      "value": 15.09,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/corrective/truth_restoration_max_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.corrective.ground_truth_restoration_max",
+      "value": 24.64,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/lateral/clean_restoration_min_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.lateral.clean_prediction_restoration_min",
+      "value": 72.15,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/lateral/clean_restoration_max_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.lateral.clean_prediction_restoration_max",
+      "value": 78.82,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/lateral/truth_restoration_min_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.lateral.ground_truth_restoration_min",
+      "value": 0.22,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_6/lateral/truth_restoration_max_percent",
+      "location": "§4.6",
+      "path": "census.restoration_ranges.lateral.ground_truth_restoration_max",
+      "value": 0.92,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_09/T0/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.T0",
+      "value": 174198
+    },
+    {
+      "id": "table_09/T0/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.T0",
+      "value": 168422
+    },
+    {
+      "id": "table_09/T1/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.T1",
+      "value": 97293
+    },
+    {
+      "id": "table_09/T1/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.T1",
+      "value": 77753
+    },
+    {
+      "id": "table_09/T2/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.T2",
+      "value": 1022650
+    },
+    {
+      "id": "table_09/T2/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.T2",
+      "value": 1032964
+    },
+    {
+      "id": "table_09/T3/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.T3",
+      "value": 3564
+    },
+    {
+      "id": "table_09/T3/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.T3",
+      "value": 18566
+    },
+    {
+      "id": "table_09/final_layer_trace_changed_counts_preserved/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.final_layer_trace_changed_counts_preserved",
+      "value": 89176
+    },
+    {
+      "id": "table_09/final_layer_trace_changed_counts_preserved/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.final_layer_trace_changed_counts_preserved",
+      "value": 72380
+    },
+    {
+      "id": "table_09/adverse/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.adverse",
+      "value": 790
+    },
+    {
+      "id": "table_09/adverse/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.adverse",
+      "value": 15773
+    },
+    {
+      "id": "table_09/initially_correct_sources/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.initially_correct_sources",
+      "value": 73
+    },
+    {
+      "id": "table_09/initially_correct_sources/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.initially_correct_sources",
+      "value": 75
+    },
+    {
+      "id": "table_09/robust_correct_sources/A",
+      "location": "Table 9",
+      "path": "replicas.replicas.A.robust_correct_sources",
+      "value": 67
+    },
+    {
+      "id": "table_09/robust_correct_sources/B",
+      "location": "Table 9",
+      "path": "replicas.replicas.B.robust_correct_sources",
+      "value": 70
+    },
+    {
+      "id": "text_4_7/final_layer_fraction_A_percent",
+      "location": "§4.7",
+      "path": "replicas.replicas.A.final_layer_fraction_of_trace_changes",
+      "value": 7.94,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/final_layer_fraction_B_percent",
+      "location": "§4.7",
+      "path": "replicas.replicas.B.final_layer_fraction_of_trace_changes",
+      "value": 6.41,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/earlier_only_A",
+      "location": "§4.7",
+      "path": "replicas.replicas.A.earlier_only_trace_changes",
+      "value": 8117
+    },
+    {
+      "id": "text_4_7/earlier_only_B",
+      "location": "§4.7",
+      "path": "replicas.replicas.B.earlier_only_trace_changes",
+      "value": 5373
+    },
+    {
+      "id": "text_4_7/earlier_only_fraction_A_percent",
+      "location": "§4.7",
+      "path": "replicas.replicas.A.earlier_only_fraction_of_trace_changes",
+      "value": 0.72,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/earlier_only_fraction_B_percent",
+      "location": "§4.7",
+      "path": "replicas.replicas.B.earlier_only_fraction_of_trace_changes",
+      "value": 0.48,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/sources_with_final_layer_changes_A",
+      "location": "§4.7",
+      "path": "replicas.replicas.A.sources_with_final_layer_changes",
+      "value": 100
+    },
+    {
+      "id": "text_4_7/sources_with_final_layer_changes_B",
+      "location": "§4.7",
+      "path": "replicas.replicas.B.sources_with_final_layer_changes",
+      "value": 100
+    },
+    {
+      "id": "text_4_7/validation_accuracy_A_percent",
+      "location": "§4.7",
+      "path": "replicas.comparison.validation.A.accuracy",
+      "value": 72.2773,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/validation_accuracy_B_percent",
+      "location": "§4.7",
+      "path": "replicas.comparison.validation.B.accuracy",
+      "value": 72.5278,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "text_4_7/validation_accuracy_difference_pp",
+      "location": "§4.7",
+      "path": "replicas.comparison.validation_accuracy_difference_B_minus_A_percentage_points",
+      "value": 0.2505,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/class_change_ratio",
+      "location": "§4.7",
+      "path": "replicas.comparison.class_change_ratio_B_over_A",
+      "value": 5.21,
+      "decimals": 2
+    },
+    {
+      "id": "text_4_7/four_source_ids",
+      "location": "§4.7",
+      "path": "replicas.comparison.four_source_ids",
+      "value": [
+        914,
+        4499,
+        7289,
+        8134
+      ]
+    },
+    {
+      "id": "text_4_7/four_sources_T3_A",
+      "location": "§4.7",
+      "path": "replicas.comparison.four_sources_T3.A",
+      "value": 369
+    },
+    {
+      "id": "text_4_7/four_sources_T3_B",
+      "location": "§4.7",
+      "path": "replicas.comparison.four_sources_T3.B",
+      "value": 15760
+    },
+    {
+      "id": "text_4_7/other_sources",
+      "location": "§4.7",
+      "path": "replicas.comparison.other_sources",
+      "value": 96
+    },
+    {
+      "id": "text_4_7/other_sources_T3_A",
+      "location": "§4.7",
+      "path": "replicas.comparison.other_sources_T3.A",
+      "value": 3195
+    },
+    {
+      "id": "text_4_7/other_sources_T3_B",
+      "location": "§4.7",
+      "path": "replicas.comparison.other_sources_T3.B",
+      "value": 2806
+    },
+    {
+      "id": "text_4_7/paired_bootstrap_T3_difference_pp",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.full_panel.T3_rate_difference_B_minus_A_percentage_points",
+      "value": 1.1896,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/paired_bootstrap_T3_ci95",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.full_panel.T3_rate_difference_ci95",
+      "value": [
+        0.023,
+        2.4507
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/common_correct_sources",
+      "location": "§4.7",
+      "path": "replicas.comparison.common_clean_correct_sources",
+      "value": 67
+    },
+    {
+      "id": "text_4_7/common_correct_adverse_A",
+      "location": "§4.7",
+      "path": "replicas.comparison.common_clean_correct_adverse.A",
+      "value": 248
+    },
+    {
+      "id": "text_4_7/common_correct_adverse_B",
+      "location": "§4.7",
+      "path": "replicas.comparison.common_clean_correct_adverse.B",
+      "value": 13
+    },
+    {
+      "id": "text_4_7/four_sources_B_adverse",
+      "location": "§4.7",
+      "path": "replicas.comparison.four_sources_B_adverse",
+      "value": 15760
+    },
+    {
+      "id": "text_4_7/B_adverse_total",
+      "location": "§4.7",
+      "path": "replicas.comparison.B_adverse_total",
+      "value": 15773
+    },
+    {
+      "id": "text_4_7/paired_bootstrap_adverse_difference_pp",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.full_panel.adverse_rate_difference_B_minus_A_percentage_points",
+      "value": 1.3001,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/paired_bootstrap_adverse_ci95",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.full_panel.adverse_rate_difference_ci95",
+      "value": [
+        0.1843,
+        2.5593
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/common_correct_adverse_difference_pp",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.both_correct.adverse_rate_difference_B_minus_A_percentage_points",
+      "value": -0.0417,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/common_correct_adverse_ci95",
+      "location": "§4.7",
+      "path": "replicas.comparison.paired_bootstrap.both_correct.adverse_rate_difference_ci95",
+      "value": [
+        -0.0923,
+        0.0003
+      ],
+      "decimals": 4
+    },
+    {
+      "id": "text_4_7/adverse_sensitive_A",
+      "location": "§4.7",
+      "path": "replicas.comparison.adverse_sensitive_of_initially_correct.A",
+      "value": [
+        6,
+        73
+      ]
+    },
+    {
+      "id": "text_4_7/adverse_sensitive_B",
+      "location": "§4.7",
+      "path": "replicas.comparison.adverse_sensitive_of_initially_correct.B",
+      "value": [
+        5,
+        75
+      ]
+    },
+    {
+      "id": "text_4_8/label_agreements",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.CPU_GPU_label_agreements",
+      "value": 25794
+    },
+    {
+      "id": "text_4_8/label_agreement_percent",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.CPU_GPU_label_agreements",
+      "value": 99.8993,
+      "decimals": 4,
+      "scale": 0.0038729666924864447
+    },
+    {
+      "id": "text_4_8/transition_agreements",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.CPU_GPU_transition_agreements",
+      "value": 25795
+    },
+    {
+      "id": "text_4_8/transition_agreement_percent",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.CPU_GPU_transition_agreements",
+      "value": 99.9032,
+      "decimals": 4,
+      "scale": 0.0038729666924864447
+    },
+    {
+      "id": "text_4_8/adverse_remain_adverse_cpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.CPU_same_type",
+      "value": 5152
+    },
+    {
+      "id": "text_4_8/adverse_remain_adverse_cpu_percent",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.CPU_same_type",
+      "value": 99.903,
+      "decimals": 4,
+      "scale": 0.01939111886755866
+    },
+    {
+      "id": "text_4_8/adverse_return_to_clean_cpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.CPU_returns_to_clean_class",
+      "value": 5
+    },
+    {
+      "id": "text_4_8/corrective_return_to_clean_cpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.CPU_returns_to_clean_class",
+      "value": 9
+    },
+    {
+      "id": "text_4_8/lateral_return_to_clean_cpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.CPU_returns_to_clean_class",
+      "value": 11
+    },
+    {
+      "id": "text_4_8/score_difference_median",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.score_difference.median",
+      "value": 1.43e-06,
+      "decimals": 8
+    },
+    {
+      "id": "text_4_8/score_difference_p95",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.score_difference.p95",
+      "value": 2.86e-06,
+      "decimals": 8
+    },
+    {
+      "id": "text_4_8/score_difference_maximum",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.score_difference.maximum",
+      "value": 1.1871,
+      "decimals": 4
+    },
+    {
+      "id": "text_4_8/panel_clean_labels_agree",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.panel_clean_labels.CPU_GPU_clean_label_disagreements",
+      "value": 0
+    },
+    {
+      "id": "text_4_8/adverse_sources_cpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.adverse_sources.CPU",
+      "value": [
+        1534,
+        1627,
+        3505,
+        3658,
+        4284,
+        4757,
+        4983,
+        5264,
+        5356,
+        7340,
+        8525,
+        9282,
+        9389
+      ]
+    },
+    {
+      "id": "text_4_8/adverse_sources_gpu",
+      "location": "§4.8",
+      "path": "execution.class_changing_device_replay.adverse_sources.GPU",
+      "value": [
+        1534,
+        1627,
+        3505,
+        3658,
+        4284,
+        4757,
+        4983,
+        5264,
+        5356,
+        7340,
+        8525,
+        9282,
+        9389
+      ]
+    },
+    {
+      "id": "table_A3/adverse/candidates",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.candidates",
+      "value": 5157
+    },
+    {
+      "id": "table_A3/adverse/cpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.CPU_same_type",
+      "value": 5152
+    },
+    {
+      "id": "table_A3/adverse/cpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.CPU_same_class",
+      "value": 5151
+    },
+    {
+      "id": "table_A3/adverse/gpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.GPU_same_type",
+      "value": 5157
+    },
+    {
+      "id": "table_A3/adverse/gpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.adverse.GPU_same_class",
+      "value": 5157
+    },
+    {
+      "id": "table_A3/corrective/candidates",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.candidates",
+      "value": 9031
+    },
+    {
+      "id": "table_A3/corrective/cpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.CPU_same_type",
+      "value": 9022
+    },
+    {
+      "id": "table_A3/corrective/cpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.CPU_same_class",
+      "value": 9022
+    },
+    {
+      "id": "table_A3/corrective/gpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.GPU_same_type",
+      "value": 9031
+    },
+    {
+      "id": "table_A3/corrective/gpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.corrective.GPU_same_class",
+      "value": 9031
+    },
+    {
+      "id": "table_A3/lateral/candidates",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.candidates",
+      "value": 11632
+    },
+    {
+      "id": "table_A3/lateral/cpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.CPU_same_type",
+      "value": 11621
+    },
+    {
+      "id": "table_A3/lateral/cpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.CPU_same_class",
+      "value": 11621
+    },
+    {
+      "id": "table_A3/lateral/gpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.GPU_same_type",
+      "value": 11632
+    },
+    {
+      "id": "table_A3/lateral/gpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.by_canonical_transition.lateral.GPU_same_class",
+      "value": 11632
+    },
+    {
+      "id": "table_A3/total/candidates",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.candidates",
+      "value": 25820
+    },
+    {
+      "id": "table_A3/total/cpu_same_type",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.CPU_same_type_total",
+      "value": 25795
+    },
+    {
+      "id": "table_A3/total/cpu_same_class",
+      "location": "Table A.3",
+      "path": "execution.class_changing_device_replay.CPU_same_class_total",
+      "value": 25794
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].accuracy_a",
+      "value": 86.0735,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].accuracy_b",
+      "value": 86.0836,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].changed_labels",
+      "value": 2
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].changed_fraction",
+      "value": 0.02,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].correct_to_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].wrong_to_correct",
+      "value": 1
+    },
+    {
+      "id": "table_A1/CPU_singleton->GPU_singleton/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=CPU_singleton,b=GPU_singleton].wrong_to_different_wrong",
+      "value": 1
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].accuracy_a",
+      "value": 86.0836,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].accuracy_b",
+      "value": 86.0435,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].changed_labels",
+      "value": 344
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].changed_fraction",
+      "value": 3.45,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].correct_to_wrong",
+      "value": 110
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].wrong_to_correct",
+      "value": 106
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_padding_matched_singleton/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_padding_matched_singleton].wrong_to_different_wrong",
+      "value": 128
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].accuracy_a",
+      "value": 86.0435,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].accuracy_b",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].changed_labels",
+      "value": 614
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].changed_fraction",
+      "value": 6.15,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].correct_to_wrong",
+      "value": 191
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].wrong_to_correct",
+      "value": 220
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_batch256/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_batch256].wrong_to_different_wrong",
+      "value": 203
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].accuracy_a",
+      "value": 86.0836,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].accuracy_b",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].changed_labels",
+      "value": 619
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].changed_fraction",
+      "value": 6.2,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].correct_to_wrong",
+      "value": 199
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].wrong_to_correct",
+      "value": 224
+    },
+    {
+      "id": "table_A1/GPU_singleton->GPU_batch256/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].wrong_to_different_wrong",
+      "value": 196
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].accuracy_a",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].accuracy_b",
+      "value": 85.8631,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].changed_labels",
+      "value": 531
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].changed_fraction",
+      "value": 5.32,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].correct_to_wrong",
+      "value": 205
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].wrong_to_correct",
+      "value": 158
+    },
+    {
+      "id": "table_A1/GPU_batch256->GPU_batch256_reversed/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].wrong_to_different_wrong",
+      "value": 168
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].accuracy_a",
+      "value": 86.0435,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].accuracy_b",
+      "value": 86.0535,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].changed_labels",
+      "value": 1
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].changed_fraction",
+      "value": 0.01,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].correct_to_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].wrong_to_correct",
+      "value": 1
+    },
+    {
+      "id": "table_A1/GPU_padding_matched_singleton->GPU_qk_isolated_batch256/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].wrong_to_different_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].accuracy_a",
+      "value": 86.0535,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].accuracy_b",
+      "value": 86.0535,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].changed_labels",
+      "value": 0
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].changed_fraction",
+      "value": 0.0,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].correct_to_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].wrong_to_correct",
+      "value": 0
+    },
+    {
+      "id": "table_A1/GPU_qk_isolated_batch256->GPU_qk_isolated_batch256_reversed/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].wrong_to_different_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/accuracy_a",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].accuracy_a",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/accuracy_b",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].accuracy_b",
+      "value": 86.334,
+      "decimals": 4,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/changed_labels",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].changed_labels",
+      "value": 0
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/changed_percent",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].changed_fraction",
+      "value": 0.0,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/correct_to_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].correct_to_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/wrong_to_correct",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].wrong_to_correct",
+      "value": 0
+    },
+    {
+      "id": "table_A1/archived_batch256->GPU_batch256/wrong_to_different_wrong",
+      "location": "Table A.1",
+      "path": "execution.paired_validation_contrasts[a=archived_batch256,b=GPU_batch256].wrong_to_different_wrong",
+      "value": 0
+    },
+    {
+      "id": "table_A2/0/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=0].sources",
+      "value": 4057
+    },
+    {
+      "id": "table_A2/0/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=0].changed_labels",
+      "value": 0
+    },
+    {
+      "id": "table_A2/0/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=0].changed_fraction",
+      "value": 0.0,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/1/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=1].sources",
+      "value": 5004
+    },
+    {
+      "id": "table_A2/1/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=1].changed_labels",
+      "value": 236
+    },
+    {
+      "id": "table_A2/1/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=1].changed_fraction",
+      "value": 4.72,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/6/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=6].sources",
+      "value": 45
+    },
+    {
+      "id": "table_A2/6/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=6].changed_labels",
+      "value": 2
+    },
+    {
+      "id": "table_A2/6/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=6].changed_fraction",
+      "value": 4.44,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/11/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=11].sources",
+      "value": 155
+    },
+    {
+      "id": "table_A2/11/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=11].changed_labels",
+      "value": 13
+    },
+    {
+      "id": "table_A2/11/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=11].changed_fraction",
+      "value": 8.39,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/21/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=21].sources",
+      "value": 294
+    },
+    {
+      "id": "table_A2/21/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=21].changed_labels",
+      "value": 26
+    },
+    {
+      "id": "table_A2/21/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=21].changed_fraction",
+      "value": 8.84,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/41/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=41].sources",
+      "value": 322
+    },
+    {
+      "id": "table_A2/41/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=41].changed_labels",
+      "value": 43
+    },
+    {
+      "id": "table_A2/41/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=41].changed_fraction",
+      "value": 13.35,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "table_A2/81/sources",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=81].sources",
+      "value": 104
+    },
+    {
+      "id": "table_A2/81/changed",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=81].changed_labels",
+      "value": 24
+    },
+    {
+      "id": "table_A2/81/rate_percent",
+      "location": "Table A.2",
+      "path": "execution.padding_gap_counts[padding_bins_min=81].changed_fraction",
+      "value": 23.08,
+      "decimals": 2,
+      "scale": 100
+    },
+    {
+      "id": "text_A2/diagnostic_sources",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.diagnostic_sources",
+      "value": 408,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/changed_sources",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.changed_sources",
+      "value": 344,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/unchanged_controls",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.unchanged_positive_padding_controls",
+      "value": 64,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/labels_reproduced",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.native_and_padded_labels_reproduced",
+      "value": true,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/restored_by_excluding_extra_bins",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.restored_by_excluding_extra_bins",
+      "value": 26,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/prefix_only_changed",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.prefix_only_labels_different_from_native",
+      "value": 318,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A2/native_plus_extra_changed",
+      "location": "Appendix A.2",
+      "path": "execution.recorded_summaries.padding_decomposition.native_plus_observed_extra_changes_label",
+      "value": 43,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A3/pairs",
+      "location": "Appendix A.3",
+      "path": "execution.recorded_summaries.pair_controls.pairs",
+      "value": 3,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A3/joint_isolation_removes_order_differences",
+      "location": "Appendix A.3",
+      "path": "execution.recorded_summaries.pair_controls.joint_isolation_max_order_score_difference",
+      "value": 0.0,
+      "decimals": 8,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A3/joint_isolation_max_versus_padded_singleton",
+      "location": "Appendix A.3",
+      "path": "execution.recorded_summaries.pair_controls.joint_isolation_max_versus_padded_singleton",
+      "value": 1.91e-06,
+      "decimals": 8,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A3/original_q_k_pairs_nonzero",
+      "location": "Appendix A.3",
+      "path": "execution.recorded_summaries.pair_controls.nonzero_order_difference_in_every_original_q_or_k_pair",
+      "value": true,
+      "kind": "recorded"
+    },
+    {
+      "id": "text_A3/isolated_order_exact_zero",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_qk_isolated_batch256,b=GPU_qk_isolated_batch256_reversed].score_difference.exact_zero",
+      "value": 9981
+    },
+    {
+      "id": "text_A3/isolated_vs_padded_singleton_changed",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].changed_labels",
+      "value": 1
+    },
+    {
+      "id": "text_A3/source_7942_classes",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].changed_classes.7942",
+      "value": [
+        27,
+        25
+      ]
+    },
+    {
+      "id": "text_A3/cross_shape_median",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].score_difference.median",
+      "value": 1.91e-06,
+      "decimals": 8
+    },
+    {
+      "id": "text_A3/cross_shape_p95",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].score_difference.p95",
+      "value": 3.81e-06,
+      "decimals": 8
+    },
+    {
+      "id": "text_A3/cross_shape_maximum",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].score_difference.maximum",
+      "value": 3.7136,
+      "decimals": 4
+    },
+    {
+      "id": "text_A3/cross_shape_sources_above_1e_4",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_padding_matched_singleton,b=GPU_qk_isolated_batch256].score_difference.above_1e_4",
+      "value": 54
+    },
+    {
+      "id": "text_A3/batch256_vs_reversed_changed",
+      "location": "Appendix A.3",
+      "path": "execution.paired_validation_contrasts[a=GPU_batch256,b=GPU_batch256_reversed].changed_labels",
+      "value": 531
+    },
+    {
+      "id": "text_A1/singleton_vs_batch256_changed",
+      "location": "Appendix A.1",
+      "path": "execution.paired_validation_contrasts[a=GPU_singleton,b=GPU_batch256].changed_labels",
+      "value": 619
+    },
+    {
+      "id": "text_A4/candidates_replayed",
+      "location": "Appendix A.4",
+      "path": "execution.class_changing_device_replay.candidates",
+      "value": 25820
+    },
+    {
+      "id": "text_A4/preserved_candidates_not_replayed",
+      "location": "Appendix A.4",
+      "path": "execution.class_changing_device_replay.originally_preserved_candidates_replayed",
+      "value": false
+    }
+  ]
+}

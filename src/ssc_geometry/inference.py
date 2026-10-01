@@ -3,7 +3,8 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 import numpy as np
-from .analysis import load_and_validate, require
+from .census import load_and_validate, require
+from . import paths
 from .core import move_one_count
 from .io import read_json, write_json, load_npz, sha256_file
 
@@ -15,7 +16,7 @@ def execution_digest(root: Path) -> str:
             if (p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc'
                     and not any(part.endswith('.egg-info') for part in p.parts)):
                 h.update(p.relative_to(root).as_posix().encode());h.update(p.read_bytes())
-    for p in sorted([root/'pyproject.toml', *root.glob('requirements-*.txt')]):
+    for p in sorted([root/'pyproject.toml', *(root/'requirements').glob('*.txt')]):
         h.update(p.relative_to(root).as_posix().encode());h.update(p.read_bytes())
     return h.hexdigest()
 
@@ -92,16 +93,16 @@ def run_audit(root: Path, source_path: Path, out: Path, mode: str='preflight',
               sources: list[int] | None=None, max_candidates: int | None=None,
               resume: bool=False) -> dict:
     from .upstream import load_model
-    from . import _forward_kernel as fk
+    from . import forward as fk
     import torch
     b=load_and_validate(root);g=b['geometry'];cfg=b['config']
-    all_ids=[row['source_index'] for row in b['manifest']]
+    all_ids=[row['source_index'] for row in b['panel']]
     if sources is not None and (len(sources)!=len(set(sources)) or any(s not in all_ids for s in sources)):
         raise ValueError('Sources must be unique IDs from the fixed panel')
     if max_candidates is not None and max_candidates<1:raise ValueError('Candidate limit must be positive')
     header={'schema_version':1,'mode':mode,'sources':sources,'max_candidates':max_candidates,
         'device':device_name,'allow_nonreference_environment':allow_nonreference,
-        'execution_digest':execution_digest(root),'integrity_manifest_sha256':sha256_file(root/'checksums/manifest.json'),
+        'execution_digest':execution_digest(root),'integrity_manifest_sha256':sha256_file(root/paths.MANIFEST),
         'score_atol':cfg['source_score_atol'],'trace_atol':cfg['replay_trace_atol']}
     manifest_path=out/'run_manifest.json'
     if resume:

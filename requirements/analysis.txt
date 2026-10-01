@@ -1,5 +1,5 @@
-# Tested analysis environment. This is NOT the original inference environment.
+# Analysis environment: regenerates every manuscript table without executing the model.
 numpy==2.3.5
 scipy==1.17.0
-# PyTorch 2.11 requires setuptools<82; keep analysis and inference installable together.
+# PyTorch 2.11 requires setuptools<82; keeps analysis and inference installable together.
 setuptools==78.1.0
